@@ -1,4 +1,4 @@
-<x-default-layout>
+<x-clean-layout>
 
     @section('title')
         Dashboard
@@ -7,9 +7,9 @@
     <!-- Header Banner -->
     <div class="row mb-4 mb-md-5">
         <div class="col-12">
-            <div class="rounded-4 overflow-hidden" style="background: linear-gradient(90deg,#FF8C00  0%, #FFB700 100%); min-height: 80px; padding: 0;">
-                <div class="container-fluid px-0">
-                    <div class="row align-items-center px-3 px-md-5 py-4 py-md-5 gx-0">
+            <div class="rounded-4 overflow-hidden" style="background: linear-gradient(90deg,#FF8C00  0%, #FFB700 100%); min-height: 80px;">
+                <div class="container-fluid">
+                    <div class="row align-items-center py-3 py-md-4">
                         <!-- Left: Date & Department -->
                         <div class="col-12 col-md-8 d-flex flex-column justify-content-center text-center text-md-start mb-3 mb-md-0">
                             <div class="fw-semibold fs-5 text-white mb-1">Senin, 15 September 2025</div>
@@ -2035,4 +2035,4 @@
     </script>
     <!--begin::Row-->
     <!--end::Row-->
-</x-default-layout>
+</x-clean-layout>
