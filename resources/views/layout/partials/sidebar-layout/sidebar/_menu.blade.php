@@ -11,10 +11,9 @@
             <!--begin:Menu item-->
             <div class="menu-item">
                 <!--begin:Menu link-->
-
                 <a class="menu-link {{ request()->routeIs('dashboard') ? 'active' : '' }}"
                     href="{{ route('dashboard') }}">
-                    <span class="menu-icon">{!! getIcon('element-11', 'fs-2') !!}</span>
+                    <span class="menu-icon"><i class="fas fa-home fs-2"></i></span>
                     <span class="menu-title">Dashboards</span>
                 </a>
                 <!--end:Menu link-->
@@ -22,16 +21,16 @@
 
             <!--end:Menu item-->
             <!--begin:Menu item-->
-            <div class="menu-item pt-5">
+            {{-- <div class="menu-item pt-5">
                 <!--begin:Menu content-->
                 <div class="menu-content">
                     <span class="menu-heading fw-bold text-uppercase fs-7">Apps</span>
                 </div>
                 <!--end:Menu content-->
-            </div>
+            </div> --}}
             <!--end:Menu item-->
             <!--begin:Menu item-->
-            <div data-kt-menu-trigger="click"
+            {{-- <div data-kt-menu-trigger="click"
                 class="menu-item menu-accordion {{ request()->routeIs('user-management.*') ? 'here show' : '' }}">
                 <!--begin:Menu link-->
                 <span class="menu-link">
@@ -83,7 +82,7 @@
                     <!--end:Menu item-->
                 </div>
                 <!--end:Menu sub-->
-            </div>
+            </div> --}}
             <!--end:Menu item-->
             <!--begin:Menu item-->
             {{-- <div class="menu-item pt-5">
