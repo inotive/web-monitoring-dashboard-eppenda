@@ -13,7 +13,8 @@
                         <!-- Left: Date & Department -->
                         <div class="col-12 col-md-8 d-flex flex-column justify-content-center text-center text-md-start mb-3 mb-md-0">
                             <div class="fw-semibold fs-5 text-white mb-1">Senin, 15 September 2025</div>
-                            <div class="fs-6 text-white">Badan Pendapatan Daerah Kabupaten Tabalong</div>
+                            <div class="fs-6 text-white mb-1">Badan Pendapatan Daerah Kabupaten Tabalong</div>
+                            <div class="fs-7 text-white opacity-75" id="refreshCounter">Memuat data...</div>
                         </div>
                         <!-- Right: Logo -->
                         <div class="col-12 col-md-4 d-flex align-items-end justify-content-center justify-content-md-end">
@@ -34,7 +35,7 @@
     <div class="row g-4 mb-4 mb-md-5">
         <!-- PAD Card -->
         <div class="col-12 col-md-4">
-            <div class="card h-100 shadow-sm">
+            <div class="card h-100 shadow-sm" id="padCard">
                 <div class="card-body py-4 px-3 px-lg-4">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <div class="d-flex align-items-center gap-2">
@@ -52,14 +53,11 @@
                             </div>
                             <span class="fw-bold fs-6">Pendapatan Asli Daerah (PAD)</span>
                         </div>
-                        <button class="btn btn-light-warning btn-sm rounded-3 fw-bold px-3">
-                            <i class="ki-duotone ki-setting-2 fs-5 me-1"></i> Pengaturan
-                        </button>
                     </div>
                     <div class="row align-items-center">
                         <div class="col-6">
                             <div class="d-flex justify-content-center">
-                                <div class="position-relative" style="width: 110px; height: 110px;">
+                                <div class="position-relative" style="width: 110px; height: 110px;" id="padProgress">
                                     <svg class="progress-ring" width="110" height="110">
                                         <circle class="progress-ring-circle" stroke="#e5e7eb" stroke-width="11" fill="transparent" r="48" cx="55" cy="55"/>
                                         <circle class="progress-ring-circle" stroke="#3b82f6" stroke-width="11" fill="transparent" r="48" cx="55" cy="55"
@@ -76,19 +74,19 @@
                             <div class="d-flex flex-column gap-2">
                                 <div>
                                     <div class="text-gray-600 fs-8">Target</div>
-                                    <div class="fw-bold fs-6">Rp335.877.042.225</div>
+                                    <div class="fw-bold fs-6" data-field="target">Rp0</div>
                                 </div>
                                 <div>
                                     <div class="text-gray-600 fs-8">Realisasi Hari Ini</div>
-                                    <div class="fw-bold fs-6">Rp335.877.042.225</div>
+                                    <div class="fw-bold fs-6" data-field="realisasi-hari-ini">Rp0</div>
                                 </div>
                                 <div>
                                     <div class="text-gray-600 fs-8">Realisasi</div>
-                                    <div class="fw-bold fs-6">Rp335.877.042.225</div>
+                                    <div class="fw-bold fs-6" data-field="realisasi">Rp0</div>
                                 </div>
                                 <div>
                                     <div class="text-gray-600 fs-8">Sisa Target</div>
-                                    <div class="fw-bold fs-6">Rp335.877.042.225</div>
+                                    <div class="fw-bold fs-6" data-field="sisa-target">Rp0</div>
                                 </div>
                             </div>
                         </div>
@@ -99,7 +97,7 @@
 
         <!-- Dana Transfer Card -->
         <div class="col-12 col-md-4">
-            <div class="card h-100 shadow-sm">
+            <div class="card h-100 shadow-sm" id="danaTransferCard">
                 <div class="card-body py-4 px-3 px-lg-4">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <div class="d-flex align-items-center gap-2">
@@ -111,14 +109,11 @@
                             </div>
                             <span class="fw-bold fs-6">Dana Transfer</span>
                         </div>
-                        <button class="btn btn-light-warning btn-sm rounded-3 fw-bold px-3">
-                            <i class="ki-duotone ki-setting-2 fs-5 me-1"></i> Pengaturan
-                        </button>
                     </div>
                     <div class="row align-items-center">
                         <div class="col-6">
                             <div class="d-flex justify-content-center">
-                                <div class="position-relative" style="width: 110px; height: 110px;">
+                                <div class="position-relative" style="width: 110px; height: 110px;" id="danaTransferProgress">
                                     <svg class="progress-ring" width="110" height="110">
                                         <circle class="progress-ring-circle" stroke="#e5e7eb" stroke-width="11" fill="transparent" r="48" cx="55" cy="55"/>
                                         <circle class="progress-ring-circle" stroke="#3b82f6" stroke-width="11" fill="transparent" r="48" cx="55" cy="55"
@@ -135,19 +130,19 @@
                             <div class="d-flex flex-column gap-2">
                                 <div>
                                     <div class="text-gray-600 fs-8">Target</div>
-                                    <div class="fw-bold fs-6">Rp335.877.042.225</div>
+                                    <div class="fw-bold fs-6" data-field="target">Rp0</div>
                                 </div>
                                 <div>
                                     <div class="text-gray-600 fs-8">Realisasi Hari Ini</div>
-                                    <div class="fw-bold fs-6">Rp335.877.042.225</div>
+                                    <div class="fw-bold fs-6" data-field="realisasi-hari-ini">Rp0</div>
                                 </div>
                                 <div>
                                     <div class="text-gray-600 fs-8">Realisasi</div>
-                                    <div class="fw-bold fs-6">Rp335.877.042.225</div>
+                                    <div class="fw-bold fs-6" data-field="realisasi">Rp0</div>
                                 </div>
                                 <div>
                                     <div class="text-gray-600 fs-8">Sisa Target</div>
-                                    <div class="fw-bold fs-6">Rp335.877.042.225</div>
+                                    <div class="fw-bold fs-6" data-field="sisa-target">Rp0</div>
                                 </div>
                             </div>
                         </div>
@@ -158,7 +153,7 @@
 
         <!-- Pendapatan Lainnya Card -->
         <div class="col-12 col-md-4">
-            <div class="card h-100 shadow-sm">
+            <div class="card h-100 shadow-sm" id="pendapatanLainnyaCard">
                 <div class="card-body py-4 px-3 px-lg-4">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <div class="d-flex align-items-center gap-2">
@@ -170,14 +165,11 @@
                             </div>
                             <span class="fw-bold fs-6">Pendapatan Lainnya yang Sah</span>
                         </div>
-                        <button class="btn btn-light-warning btn-sm rounded-3 fw-bold px-3">
-                            <i class="ki-duotone ki-setting-2 fs-5 me-1"></i> Pengaturan
-                        </button>
                     </div>
                     <div class="row align-items-center">
                         <div class="col-6">
                             <div class="d-flex justify-content-center">
-                                <div class="position-relative" style="width: 110px; height: 110px;">
+                                <div class="position-relative" style="width: 110px; height: 110px;" id="pendapatanLainnyaProgress">
                                     <svg class="progress-ring" width="110" height="110">
                                         <circle class="progress-ring-circle" stroke="#e5e7eb" stroke-width="11" fill="transparent" r="48" cx="55" cy="55"/>
                                         <circle class="progress-ring-circle" stroke="#3b82f6" stroke-width="11" fill="transparent" r="48" cx="55" cy="55"
@@ -194,25 +186,89 @@
                             <div class="d-flex flex-column gap-2">
                                 <div>
                                     <div class="text-gray-600 fs-8">Target</div>
-                                    <div class="fw-bold fs-6">Rp335.877.042.225</div>
+                                    <div class="fw-bold fs-6" data-field="target">Rp0</div>
                                 </div>
                                 <div>
                                     <div class="text-gray-600 fs-8">Realisasi Hari Ini</div>
-                                    <div class="fw-bold fs-6">Rp335.877.042.225</div>
+                                    <div class="fw-bold fs-6" data-field="realisasi-hari-ini">Rp0</div>
                                 </div>
                                 <div>
                                     <div class="text-gray-600 fs-8">Realisasi</div>
-                                    <div class="fw-bold fs-6">Rp335.877.042.225</div>
+                                    <div class="fw-bold fs-6" data-field="realisasi">Rp0</div>
                                 </div>
                                 <div>
                                     <div class="text-gray-600 fs-8">Sisa Target</div>
-                                    <div class="fw-bold fs-6">Rp335.877.042.225</div>
+                                    <div class="fw-bold fs-6" data-field="sisa-target">Rp0</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
     </div>
+
+    {{-- laporan --}}
+    <div class="card shadow-sm mb-5">
+        <div class="card-body py-4 px-3 px-lg-4">
+            <div class="mb-3 d-flex align-items-center gap-2">
+                <span class="bg-warning rounded-circle d-flex align-items-center justify-content-center" style="width:22px; height:22px;">
+                    <i class="ki-duotone ki-element-11 fs-5 text-white">
+                        <span class="path1"></span>
+                        <span class="path2"></span>
+                        <span class="path3"></span>
+                        <span class="path4"></span>
+                        <span class="path5"></span>
+                        <span class="path6"></span>
+                        <span class="path7"></span>
+                        <span class="path8"></span>
+                        <span class="path9"></span>
+                    </i>
+                </span>
+                <span class="fw-bold fs-6">Laporan Target & Realisasi</span>
+            </div>
+            <div class="d-flex flex-column gap-3">
+                <!-- Total Target -->
+                <div class="d-flex align-items-center gap-3">
+                    <span class="fs-8 flex-grow-0" style="min-width:130px;">Total Target</span>
+                    <div class="flex-grow-1">
+                        <div class="progress" style="height:16px; background:#ffe0ed;">
+                            <div class="progress-bar" role="progressbar" style="width: 70%; background: linear-gradient(90deg, #ec4899 10%, #f472b6 100%);" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <span class="fw-semibold fs-8 ms-4 text-gray-700" style="white-space:nowrap;">Rp3.537.074.632.209</span>
+                </div>
+                <!-- Total Sisa Target -->
+                <div class="d-flex align-items-center gap-3">
+                    <span class="fs-8 flex-grow-0" style="min-width:130px;">Total Sisa Target</span>
+                    <div class="flex-grow-1">
+                        <div class="progress" style="height:16px; background:#ffe0ed;">
+                            <div class="progress-bar" role="progressbar" style="width: 60%; background: linear-gradient(90deg, #ec4899 10%, #f472b6 100%);" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <span class="fw-semibold fs-8 ms-4 text-gray-700" style="white-space:nowrap;">Rp2.131.978.042.209</span>
+                </div>
+                <!-- Total Realisasi -->
+                <div class="d-flex align-items-center gap-3">
+                    <span class="fs-8 flex-grow-0" style="min-width:130px;">Total Realisasi</span>
+                    <div class="flex-grow-1">
+                        <div class="progress" style="height:16px; background:#ffe0ed;">
+                            <div class="progress-bar" role="progressbar" style="width: 80%; background: linear-gradient(90deg, #ec4899 10%, #f472b6 100%);" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <span class="fw-semibold fs-8 ms-4 text-gray-700" style="white-space:nowrap;">Rp1.405.096.590.256</span>
+                </div>
+                <!-- Total Realisasi Hari Ini -->
+                <div class="d-flex align-items-center gap-3">
+                    <span class="fs-8 flex-grow-0" style="min-width:130px;">Total Realisasi Hari Ini</span>
+                    <div class="flex-grow-1">
+                        <div class="progress" style="height:16px; background:#ffe0ed;">
+                            <div class="progress-bar" role="progressbar" style="width: 90%; background: linear-gradient(90deg, #ec4899 10%, #f472b6 100%);" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <span class="fw-semibold fs-8 ms-4 text-gray-700" style="white-space:nowrap;">Rp1.312.174.432.045</span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -238,9 +294,6 @@
                             </div>
                             <span class="fw-bold fs-5">Grafik Pendapatan Daerah</span>
                         </div>
-                        <button class="btn btn-light-warning btn-sm rounded-3 fw-bold px-3">
-                            <i class="ki-duotone ki-setting-2 fs-5 me-1"></i> Pengaturan
-                        </button>
                     </div>
                     <!-- Begin Tabs -->
                     <ul class="nav nav-tabs mb-4 custom-tabs" id="padTabs" role="tablist">
@@ -267,14 +320,14 @@
                                 <div class="col-md-6 col-12">
                                     <div class="border rounded-3 p-3 h-100" style="background: #fff8ea;">
                                         <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Target</div>
-                                        <div class="fw-bold fs-5 mb-0">Rp335.877.042.225</div>
+                                        <div class="fw-bold fs-5 mb-0" data-tab-field="target">Rp0</div>
                                     </div>
                                 </div>
                                 <!-- Realisasi Hari Ini -->
                                 <div class="col-md-6 col-12">
                                     <div class="border rounded-3 p-3 h-100 bg-white">
                                         <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi Hari Ini</div>
-                                        <div class="fw-bold fs-5 mb-0">Rp335.877.042.225</div>
+                                        <div class="fw-bold fs-5 mb-0" data-tab-field="realisasi-hari-ini">Rp0</div>
                                     </div>
                                 </div>
                                 <!-- Realisasi -->
@@ -282,10 +335,10 @@
                                     <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
                                         <div>
                                             <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi</div>
-                                            <div class="fw-bold fs-5 mb-2 mb-md-0">Rp335.877.042.225</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0" data-tab-field="realisasi">Rp0</div>
                                         </div>
                                         <div class="d-flex justify-content-end w-100">
-                                            <span class="badge rounded-pill fw-semibold fs-8" style="background:rgba(41,192,108,0.10); color:#29c06c; padding:5px 14px;">88%</span>
+                                            <span class="badge rounded-pill fw-semibold fs-8" data-tab-badge="realisasi" style="background:rgba(41,192,108,0.10); color:#29c06c; padding:5px 14px;">0%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -294,20 +347,98 @@
                                     <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
                                         <div>
                                             <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Sisa Target</div>
-                                            <div class="fw-bold fs-5 mb-2 mb-md-0">Rp335.877.042.225</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0" data-tab-field="sisa-target">Rp0</div>
                                         </div>
                                         <div class="d-flex justify-content-end w-100">
-                                            <span class="badge rounded-pill fw-semibold fs-8" style="background:rgba(255,46,79,0.07); color:#ff2e4f; padding:5px 14px;">-12%</span>
+                                            <span class="badge rounded-pill fw-semibold fs-8" data-tab-badge="sisa-target" style="background:rgba(255,46,79,0.07); color:#ff2e4f; padding:5px 14px;">0%</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="dana" role="tabpanel" aria-labelledby="dana-tab">
-                            <div class="alert alert-info py-4">Data Dana Transfer tidak tersedia.</div>
+                            <div class="row g-3">
+                                <!-- Target -->
+                                <div class="col-md-6 col-12">
+                                    <div class="border rounded-3 p-3 h-100" style="background: #fff8ea;">
+                                        <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Target</div>
+                                        <div class="fw-bold fs-5 mb-0">Rp2.461.610.301.792</div>
+                                    </div>
+                                </div>
+                                <!-- Realisasi Hari Ini -->
+                                <div class="col-md-6 col-12">
+                                    <div class="border rounded-3 p-3 h-100 bg-white">
+                                        <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi Hari Ini</div>
+                                        <div class="fw-bold fs-5 mb-0">Rp0</div>
+                                    </div>
+                                </div>
+                                <!-- Realisasi -->
+                                <div class="col-md-6 col-12">
+                                    <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
+                                        <div>
+                                            <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0">Rp1.996.792.920.443</div>
+                                        </div>
+                                        <div class="d-flex justify-content-end w-100">
+                                            <span class="badge rounded-pill fw-semibold fs-8" style="background:rgba(41,192,108,0.10); color:#29c06c; padding:5px 14px;">81%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Sisa Target -->
+                                <div class="col-md-6 col-12">
+                                    <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
+                                        <div>
+                                            <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Sisa Target</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0">Rp464.817.381.349</div>
+                                        </div>
+                                        <div class="d-flex justify-content-end w-100">
+                                            <span class="badge rounded-pill fw-semibold fs-8" style="background:rgba(255,46,79,0.07); color:#ff2e4f; padding:5px 14px;">-19%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="lainnya" role="tabpanel" aria-labelledby="lainnya-tab">
-                            <div class="alert alert-info py-4">Data Pendapatan Lainnya belum tersedia.</div>
+                            <div class="row g-3">
+                                <!-- Target -->
+                                <div class="col-md-6 col-12">
+                                    <div class="border rounded-3 p-3 h-100" style="background: #fff8ea;">
+                                        <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Target</div>
+                                        <div class="fw-bold fs-5 mb-0">Rp213.879.285.000</div>
+                                    </div>
+                                </div>
+                                <!-- Realisasi Hari Ini -->
+                                <div class="col-md-6 col-12">
+                                    <div class="border rounded-3 p-3 h-100 bg-white">
+                                        <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi Hari Ini</div>
+                                        <div class="fw-bold fs-5 mb-0">Rp0</div>
+                                    </div>
+                                </div>
+                                <!-- Realisasi -->
+                                <div class="col-md-6 col-12">
+                                    <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
+                                        <div>
+                                            <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0">Rp251.389.774.235</div>
+                                        </div>
+                                        <div class="d-flex justify-content-end w-100">
+                                            <span class="badge rounded-pill fw-semibold fs-8" style="background:rgba(41,192,108,0.10); color:#29c06c; padding:5px 14px;">118%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Sisa Target -->
+                                <div class="col-md-6 col-12">
+                                    <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
+                                        <div>
+                                            <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Sisa Target</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0">Rp-37.510.489.235</div>
+                                        </div>
+                                        <div class="d-flex justify-content-end w-100">
+                                            <span class="badge rounded-pill fw-semibold fs-8" style="background:rgba(41,192,108,0.10); color:#29c06c; padding:5px 14px;">+18%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -331,9 +462,6 @@
                             </div>
                             <span class="fw-bold fs-5">Panduan Lengkap Pajak Barang dan Jasa Tertentu (PBJT)</span>
                         </div>
-                        <button class="btn btn-light-warning btn-sm rounded-3 fw-bold px-3">
-                            <i class="ki-duotone ki-setting-2 fs-5 me-1"></i> Pengaturan
-                        </button>
                     </div>
                     <!-- Begin Tabs -->
                     <ul class="nav nav-tabs mb-4 custom-tabs" id="pbjtTabs" role="tablist">
@@ -364,20 +492,21 @@
                         </li>
                     </ul>
                     <div class="tab-content" id="pbjtTabsContent">
+                        <!-- Tenaga Listrik Tab -->
                         <div class="tab-pane fade show active" id="tenaga-listrik" role="tabpanel" aria-labelledby="tenaga-listrik-tab">
                             <div class="row g-3">
                                 <!-- Target -->
                                 <div class="col-12 col-md-6">
                                     <div class="border rounded-3 p-3 h-100" style="background: #fff8ea;">
                                         <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Target</div>
-                                        <div class="fw-bold fs-5 mb-0">Rp335.877.042.225</div>
+                                        <div class="fw-bold fs-5 mb-0" data-pbjt-field="tenaga-listrik-target">Rp0</div>
                                     </div>
                                 </div>
                                 <!-- Realisasi Hari Ini -->
                                 <div class="col-12 col-md-6">
                                     <div class="border rounded-3 p-3 h-100 bg-white">
                                         <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi Hari Ini</div>
-                                        <div class="fw-bold fs-5 mb-0">Rp335.877.042.225</div>
+                                        <div class="fw-bold fs-5 mb-0" data-pbjt-field="tenaga-listrik-realisasi-hari-ini">Rp0</div>
                                     </div>
                                 </div>
                                 <!-- Realisasi -->
@@ -385,10 +514,10 @@
                                     <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
                                         <div>
                                             <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi</div>
-                                            <div class="fw-bold fs-5 mb-2 mb-md-0">Rp335.877.042.225</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0" data-pbjt-field="tenaga-listrik-realisasi">Rp0</div>
                                         </div>
                                         <div class="d-flex justify-content-end w-100">
-                                            <span class="badge rounded-pill fw-semibold fs-8" style="background:rgba(41,192,108,0.10); color:#29c06c; padding:5px 14px;">88%</span>
+                                            <span class="badge rounded-pill fw-semibold fs-8" data-pbjt-badge="tenaga-listrik-realisasi" style="background:rgba(41,192,108,0.10); color:#29c06c; padding:5px 14px;">0%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -397,26 +526,186 @@
                                     <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
                                         <div>
                                             <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Sisa Target</div>
-                                            <div class="fw-bold fs-5 mb-2 mb-md-0">Rp335.877.042.225</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0" data-pbjt-field="tenaga-listrik-sisa-target">Rp0</div>
                                         </div>
                                         <div class="d-flex justify-content-end w-100">
-                                            <span class="badge rounded-pill fw-semibold fs-8" style="background:rgba(255,46,79,0.07); color:#ff2e4f; padding:5px 14px;">-12%</span>
+                                            <span class="badge rounded-pill fw-semibold fs-8" data-pbjt-badge="tenaga-listrik-sisa-target" style="background:rgba(255,46,79,0.07); color:#ff2e4f; padding:5px 14px;">0%</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- Makanan/Minuman Tab -->
                         <div class="tab-pane fade" id="makanan" role="tabpanel" aria-labelledby="makanan-tab">
-                            <div class="alert alert-info py-4">Data Makanan/Minuman tidak tersedia.</div>
+                            <div class="row g-3">
+                                <!-- Target -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100" style="background: #fff8ea;">
+                                        <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Target</div>
+                                        <div class="fw-bold fs-5 mb-0" data-pbjt-field="makanan-target">Rp0</div>
+                                    </div>
+                                </div>
+                                <!-- Realisasi Hari Ini -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100 bg-white">
+                                        <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi Hari Ini</div>
+                                        <div class="fw-bold fs-5 mb-0" data-pbjt-field="makanan-realisasi-hari-ini">Rp0</div>
+                                    </div>
+                                </div>
+                                <!-- Realisasi -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
+                                        <div>
+                                            <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0" data-pbjt-field="makanan-realisasi">Rp0</div>
+                                        </div>
+                                        <div class="d-flex justify-content-end w-100">
+                                            <span class="badge rounded-pill fw-semibold fs-8" data-pbjt-badge="makanan-realisasi" style="background:rgba(41,192,108,0.10); color:#29c06c; padding:5px 14px;">0%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Sisa Target -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
+                                        <div>
+                                            <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Sisa Target</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0" data-pbjt-field="makanan-sisa-target">Rp0</div>
+                                        </div>
+                                        <div class="d-flex justify-content-end w-100">
+                                            <span class="badge rounded-pill fw-semibold fs-8" data-pbjt-badge="makanan-sisa-target" style="background:rgba(255,46,79,0.07); color:#ff2e4f; padding:5px 14px;">0%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        <!-- Perhotelan Tab -->
                         <div class="tab-pane fade" id="perhotelan" role="tabpanel" aria-labelledby="perhotelan-tab">
-                            <div class="alert alert-info py-4">Data Perhotelan tidak tersedia.</div>
+                            <div class="row g-3">
+                                <!-- Target -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100" style="background: #fff8ea;">
+                                        <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Target</div>
+                                        <div class="fw-bold fs-5 mb-0" data-pbjt-field="perhotelan-target">Rp0</div>
+                                    </div>
+                                </div>
+                                <!-- Realisasi Hari Ini -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100 bg-white">
+                                        <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi Hari Ini</div>
+                                        <div class="fw-bold fs-5 mb-0" data-pbjt-field="perhotelan-realisasi-hari-ini">Rp0</div>
+                                    </div>
+                                </div>
+                                <!-- Realisasi -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
+                                        <div>
+                                            <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0" data-pbjt-field="perhotelan-realisasi">Rp0</div>
+                                        </div>
+                                        <div class="d-flex justify-content-end w-100">
+                                            <span class="badge rounded-pill fw-semibold fs-8" data-pbjt-badge="perhotelan-realisasi" style="background:rgba(41,192,108,0.10); color:#29c06c; padding:5px 14px;">0%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Sisa Target -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
+                                        <div>
+                                            <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Sisa Target</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0" data-pbjt-field="perhotelan-sisa-target">Rp0</div>
+                                        </div>
+                                        <div class="d-flex justify-content-end w-100">
+                                            <span class="badge rounded-pill fw-semibold fs-8" data-pbjt-badge="perhotelan-sisa-target" style="background:rgba(255,46,79,0.07); color:#ff2e4f; padding:5px 14px;">0%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        <!-- Kesenian dan Hiburan Tab -->
                         <div class="tab-pane fade" id="kesenian" role="tabpanel" aria-labelledby="kesenian-tab">
-                            <div class="alert alert-info py-4">Data Kesenian dan Hiburan tidak tersedia.</div>
+                            <div class="row g-3">
+                                <!-- Target -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100" style="background: #fff8ea;">
+                                        <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Target</div>
+                                        <div class="fw-bold fs-5 mb-0" data-pbjt-field="kesenian-target">Rp0</div>
+                                    </div>
+                                </div>
+                                <!-- Realisasi Hari Ini -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100 bg-white">
+                                        <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi Hari Ini</div>
+                                        <div class="fw-bold fs-5 mb-0" data-pbjt-field="kesenian-realisasi-hari-ini">Rp0</div>
+                                    </div>
+                                </div>
+                                <!-- Realisasi -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
+                                        <div>
+                                            <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0" data-pbjt-field="kesenian-realisasi">Rp0</div>
+                                        </div>
+                                        <div class="d-flex justify-content-end w-100">
+                                            <span class="badge rounded-pill fw-semibold fs-8" data-pbjt-badge="kesenian-realisasi" style="background:rgba(41,192,108,0.10); color:#29c06c; padding:5px 14px;">0%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Sisa Target -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
+                                        <div>
+                                            <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Sisa Target</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0" data-pbjt-field="kesenian-sisa-target">Rp0</div>
+                                        </div>
+                                        <div class="d-flex justify-content-end w-100">
+                                            <span class="badge rounded-pill fw-semibold fs-8" data-pbjt-badge="kesenian-sisa-target" style="background:rgba(255,46,79,0.07); color:#ff2e4f; padding:5px 14px;">0%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        <!-- Parkir Tab -->
                         <div class="tab-pane fade" id="parkir" role="tabpanel" aria-labelledby="parkir-tab">
-                            <div class="alert alert-info py-4">Data Parkir tidak tersedia.</div>
+                            <div class="row g-3">
+                                <!-- Target -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100" style="background: #fff8ea;">
+                                        <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Target</div>
+                                        <div class="fw-bold fs-5 mb-0" data-pbjt-field="parkir-target">Rp0</div>
+                                    </div>
+                                </div>
+                                <!-- Realisasi Hari Ini -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100 bg-white">
+                                        <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi Hari Ini</div>
+                                        <div class="fw-bold fs-5 mb-0" data-pbjt-field="parkir-realisasi-hari-ini">Rp0</div>
+                                    </div>
+                                </div>
+                                <!-- Realisasi -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
+                                        <div>
+                                            <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0" data-pbjt-field="parkir-realisasi">Rp0</div>
+                                        </div>
+                                        <div class="d-flex justify-content-end w-100">
+                                            <span class="badge rounded-pill fw-semibold fs-8" data-pbjt-badge="parkir-realisasi" style="background:rgba(41,192,108,0.10); color:#29c06c; padding:5px 14px;">0%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Sisa Target -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
+                                        <div>
+                                            <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Sisa Target</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0" data-pbjt-field="parkir-sisa-target">Rp0</div>
+                                        </div>
+                                        <div class="d-flex justify-content-end w-100">
+                                            <span class="badge rounded-pill fw-semibold fs-8" data-pbjt-badge="parkir-sisa-target" style="background:rgba(255,46,79,0.07); color:#ff2e4f; padding:5px 14px;">0%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -442,9 +731,6 @@
                             </div>
                             <span class="fw-bold fs-5">Objek Pajak Lain</span>
                         </div>
-                        <button class="btn btn-light-warning btn-sm rounded-3 fw-bold px-3">
-                            <i class="ki-duotone ki-setting-2 fs-5 me-1"></i> Pengaturan
-                        </button>
                     </div>
                     <!-- Begin Tabs -->
                     <ul class="nav nav-tabs mb-4 custom-tabs" id="lainTabs" role="tablist">
@@ -470,20 +756,21 @@
                         </li>
                     </ul>
                     <div class="tab-content" id="lainTabsContent">
+                        <!-- Air Tanah Tab -->
                         <div class="tab-pane fade show active" id="air-tanah" role="tabpanel" aria-labelledby="air-tanah-tab">
                             <div class="row g-3">
                                 <!-- Target -->
                                 <div class="col-12 col-md-6">
                                     <div class="border rounded-3 p-3 h-100" style="background: #fff8ea;">
                                         <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Target</div>
-                                        <div class="fw-bold fs-5 mb-0">Rp335.877.042.225</div>
+                                        <div class="fw-bold fs-5 mb-0" data-lain-field="air-tanah-target">Rp0</div>
                                     </div>
                                 </div>
                                 <!-- Realisasi Hari Ini -->
                                 <div class="col-12 col-md-6">
                                     <div class="border rounded-3 p-3 h-100 bg-white">
                                         <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi Hari Ini</div>
-                                        <div class="fw-bold fs-5 mb-0">Rp335.877.042.225</div>
+                                        <div class="fw-bold fs-5 mb-0" data-lain-field="air-tanah-realisasi-hari-ini">Rp0</div>
                                     </div>
                                 </div>
                                 <!-- Realisasi -->
@@ -491,10 +778,10 @@
                                     <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
                                         <div>
                                             <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi</div>
-                                            <div class="fw-bold fs-5 mb-2 mb-md-0">Rp335.877.042.225</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0" data-lain-field="air-tanah-realisasi">Rp0</div>
                                         </div>
                                         <div class="d-flex justify-content-end w-100">
-                                            <span class="badge rounded-pill fw-semibold fs-8" style="background:rgba(41,192,108,0.10); color:#29c06c; padding:5px 14px;">88%</span>
+                                            <span class="badge rounded-pill fw-semibold fs-8" data-lain-badge="air-tanah-realisasi" style="background:rgba(41,192,108,0.10); color:#29c06c; padding:5px 14px;">0%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -503,23 +790,143 @@
                                     <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
                                         <div>
                                             <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Sisa Target</div>
-                                            <div class="fw-bold fs-5 mb-2 mb-md-0">Rp335.877.042.225</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0" data-lain-field="air-tanah-sisa-target">Rp0</div>
                                         </div>
                                         <div class="d-flex justify-content-end w-100">
-                                            <span class="badge rounded-pill fw-semibold fs-8" style="background:rgba(255,46,79,0.07); color:#ff2e4f; padding:5px 14px;">-12%</span>
+                                            <span class="badge rounded-pill fw-semibold fs-8" data-lain-badge="air-tanah-sisa-target" style="background:rgba(255,46,79,0.07); color:#ff2e4f; padding:5px 14px;">0%</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- Reklame Tab -->
                         <div class="tab-pane fade" id="reklame" role="tabpanel" aria-labelledby="reklame-tab">
-                            <div class="alert alert-info py-4">Data Reklame tidak tersedia.</div>
+                            <div class="row g-3">
+                                <!-- Target -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100" style="background: #fff8ea;">
+                                        <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Target</div>
+                                        <div class="fw-bold fs-5 mb-0" data-lain-field="reklame-target">Rp0</div>
+                                    </div>
+                                </div>
+                                <!-- Realisasi Hari Ini -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100 bg-white">
+                                        <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi Hari Ini</div>
+                                        <div class="fw-bold fs-5 mb-0" data-lain-field="reklame-realisasi-hari-ini">Rp0</div>
+                                    </div>
+                                </div>
+                                <!-- Realisasi -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
+                                        <div>
+                                            <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0" data-lain-field="reklame-realisasi">Rp0</div>
+                                        </div>
+                                        <div class="d-flex justify-content-end w-100">
+                                            <span class="badge rounded-pill fw-semibold fs-8" data-lain-badge="reklame-realisasi" style="background:rgba(41,192,108,0.10); color:#29c06c; padding:5px 14px;">0%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Sisa Target -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
+                                        <div>
+                                            <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Sisa Target</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0" data-lain-field="reklame-sisa-target">Rp0</div>
+                                        </div>
+                                        <div class="d-flex justify-content-end w-100">
+                                            <span class="badge rounded-pill fw-semibold fs-8" data-lain-badge="reklame-sisa-target" style="background:rgba(255,46,79,0.07); color:#ff2e4f; padding:5px 14px;">0%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        <!-- Minerba Tab -->
                         <div class="tab-pane fade" id="minerba" role="tabpanel" aria-labelledby="minerba-tab">
-                            <div class="alert alert-info py-4">Data Minerba tidak tersedia.</div>
+                            <div class="row g-3">
+                                <!-- Target -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100" style="background: #fff8ea;">
+                                        <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Target</div>
+                                        <div class="fw-bold fs-5 mb-0" data-lain-field="minerba-target">Rp0</div>
+                                    </div>
+                                </div>
+                                <!-- Realisasi Hari Ini -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100 bg-white">
+                                        <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi Hari Ini</div>
+                                        <div class="fw-bold fs-5 mb-0" data-lain-field="minerba-realisasi-hari-ini">Rp0</div>
+                                    </div>
+                                </div>
+                                <!-- Realisasi -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
+                                        <div>
+                                            <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0" data-lain-field="minerba-realisasi">Rp0</div>
+                                        </div>
+                                        <div class="d-flex justify-content-end w-100">
+                                            <span class="badge rounded-pill fw-semibold fs-8" data-lain-badge="minerba-realisasi" style="background:rgba(41,192,108,0.10); color:#29c06c; padding:5px 14px;">0%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Sisa Target -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
+                                        <div>
+                                            <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Sisa Target</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0" data-lain-field="minerba-sisa-target">Rp0</div>
+                                        </div>
+                                        <div class="d-flex justify-content-end w-100">
+                                            <span class="badge rounded-pill fw-semibold fs-8" data-lain-badge="minerba-sisa-target" style="background:rgba(255,46,79,0.07); color:#ff2e4f; padding:5px 14px;">0%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        <!-- Sarang Walet Tab -->
                         <div class="tab-pane fade" id="sarang-walet" role="tabpanel" aria-labelledby="sarang-walet-tab">
-                            <div class="alert alert-info py-4">Data Sarang Walet tidak tersedia.</div>
+                            <div class="row g-3">
+                                <!-- Target -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100" style="background: #fff8ea;">
+                                        <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Target</div>
+                                        <div class="fw-bold fs-5 mb-0" data-lain-field="sarang-walet-target">Rp0</div>
+                                    </div>
+                                </div>
+                                <!-- Realisasi Hari Ini -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100 bg-white">
+                                        <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi Hari Ini</div>
+                                        <div class="fw-bold fs-5 mb-0" data-lain-field="sarang-walet-realisasi-hari-ini">Rp0</div>
+                                    </div>
+                                </div>
+                                <!-- Realisasi -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
+                                        <div>
+                                            <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0" data-lain-field="sarang-walet-realisasi">Rp0</div>
+                                        </div>
+                                        <div class="d-flex justify-content-end w-100">
+                                            <span class="badge rounded-pill fw-semibold fs-8" data-lain-badge="sarang-walet-realisasi" style="background:rgba(41,192,108,0.10); color:#29c06c; padding:5px 14px;">0%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Sisa Target -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
+                                        <div>
+                                            <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Sisa Target</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0" data-lain-field="sarang-walet-sisa-target">Rp0</div>
+                                        </div>
+                                        <div class="d-flex justify-content-end w-100">
+                                            <span class="badge rounded-pill fw-semibold fs-8" data-lain-badge="sarang-walet-sisa-target" style="background:rgba(255,46,79,0.07); color:#ff2e4f; padding:5px 14px;">0%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -546,9 +953,6 @@
                             </div>
                             <span class="fw-bold fs-5">Pungutan Pajak Menurut Presentase Tertentu (OPSEN)</span>
                         </div>
-                        <button class="btn btn-light-warning btn-sm rounded-3 fw-bold px-3">
-                            <i class="ki-duotone ki-setting-2 fs-5 me-1"></i> Pengaturan
-                        </button>
                     </div>
                     <!-- Begin Tabs -->
                     <ul class="nav nav-tabs mb-4 custom-tabs" id="opsenTabs" role="tablist">
@@ -569,20 +973,21 @@
                         </li>
                     </ul>
                     <div class="tab-content" id="opsenTabsContent">
+                        <!-- MBLB Tab (Dummy Data) -->
                         <div class="tab-pane fade show active" id="mblb" role="tabpanel" aria-labelledby="mblb-tab">
                             <div class="row g-3">
                                 <!-- Target -->
                                 <div class="col-12 col-md-6">
                                     <div class="border rounded-3 p-3 h-100" style="background: #fff8ea;">
                                         <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Target</div>
-                                        <div class="fw-bold fs-5 mb-0">Rp335.877.042.225</div>
+                                        <div class="fw-bold fs-5 mb-0">Rp182.000.000.000</div>
                                     </div>
                                 </div>
                                 <!-- Realisasi Hari Ini -->
                                 <div class="col-12 col-md-6">
                                     <div class="border rounded-3 p-3 h-100 bg-white">
                                         <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi Hari Ini</div>
-                                        <div class="fw-bold fs-5 mb-0">Rp335.877.042.225</div>
+                                        <div class="fw-bold fs-5 mb-0">Rp0</div>
                                     </div>
                                 </div>
                                 <!-- Realisasi -->
@@ -590,10 +995,10 @@
                                     <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
                                         <div>
                                             <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi</div>
-                                            <div class="fw-bold fs-5 mb-2 mb-md-0">Rp335.877.042.225</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0">Rp69.046.483.093</div>
                                         </div>
                                         <div class="d-flex justify-content-end w-100">
-                                            <span class="badge rounded-pill fw-semibold fs-8" style="background:rgba(41,192,108,0.10); color:#29c06c; padding:5px 14px;">88%</span>
+                                            <span class="badge rounded-pill fw-semibold fs-8" style="background:rgba(255,46,79,0.07); color:#ff2e4f; padding:5px 14px;">38%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -602,20 +1007,100 @@
                                     <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
                                         <div>
                                             <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Sisa Target</div>
-                                            <div class="fw-bold fs-5 mb-2 mb-md-0">Rp335.877.042.225</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0">Rp112.953.516.907</div>
                                         </div>
                                         <div class="d-flex justify-content-end w-100">
-                                            <span class="badge rounded-pill fw-semibold fs-8" style="background:rgba(255,46,79,0.07); color:#ff2e4f; padding:5px 14px;">-12%</span>
+                                            <span class="badge rounded-pill fw-semibold fs-8" style="background:rgba(255,46,79,0.07); color:#ff2e4f; padding:5px 14px;">-62%</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- PKB Tab (API Data) -->
                         <div class="tab-pane fade" id="pkb" role="tabpanel" aria-labelledby="pkb-tab">
-                            <div class="alert alert-info py-4">Data PKB tidak tersedia.</div>
+                            <div class="row g-3">
+                                <!-- Target -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100" style="background: #fff8ea;">
+                                        <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Target</div>
+                                        <div class="fw-bold fs-5 mb-0" data-opsen-field="pkb-target">Rp0</div>
+                                    </div>
+                                </div>
+                                <!-- Realisasi Hari Ini -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100 bg-white">
+                                        <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi Hari Ini</div>
+                                        <div class="fw-bold fs-5 mb-0" data-opsen-field="pkb-realisasi-hari-ini">Rp0</div>
+                                    </div>
+                                </div>
+                                <!-- Realisasi -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
+                                        <div>
+                                            <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0" data-opsen-field="pkb-realisasi">Rp0</div>
+                                        </div>
+                                        <div class="d-flex justify-content-end w-100">
+                                            <span class="badge rounded-pill fw-semibold fs-8" data-opsen-badge="pkb-realisasi" style="background:rgba(41,192,108,0.10); color:#29c06c; padding:5px 14px;">0%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Sisa Target -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
+                                        <div>
+                                            <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Sisa Target</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0" data-opsen-field="pkb-sisa-target">Rp0</div>
+                                        </div>
+                                        <div class="d-flex justify-content-end w-100">
+                                            <span class="badge rounded-pill fw-semibold fs-8" data-opsen-badge="pkb-sisa-target" style="background:rgba(255,46,79,0.07); color:#ff2e4f; padding:5px 14px;">0%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        <!-- BBNKB Tab (Dummy Data) -->
                         <div class="tab-pane fade" id="bbnkb" role="tabpanel" aria-labelledby="bbnkb-tab">
-                            <div class="alert alert-info py-4">Data BBNKB tidak tersedia.</div>
+                            <div class="row g-3">
+                                <!-- Target -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100" style="background: #fff8ea;">
+                                        <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Target</div>
+                                        <div class="fw-bold fs-5 mb-0">Rp21.000.000.000</div>
+                                    </div>
+                                </div>
+                                <!-- Realisasi Hari Ini -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100 bg-white">
+                                        <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi Hari Ini</div>
+                                        <div class="fw-bold fs-5 mb-0">Rp0</div>
+                                    </div>
+                                </div>
+                                <!-- Realisasi -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
+                                        <div>
+                                            <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0">Rp12.779.657.000</div>
+                                        </div>
+                                        <div class="d-flex justify-content-end w-100">
+                                            <span class="badge rounded-pill fw-semibold fs-8" style="background:rgba(255,46,79,0.07); color:#ff2e4f; padding:5px 14px;">61%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Sisa Target -->
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
+                                        <div>
+                                            <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Sisa Target</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0">Rp8.220.343.000</div>
+                                        </div>
+                                        <div class="d-flex justify-content-end w-100">
+                                            <span class="badge rounded-pill fw-semibold fs-8" style="background:rgba(255,46,79,0.07); color:#ff2e4f; padding:5px 14px;">-39%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -710,6 +1195,601 @@
             }
         }
     </style>
+
+    <script>
+        // API Configuration
+        const API_BASE_URL = 'https://e-penda.com/api/accounts';
+        let refreshCounter = 0;
+        let refreshInterval = null;
+        const REFRESH_INTERVAL_MS = 30000; // 30 seconds
+
+        // Format number to Indonesian Rupiah
+        function formatRupiah(number) {
+            if (!number && number !== 0) return 'Rp0';
+            // Handle both number and string, including decimals
+            const num = typeof number === 'number' ? number : parseFloat(number) || 0;
+            // Round to integer for display
+            const rounded = Math.round(num);
+            return 'Rp' + rounded.toLocaleString('id-ID');
+        }
+
+        // Calculate percentage
+        function calculatePercentage(realisasi, target) {
+            if (!target || target === 0) return 0;
+            return Math.round((realisasi / target) * 100);
+        }
+
+        // Update circular progress ring
+        function updateProgressRing(elementId, percentage) {
+            const container = document.getElementById(elementId);
+            if (!container) return;
+
+            const element = container.querySelector('.progress-ring-circle:last-child');
+            if (!element) return;
+
+            const radius = 48;
+            const circumference = 2 * Math.PI * radius;
+            const offset = circumference - (percentage / 100) * circumference;
+
+            element.style.strokeDashoffset = offset;
+
+            // Update percentage text
+            const percentageText = container.querySelector('.fw-bold.fs-2.text-primary');
+            if (percentageText) {
+                percentageText.textContent = percentage + '%';
+            }
+        }
+
+        // Update card data
+        function updateCardData(cardId, data) {
+            const card = document.getElementById(cardId);
+            if (!card) return;
+
+            // Use field names from API response
+            const target = data.target_sesudah || data.target || data.total_target || data.target_value || 0;
+            const realisasi = data.realisasi_sd_bulan_ini || data.realisasi || data.total_realisasi || data.realisasi_value || 0;
+            const realisasiHariIni = data.realisasi_hari_ini || data.realisasiHariIni || data.realisasi_hariini || data.today_realisasi || 0;
+            const sisaTarget = data.sisa_target || data.sisaTarget || data.sisa || (target - realisasi) || 0;
+            // Use percentage from API if available, otherwise calculate
+            const percentage = data.percentage !== undefined && data.percentage !== null
+                ? Math.round(data.percentage)
+                : calculatePercentage(realisasi, target);
+
+            // Update progress ring (this also updates the percentage text)
+            const progressRingId = cardId.replace('Card', 'Progress');
+            updateProgressRing(progressRingId, percentage);
+
+            // Update data values
+            const targetElement = card.querySelector('[data-field="target"]');
+            const realisasiElement = card.querySelector('[data-field="realisasi"]');
+            const realisasiHariIniElement = card.querySelector('[data-field="realisasi-hari-ini"]');
+            const sisaTargetElement = card.querySelector('[data-field="sisa-target"]');
+
+            if (targetElement) targetElement.textContent = formatRupiah(target);
+            if (realisasiElement) realisasiElement.textContent = formatRupiah(realisasi);
+            if (realisasiHariIniElement) realisasiHariIniElement.textContent = formatRupiah(realisasiHariIni);
+            if (sisaTargetElement) sisaTargetElement.textContent = formatRupiah(sisaTarget);
+
+            // Update badges
+            const realisasiBadge = card.querySelector('[data-badge="realisasi"]');
+            const sisaTargetBadge = card.querySelector('[data-badge="sisa-target"]');
+
+            if (realisasiBadge) {
+                realisasiBadge.textContent = percentage + '%';
+                realisasiBadge.className = 'badge rounded-pill fw-semibold fs-8';
+                if (percentage >= 80) {
+                    realisasiBadge.style.background = 'rgba(41,192,108,0.10)';
+                    realisasiBadge.style.color = '#29c06c';
+                } else {
+                    realisasiBadge.style.background = 'rgba(255,46,79,0.07)';
+                    realisasiBadge.style.color = '#ff2e4f';
+                }
+            }
+
+            if (sisaTargetBadge) {
+                const sisaPercentage = calculatePercentage(sisaTarget, target);
+                sisaTargetBadge.textContent = (sisaPercentage > 0 ? '-' : '') + Math.abs(sisaPercentage) + '%';
+                sisaTargetBadge.className = 'badge rounded-pill fw-semibold fs-8';
+                sisaTargetBadge.style.background = 'rgba(255,46,79,0.07)';
+                sisaTargetBadge.style.color = '#ff2e4f';
+            }
+        }
+
+        // Map account type to card ID based on number field
+        function mapAccountToCard(account) {
+            const number = account.number || account.order_number || '';
+            const level = account.level || 0;
+            const name = (account.name || account.nama || account.title || '').toLowerCase();
+
+            // Map based on number field (most accurate)
+            // Level 2 items with number 4.1, 4.2, 4.3 are the main categories
+            if (level === 2) {
+                if (number.startsWith('4.1') || number === '4.1') {
+                    return 'padCard';
+                } else if (number.startsWith('4.2') || number === '4.2') {
+                    return 'danaTransferCard';
+                } else if (number.startsWith('4.3') || number === '4.3') {
+                    return 'pendapatanLainnyaCard';
+                }
+            }
+
+            // Fallback: Map based on name if number doesn't match
+            if (name.includes('pendapatan asli daerah') || name.includes('pad')) {
+                return 'padCard';
+            } else if (name.includes('pendapatan transfer') || name.includes('transfer')) {
+                return 'danaTransferCard';
+            } else if (name.includes('lain-lain pendapatan') || name.includes('pendapatan lainnya')) {
+                return 'pendapatanLainnyaCard';
+            }
+
+            return null;
+        }
+
+        // Fetch accounts data from API
+        async function fetchAccountsData() {
+            try {
+                const response = await fetch(API_BASE_URL);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const result = await response.json();
+
+                let accounts = [];
+
+                // Handle different response formats
+                if (Array.isArray(result)) {
+                    accounts = result;
+                } else if (result.data && Array.isArray(result.data)) {
+                    accounts = result.data;
+                } else if (result.accounts && Array.isArray(result.accounts)) {
+                    accounts = result.accounts;
+                }
+
+                // Track which cards have been updated
+                const updatedCards = {
+                    padCard: false,
+                    danaTransferCard: false,
+                    pendapatanLainnyaCard: false
+                };
+
+                // Process each account - prioritize level 2 items (main categories)
+                // Sort by level to process level 2 items first
+                const sortedAccounts = [...accounts].sort((a, b) => {
+                    const levelA = a.level || 0;
+                    const levelB = b.level || 0;
+                    return levelA - levelB;
+                });
+
+                sortedAccounts.forEach((account) => {
+                    const cardId = mapAccountToCard(account);
+                    if (cardId && !updatedCards[cardId]) {
+                        // Only update if this card hasn't been updated yet
+                        updateCardData(cardId, account);
+                        updatedCards[cardId] = true;
+                    }
+                });
+
+                // Update counter
+                refreshCounter++;
+                updateRefreshCounter();
+            } catch (error) {
+                console.error('Error fetching accounts data:', error);
+                const counterEl = document.getElementById('refreshCounter');
+                if (counterEl) {
+                    counterEl.textContent = `Error: ${error.message}`;
+                    counterEl.style.color = '#ff6b6b';
+                }
+            }
+        }
+
+        // Fetch account detail by ID
+        async function fetchAccountDetail(id) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/${id}`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Error fetching account detail:', error);
+                return null;
+            }
+        }
+
+        // Update tab data for PAD tab
+        function updatePadTabData(data) {
+            const tabPane = document.getElementById('pendapatan');
+            if (!tabPane) return;
+
+            // Use field names from API response
+            const target = data.target_sesudah || data.target || 0;
+            const realisasi = data.realisasi_sd_bulan_ini || data.realisasi || 0;
+            const realisasiHariIni = data.realisasi_hari_ini || 0;
+            const sisaTarget = data.sisa_target || (target - realisasi) || 0;
+            const percentage = data.percentage !== undefined && data.percentage !== null
+                ? Math.round(data.percentage)
+                : calculatePercentage(realisasi, target);
+
+            // Update fields
+            const targetElement = tabPane.querySelector('[data-tab-field="target"]');
+            const realisasiElement = tabPane.querySelector('[data-tab-field="realisasi"]');
+            const realisasiHariIniElement = tabPane.querySelector('[data-tab-field="realisasi-hari-ini"]');
+            const sisaTargetElement = tabPane.querySelector('[data-tab-field="sisa-target"]');
+
+            if (targetElement) targetElement.textContent = formatRupiah(target);
+            if (realisasiElement) realisasiElement.textContent = formatRupiah(realisasi);
+            if (realisasiHariIniElement) realisasiHariIniElement.textContent = formatRupiah(realisasiHariIni);
+            if (sisaTargetElement) sisaTargetElement.textContent = formatRupiah(sisaTarget);
+
+            // Update badges
+            const realisasiBadge = tabPane.querySelector('[data-tab-badge="realisasi"]');
+            const sisaTargetBadge = tabPane.querySelector('[data-tab-badge="sisa-target"]');
+
+            if (realisasiBadge) {
+                realisasiBadge.textContent = percentage + '%';
+                if (percentage >= 80) {
+                    realisasiBadge.style.background = 'rgba(41,192,108,0.10)';
+                    realisasiBadge.style.color = '#29c06c';
+                } else {
+                    realisasiBadge.style.background = 'rgba(255,46,79,0.07)';
+                    realisasiBadge.style.color = '#ff2e4f';
+                }
+            }
+
+            if (sisaTargetBadge) {
+                const sisaPercentage = calculatePercentage(sisaTarget, target);
+                sisaTargetBadge.textContent = (sisaPercentage > 0 ? '-' : '') + Math.abs(sisaPercentage) + '%';
+                if (sisaPercentage > 0) {
+                    sisaTargetBadge.style.background = 'rgba(255,46,79,0.07)';
+                    sisaTargetBadge.style.color = '#ff2e4f';
+                } else {
+                    sisaTargetBadge.style.background = 'rgba(41,192,108,0.10)';
+                    sisaTargetBadge.style.color = '#29c06c';
+                }
+            }
+        }
+
+        // Fetch PAD tab data
+        async function fetchPadTabData() {
+            try {
+                const data = await fetchAccountDetail(30240);
+                if (data) {
+                    // Handle different response formats
+                    const accountData = data.data || data;
+                    updatePadTabData(accountData);
+                }
+            } catch (error) {
+                console.error('Error fetching PAD tab data:', error);
+            }
+        }
+
+        // Fetch Dana Transfer card data
+        async function fetchDanaTransferCardData() {
+            try {
+                const data = await fetchAccountDetail(30481);
+                if (data) {
+                    // Handle different response formats
+                    const accountData = data.data || data;
+                    updateCardData('danaTransferCard', accountData);
+                }
+            } catch (error) {
+                console.error('Error fetching Dana Transfer card data:', error);
+            }
+        }
+
+        // Fetch Pendapatan Lainnya yang Sah card data
+        async function fetchPendapatanLainnyaCardData() {
+            try {
+                const data = await fetchAccountDetail(30524);
+                if (data) {
+                    // Handle different response formats
+                    const accountData = data.data || data;
+                    updateCardData('pendapatanLainnyaCard', accountData);
+                }
+            } catch (error) {
+                console.error('Error fetching Pendapatan Lainnya yang Sah card data:', error);
+            }
+        }
+
+        // Update PBJT tab data (generic function)
+        function updatePbjtTabData(tabId, data) {
+            const tabPane = document.getElementById(tabId);
+            if (!tabPane) return;
+
+            // Use field names from API response
+            const target = data.target_sesudah || data.target || 0;
+            const realisasi = data.realisasi_sd_bulan_ini || data.realisasi || 0;
+            const realisasiHariIni = data.realisasi_hari_ini || 0;
+            const sisaTarget = data.sisa_target || (target - realisasi) || 0;
+            const percentage = data.percentage !== undefined && data.percentage !== null
+                ? Math.round(data.percentage)
+                : calculatePercentage(realisasi, target);
+
+            // Update fields
+            const targetElement = tabPane.querySelector(`[data-pbjt-field="${tabId}-target"]`);
+            const realisasiElement = tabPane.querySelector(`[data-pbjt-field="${tabId}-realisasi"]`);
+            const realisasiHariIniElement = tabPane.querySelector(`[data-pbjt-field="${tabId}-realisasi-hari-ini"]`);
+            const sisaTargetElement = tabPane.querySelector(`[data-pbjt-field="${tabId}-sisa-target"]`);
+
+            if (targetElement) targetElement.textContent = formatRupiah(target);
+            if (realisasiElement) realisasiElement.textContent = formatRupiah(realisasi);
+            if (realisasiHariIniElement) realisasiHariIniElement.textContent = formatRupiah(realisasiHariIni);
+            if (sisaTargetElement) sisaTargetElement.textContent = formatRupiah(sisaTarget);
+
+            // Update badges
+            const realisasiBadge = tabPane.querySelector(`[data-pbjt-badge="${tabId}-realisasi"]`);
+            const sisaTargetBadge = tabPane.querySelector(`[data-pbjt-badge="${tabId}-sisa-target"]`);
+
+            if (realisasiBadge) {
+                realisasiBadge.textContent = percentage + '%';
+                if (percentage >= 80) {
+                    realisasiBadge.style.background = 'rgba(41,192,108,0.10)';
+                    realisasiBadge.style.color = '#29c06c';
+                } else {
+                    realisasiBadge.style.background = 'rgba(255,46,79,0.07)';
+                    realisasiBadge.style.color = '#ff2e4f';
+                }
+            }
+
+            if (sisaTargetBadge) {
+                const sisaPercentage = calculatePercentage(sisaTarget, target);
+                sisaTargetBadge.textContent = (sisaPercentage > 0 ? '-' : '') + Math.abs(sisaPercentage) + '%';
+                if (sisaPercentage > 0) {
+                    sisaTargetBadge.style.background = 'rgba(255,46,79,0.07)';
+                    sisaTargetBadge.style.color = '#ff2e4f';
+                } else {
+                    sisaTargetBadge.style.background = 'rgba(41,192,108,0.10)';
+                    sisaTargetBadge.style.color = '#29c06c';
+                }
+            }
+        }
+
+        // Fetch PBJT tab data
+        async function fetchPbjtTabData(tabId, accountId) {
+            try {
+                const data = await fetchAccountDetail(accountId);
+                if (data) {
+                    // Handle different response formats
+                    const accountData = data.data || data;
+                    updatePbjtTabData(tabId, accountData);
+                }
+            } catch (error) {
+                console.error(`Error fetching PBJT tab data for ${tabId}:`, error);
+            }
+        }
+
+        // Fetch all PBJT tabs data
+        async function fetchAllPbjtTabsData() {
+            await Promise.all([
+                fetchPbjtTabData('tenaga-listrik', 30450),
+                fetchPbjtTabData('makanan', 30448),
+                fetchPbjtTabData('perhotelan', 30453),
+                fetchPbjtTabData('kesenian', 30457),
+                fetchPbjtTabData('parkir', 30455)
+            ]);
+        }
+
+        // Update Objek Pajak Lain tab data (generic function)
+        function updateLainTabData(tabId, data) {
+            const tabPane = document.getElementById(tabId);
+            if (!tabPane) return;
+
+            // Use field names from API response
+            const target = data.target_sesudah || data.target || 0;
+            const realisasi = data.realisasi_sd_bulan_ini || data.realisasi || 0;
+            const realisasiHariIni = data.realisasi_hari_ini || 0;
+            const sisaTarget = data.sisa_target || (target - realisasi) || 0;
+            const percentage = data.percentage !== undefined && data.percentage !== null
+                ? Math.round(data.percentage)
+                : calculatePercentage(realisasi, target);
+
+            // Update fields
+            const targetElement = tabPane.querySelector(`[data-lain-field="${tabId}-target"]`);
+            const realisasiElement = tabPane.querySelector(`[data-lain-field="${tabId}-realisasi"]`);
+            const realisasiHariIniElement = tabPane.querySelector(`[data-lain-field="${tabId}-realisasi-hari-ini"]`);
+            const sisaTargetElement = tabPane.querySelector(`[data-lain-field="${tabId}-sisa-target"]`);
+
+            if (targetElement) targetElement.textContent = formatRupiah(target);
+            if (realisasiElement) realisasiElement.textContent = formatRupiah(realisasi);
+            if (realisasiHariIniElement) realisasiHariIniElement.textContent = formatRupiah(realisasiHariIni);
+            if (sisaTargetElement) sisaTargetElement.textContent = formatRupiah(sisaTarget);
+
+            // Update badges
+            const realisasiBadge = tabPane.querySelector(`[data-lain-badge="${tabId}-realisasi"]`);
+            const sisaTargetBadge = tabPane.querySelector(`[data-lain-badge="${tabId}-sisa-target"]`);
+
+            if (realisasiBadge) {
+                realisasiBadge.textContent = percentage + '%';
+                if (percentage >= 80) {
+                    realisasiBadge.style.background = 'rgba(41,192,108,0.10)';
+                    realisasiBadge.style.color = '#29c06c';
+                } else {
+                    realisasiBadge.style.background = 'rgba(255,46,79,0.07)';
+                    realisasiBadge.style.color = '#ff2e4f';
+                }
+            }
+
+            if (sisaTargetBadge) {
+                const sisaPercentage = calculatePercentage(sisaTarget, target);
+                sisaTargetBadge.textContent = (sisaPercentage > 0 ? '-' : '') + Math.abs(sisaPercentage) + '%';
+                if (sisaPercentage > 0) {
+                    sisaTargetBadge.style.background = 'rgba(255,46,79,0.07)';
+                    sisaTargetBadge.style.color = '#ff2e4f';
+                } else {
+                    sisaTargetBadge.style.background = 'rgba(41,192,108,0.10)';
+                    sisaTargetBadge.style.color = '#29c06c';
+                }
+            }
+        }
+
+        // Fetch Objek Pajak Lain tab data
+        async function fetchLainTabData(tabId, accountId) {
+            try {
+                const data = await fetchAccountDetail(accountId);
+                if (data) {
+                    // Handle different response formats
+                    const accountData = data.data || data;
+                    updateLainTabData(tabId, accountData);
+                }
+            } catch (error) {
+                console.error(`Error fetching Objek Pajak Lain tab data for ${tabId}:`, error);
+            }
+        }
+
+        // Fetch all Objek Pajak Lain tabs data
+        async function fetchAllLainTabsData() {
+            await Promise.all([
+                fetchLainTabData('air-tanah', 30249),
+                fetchLainTabData('reklame', 30242),
+                fetchLainTabData('minerba', 30255),
+                fetchLainTabData('sarang-walet', 30252)
+            ]);
+        }
+
+        // Update OPSEN tab data (generic function)
+        function updateOpsenTabData(tabId, data) {
+            const tabPane = document.getElementById(tabId);
+            if (!tabPane) return;
+
+            // Use field names from API response
+            const target = data.target_sesudah || data.target || 0;
+            const realisasi = data.realisasi_sd_bulan_ini || data.realisasi || 0;
+            const realisasiHariIni = data.realisasi_hari_ini || 0;
+            const sisaTarget = data.sisa_target || (target - realisasi) || 0;
+            const percentage = data.percentage !== undefined && data.percentage !== null
+                ? Math.round(data.percentage)
+                : calculatePercentage(realisasi, target);
+
+            // Update fields
+            const targetElement = tabPane.querySelector(`[data-opsen-field="${tabId}-target"]`);
+            const realisasiElement = tabPane.querySelector(`[data-opsen-field="${tabId}-realisasi"]`);
+            const realisasiHariIniElement = tabPane.querySelector(`[data-opsen-field="${tabId}-realisasi-hari-ini"]`);
+            const sisaTargetElement = tabPane.querySelector(`[data-opsen-field="${tabId}-sisa-target"]`);
+
+            if (targetElement) targetElement.textContent = formatRupiah(target);
+            if (realisasiElement) realisasiElement.textContent = formatRupiah(realisasi);
+            if (realisasiHariIniElement) realisasiHariIniElement.textContent = formatRupiah(realisasiHariIni);
+            if (sisaTargetElement) sisaTargetElement.textContent = formatRupiah(sisaTarget);
+
+            // Update badges
+            const realisasiBadge = tabPane.querySelector(`[data-opsen-badge="${tabId}-realisasi"]`);
+            const sisaTargetBadge = tabPane.querySelector(`[data-opsen-badge="${tabId}-sisa-target"]`);
+
+            if (realisasiBadge) {
+                realisasiBadge.textContent = percentage + '%';
+                if (percentage >= 80) {
+                    realisasiBadge.style.background = 'rgba(41,192,108,0.10)';
+                    realisasiBadge.style.color = '#29c06c';
+                } else {
+                    realisasiBadge.style.background = 'rgba(255,46,79,0.07)';
+                    realisasiBadge.style.color = '#ff2e4f';
+                }
+            }
+
+            if (sisaTargetBadge) {
+                const sisaPercentage = calculatePercentage(sisaTarget, target);
+                sisaTargetBadge.textContent = (sisaPercentage > 0 ? '-' : '') + Math.abs(sisaPercentage) + '%';
+                if (sisaPercentage > 0) {
+                    sisaTargetBadge.style.background = 'rgba(255,46,79,0.07)';
+                    sisaTargetBadge.style.color = '#ff2e4f';
+                } else {
+                    sisaTargetBadge.style.background = 'rgba(41,192,108,0.10)';
+                    sisaTargetBadge.style.color = '#29c06c';
+                }
+            }
+        }
+
+        // Fetch OPSEN tab data
+        async function fetchOpsenTabData(tabId, accountId) {
+            try {
+                const data = await fetchAccountDetail(accountId);
+                if (data) {
+                    // Handle different response formats
+                    const accountData = data.data || data;
+                    updateOpsenTabData(tabId, accountData);
+                }
+            } catch (error) {
+                console.error(`Error fetching OPSEN tab data for ${tabId}:`, error);
+            }
+        }
+
+        // Fetch PKB tab data
+        async function fetchPkbTabData() {
+            await fetchOpsenTabData('pkb', 30465);
+        }
+
+        // Update refresh counter display
+        function updateRefreshCounter() {
+            const counterElement = document.getElementById('refreshCounter');
+            if (counterElement) {
+                const now = new Date();
+                const timeString = now.toLocaleTimeString('id-ID', {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                });
+                counterElement.textContent = `Terakhir diupdate: ${timeString} (Refresh ke-${refreshCounter})`;
+                counterElement.style.color = 'rgba(255, 255, 255, 0.75)';
+            }
+        }
+
+        // Start auto-refresh
+        function startAutoRefresh() {
+            if (refreshInterval) {
+                clearInterval(refreshInterval);
+            }
+            refreshInterval = setInterval(() => {
+                fetchAccountsData();
+                fetchPadTabData(); // Also refresh PAD tab data
+                fetchDanaTransferCardData(); // Also refresh Dana Transfer card data
+                fetchPendapatanLainnyaCardData(); // Also refresh Pendapatan Lainnya yang Sah card data
+                fetchAllPbjtTabsData(); // Also refresh all PBJT tabs data
+                fetchAllLainTabsData(); // Also refresh all Objek Pajak Lain tabs data
+                fetchPkbTabData(); // Also refresh PKB tab data
+            }, REFRESH_INTERVAL_MS);
+        }
+
+        // Stop auto-refresh
+        function stopAutoRefresh() {
+            if (refreshInterval) {
+                clearInterval(refreshInterval);
+                refreshInterval = null;
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initial data fetch
+            fetchAccountsData();
+
+            // Fetch PAD tab data
+            fetchPadTabData();
+
+            // Fetch Dana Transfer card data
+            fetchDanaTransferCardData();
+
+            // Fetch Pendapatan Lainnya yang Sah card data
+            fetchPendapatanLainnyaCardData();
+
+            // Fetch all PBJT tabs data
+            fetchAllPbjtTabsData();
+
+            // Fetch all Objek Pajak Lain tabs data
+            fetchAllLainTabsData();
+
+            // Fetch PKB tab data
+            fetchPkbTabData();
+
+            // Start auto-refresh
+            startAutoRefresh();
+
+            // Cleanup on page unload
+            window.addEventListener('beforeunload', function() {
+                stopAutoRefresh();
+            });
+        });
+    </script>
     <!--begin::Row-->
     <!--end::Row-->
 </x-default-layout>
