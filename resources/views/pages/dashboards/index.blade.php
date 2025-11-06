@@ -362,14 +362,14 @@
                                 <div class="col-md-6 col-12">
                                     <div class="border rounded-3 p-3 h-100" style="background: #fff8ea;">
                                         <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Target</div>
-                                        <div class="fw-bold fs-5 mb-0">Rp2.461.610.301.792</div>
+                                        <div class="fw-bold fs-5 mb-0" data-tab-field="dana-target">Rp0</div>
                                     </div>
                                 </div>
                                 <!-- Realisasi Hari Ini -->
                                 <div class="col-md-6 col-12">
                                     <div class="border rounded-3 p-3 h-100 bg-white">
                                         <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi Hari Ini</div>
-                                        <div class="fw-bold fs-5 mb-0">Rp0</div>
+                                        <div class="fw-bold fs-5 mb-0" data-tab-field="dana-realisasi-hari-ini">Rp0</div>
                                     </div>
                                 </div>
                                 <!-- Realisasi -->
@@ -377,10 +377,10 @@
                                     <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
                                         <div>
                                             <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi</div>
-                                            <div class="fw-bold fs-5 mb-2 mb-md-0">Rp1.996.792.920.443</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0" data-tab-field="dana-realisasi">Rp0</div>
                                         </div>
                                         <div class="d-flex justify-content-end w-100">
-                                            <span class="badge rounded-pill fw-semibold fs-8" style="background:rgba(41,192,108,0.10); color:#29c06c; padding:5px 14px;">81%</span>
+                                            <span class="badge rounded-pill fw-semibold fs-8" data-tab-badge="dana-realisasi" style="background:rgba(41,192,108,0.10); color:#29c06c; padding:5px 14px;">0%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -389,10 +389,10 @@
                                     <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
                                         <div>
                                             <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Sisa Target</div>
-                                            <div class="fw-bold fs-5 mb-2 mb-md-0">Rp464.817.381.349</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0" data-tab-field="dana-sisa-target">Rp0</div>
                                         </div>
                                         <div class="d-flex justify-content-end w-100">
-                                            <span class="badge rounded-pill fw-semibold fs-8" style="background:rgba(255,46,79,0.07); color:#ff2e4f; padding:5px 14px;">-19%</span>
+                                            <span class="badge rounded-pill fw-semibold fs-8" data-tab-badge="dana-sisa-target" style="background:rgba(255,46,79,0.07); color:#ff2e4f; padding:5px 14px;">0%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -404,14 +404,14 @@
                                 <div class="col-md-6 col-12">
                                     <div class="border rounded-3 p-3 h-100" style="background: #fff8ea;">
                                         <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Target</div>
-                                        <div class="fw-bold fs-5 mb-0">Rp213.879.285.000</div>
+                                        <div class="fw-bold fs-5 mb-0" data-tab-field="lainnya-target">Rp0</div>
                                     </div>
                                 </div>
                                 <!-- Realisasi Hari Ini -->
                                 <div class="col-md-6 col-12">
                                     <div class="border rounded-3 p-3 h-100 bg-white">
                                         <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi Hari Ini</div>
-                                        <div class="fw-bold fs-5 mb-0">Rp0</div>
+                                        <div class="fw-bold fs-5 mb-0" data-tab-field="lainnya-realisasi-hari-ini">Rp0</div>
                                     </div>
                                 </div>
                                 <!-- Realisasi -->
@@ -419,10 +419,10 @@
                                     <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
                                         <div>
                                             <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi</div>
-                                            <div class="fw-bold fs-5 mb-2 mb-md-0">Rp251.389.774.235</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0" data-tab-field="lainnya-realisasi">Rp0</div>
                                         </div>
                                         <div class="d-flex justify-content-end w-100">
-                                            <span class="badge rounded-pill fw-semibold fs-8" style="background:rgba(41,192,108,0.10); color:#29c06c; padding:5px 14px;">118%</span>
+                                            <span class="badge rounded-pill fw-semibold fs-8" data-tab-badge="lainnya-realisasi" style="background:rgba(41,192,108,0.10); color:#29c06c; padding:5px 14px;">0%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -431,10 +431,10 @@
                                     <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
                                         <div>
                                             <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Sisa Target</div>
-                                            <div class="fw-bold fs-5 mb-2 mb-md-0">Rp-37.510.489.235</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0" data-tab-field="lainnya-sisa-target">Rp0</div>
                                         </div>
                                         <div class="d-flex justify-content-end w-100">
-                                            <span class="badge rounded-pill fw-semibold fs-8" style="background:rgba(41,192,108,0.10); color:#29c06c; padding:5px 14px;">+18%</span>
+                                            <span class="badge rounded-pill fw-semibold fs-8" data-tab-badge="lainnya-sisa-target" style="background:rgba(255,46,79,0.07); color:#ff2e4f; padding:5px 14px;">0%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -973,21 +973,21 @@
                         </li>
                     </ul>
                     <div class="tab-content" id="opsenTabsContent">
-                        <!-- MBLB Tab (Dummy Data) -->
+                        <!-- MBLB Tab (API Data) -->
                         <div class="tab-pane fade show active" id="mblb" role="tabpanel" aria-labelledby="mblb-tab">
                             <div class="row g-3">
                                 <!-- Target -->
                                 <div class="col-12 col-md-6">
                                     <div class="border rounded-3 p-3 h-100" style="background: #fff8ea;">
                                         <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Target</div>
-                                        <div class="fw-bold fs-5 mb-0">Rp182.000.000.000</div>
+                                        <div class="fw-bold fs-5 mb-0" data-opsen-field="mblb-target">Rp0</div>
                                     </div>
                                 </div>
                                 <!-- Realisasi Hari Ini -->
                                 <div class="col-12 col-md-6">
                                     <div class="border rounded-3 p-3 h-100 bg-white">
                                         <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi Hari Ini</div>
-                                        <div class="fw-bold fs-5 mb-0">Rp0</div>
+                                        <div class="fw-bold fs-5 mb-0" data-opsen-field="mblb-realisasi-hari-ini">Rp0</div>
                                     </div>
                                 </div>
                                 <!-- Realisasi -->
@@ -995,10 +995,10 @@
                                     <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
                                         <div>
                                             <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi</div>
-                                            <div class="fw-bold fs-5 mb-2 mb-md-0">Rp69.046.483.093</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0" data-opsen-field="mblb-realisasi">Rp0</div>
                                         </div>
                                         <div class="d-flex justify-content-end w-100">
-                                            <span class="badge rounded-pill fw-semibold fs-8" style="background:rgba(255,46,79,0.07); color:#ff2e4f; padding:5px 14px;">38%</span>
+                                            <span class="badge rounded-pill fw-semibold fs-8" data-opsen-badge="mblb-realisasi" style="background:rgba(41,192,108,0.10); color:#29c06c; padding:5px 14px;">0%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1007,10 +1007,10 @@
                                     <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
                                         <div>
                                             <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Sisa Target</div>
-                                            <div class="fw-bold fs-5 mb-2 mb-md-0">Rp112.953.516.907</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0" data-opsen-field="mblb-sisa-target">Rp0</div>
                                         </div>
                                         <div class="d-flex justify-content-end w-100">
-                                            <span class="badge rounded-pill fw-semibold fs-8" style="background:rgba(255,46,79,0.07); color:#ff2e4f; padding:5px 14px;">-62%</span>
+                                            <span class="badge rounded-pill fw-semibold fs-8" data-opsen-badge="mblb-sisa-target" style="background:rgba(255,46,79,0.07); color:#ff2e4f; padding:5px 14px;">0%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1059,21 +1059,21 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- BBNKB Tab (Dummy Data) -->
+                        <!-- BBNKB Tab (API Data) -->
                         <div class="tab-pane fade" id="bbnkb" role="tabpanel" aria-labelledby="bbnkb-tab">
                             <div class="row g-3">
                                 <!-- Target -->
                                 <div class="col-12 col-md-6">
                                     <div class="border rounded-3 p-3 h-100" style="background: #fff8ea;">
                                         <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Target</div>
-                                        <div class="fw-bold fs-5 mb-0">Rp21.000.000.000</div>
+                                        <div class="fw-bold fs-5 mb-0" data-opsen-field="bbnkb-target">Rp0</div>
                                     </div>
                                 </div>
                                 <!-- Realisasi Hari Ini -->
                                 <div class="col-12 col-md-6">
                                     <div class="border rounded-3 p-3 h-100 bg-white">
                                         <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi Hari Ini</div>
-                                        <div class="fw-bold fs-5 mb-0">Rp0</div>
+                                        <div class="fw-bold fs-5 mb-0" data-opsen-field="bbnkb-realisasi-hari-ini">Rp0</div>
                                     </div>
                                 </div>
                                 <!-- Realisasi -->
@@ -1081,10 +1081,10 @@
                                     <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
                                         <div>
                                             <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Realisasi</div>
-                                            <div class="fw-bold fs-5 mb-2 mb-md-0">Rp12.779.657.000</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0" data-opsen-field="bbnkb-realisasi">Rp0</div>
                                         </div>
                                         <div class="d-flex justify-content-end w-100">
-                                            <span class="badge rounded-pill fw-semibold fs-8" style="background:rgba(255,46,79,0.07); color:#ff2e4f; padding:5px 14px;">61%</span>
+                                            <span class="badge rounded-pill fw-semibold fs-8" data-opsen-badge="bbnkb-realisasi" style="background:rgba(41,192,108,0.10); color:#29c06c; padding:5px 14px;">0%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1093,10 +1093,10 @@
                                     <div class="border rounded-3 p-3 h-100 bg-white d-flex flex-column justify-content-between">
                                         <div>
                                             <div class="text-gray-600 fs-8 mb-1" style="margin-bottom:4px!important;">Sisa Target</div>
-                                            <div class="fw-bold fs-5 mb-2 mb-md-0">Rp8.220.343.000</div>
+                                            <div class="fw-bold fs-5 mb-2 mb-md-0" data-opsen-field="bbnkb-sisa-target">Rp0</div>
                                         </div>
                                         <div class="d-flex justify-content-end w-100">
-                                            <span class="badge rounded-pill fw-semibold fs-8" style="background:rgba(255,46,79,0.07); color:#ff2e4f; padding:5px 14px;">-39%</span>
+                                            <span class="badge rounded-pill fw-semibold fs-8" data-opsen-badge="bbnkb-sisa-target" style="background:rgba(255,46,79,0.07); color:#ff2e4f; padding:5px 14px;">0%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1464,6 +1464,140 @@
             }
         }
 
+        // Update Dana Transfer tab data
+        function updateDanaTabData(data) {
+            const tabPane = document.getElementById('dana');
+            if (!tabPane) return;
+
+            // Use field names from API response
+            const target = data.target_sesudah || data.target || 0;
+            const realisasi = data.realisasi_sd_bulan_ini || data.realisasi || 0;
+            const realisasiHariIni = data.realisasi_hari_ini || 0;
+            const sisaTarget = data.sisa_target || (target - realisasi) || 0;
+            const percentage = data.percentage !== undefined && data.percentage !== null
+                ? Math.round(data.percentage)
+                : calculatePercentage(realisasi, target);
+
+            // Update fields
+            const targetElement = tabPane.querySelector('[data-tab-field="dana-target"]');
+            const realisasiElement = tabPane.querySelector('[data-tab-field="dana-realisasi"]');
+            const realisasiHariIniElement = tabPane.querySelector('[data-tab-field="dana-realisasi-hari-ini"]');
+            const sisaTargetElement = tabPane.querySelector('[data-tab-field="dana-sisa-target"]');
+
+            if (targetElement) targetElement.textContent = formatRupiah(target);
+            if (realisasiElement) realisasiElement.textContent = formatRupiah(realisasi);
+            if (realisasiHariIniElement) realisasiHariIniElement.textContent = formatRupiah(realisasiHariIni);
+            if (sisaTargetElement) sisaTargetElement.textContent = formatRupiah(sisaTarget);
+
+            // Update badges
+            const realisasiBadge = tabPane.querySelector('[data-tab-badge="dana-realisasi"]');
+            const sisaTargetBadge = tabPane.querySelector('[data-tab-badge="dana-sisa-target"]');
+
+            if (realisasiBadge) {
+                realisasiBadge.textContent = percentage + '%';
+                if (percentage >= 80) {
+                    realisasiBadge.style.background = 'rgba(41,192,108,0.10)';
+                    realisasiBadge.style.color = '#29c06c';
+                } else {
+                    realisasiBadge.style.background = 'rgba(255,46,79,0.07)';
+                    realisasiBadge.style.color = '#ff2e4f';
+                }
+            }
+
+            if (sisaTargetBadge) {
+                const sisaPercentage = calculatePercentage(sisaTarget, target);
+                sisaTargetBadge.textContent = (sisaPercentage > 0 ? '-' : '') + Math.abs(sisaPercentage) + '%';
+                if (sisaPercentage > 0) {
+                    sisaTargetBadge.style.background = 'rgba(255,46,79,0.07)';
+                    sisaTargetBadge.style.color = '#ff2e4f';
+                } else {
+                    sisaTargetBadge.style.background = 'rgba(41,192,108,0.10)';
+                    sisaTargetBadge.style.color = '#29c06c';
+                }
+            }
+        }
+
+        // Fetch Dana Transfer tab data
+        async function fetchDanaTabData() {
+            try {
+                const data = await fetchAccountDetail(30481);
+                if (data) {
+                    // Handle different response formats
+                    const accountData = data.data || data;
+                    updateDanaTabData(accountData);
+                }
+            } catch (error) {
+                console.error('Error fetching Dana Transfer tab data:', error);
+            }
+        }
+
+        // Update Pendapatan Lainnya yang Sah tab data
+        function updateLainnyaTabData(data) {
+            const tabPane = document.getElementById('lainnya');
+            if (!tabPane) return;
+
+            // Use field names from API response
+            const target = data.target_sesudah || data.target || 0;
+            const realisasi = data.realisasi_sd_bulan_ini || data.realisasi || 0;
+            const realisasiHariIni = data.realisasi_hari_ini || 0;
+            const sisaTarget = data.sisa_target || (target - realisasi) || 0;
+            const percentage = data.percentage !== undefined && data.percentage !== null
+                ? Math.round(data.percentage)
+                : calculatePercentage(realisasi, target);
+
+            // Update fields
+            const targetElement = tabPane.querySelector('[data-tab-field="lainnya-target"]');
+            const realisasiElement = tabPane.querySelector('[data-tab-field="lainnya-realisasi"]');
+            const realisasiHariIniElement = tabPane.querySelector('[data-tab-field="lainnya-realisasi-hari-ini"]');
+            const sisaTargetElement = tabPane.querySelector('[data-tab-field="lainnya-sisa-target"]');
+
+            if (targetElement) targetElement.textContent = formatRupiah(target);
+            if (realisasiElement) realisasiElement.textContent = formatRupiah(realisasi);
+            if (realisasiHariIniElement) realisasiHariIniElement.textContent = formatRupiah(realisasiHariIni);
+            if (sisaTargetElement) sisaTargetElement.textContent = formatRupiah(sisaTarget);
+
+            // Update badges
+            const realisasiBadge = tabPane.querySelector('[data-tab-badge="lainnya-realisasi"]');
+            const sisaTargetBadge = tabPane.querySelector('[data-tab-badge="lainnya-sisa-target"]');
+
+            if (realisasiBadge) {
+                realisasiBadge.textContent = percentage + '%';
+                if (percentage >= 80) {
+                    realisasiBadge.style.background = 'rgba(41,192,108,0.10)';
+                    realisasiBadge.style.color = '#29c06c';
+                } else {
+                    realisasiBadge.style.background = 'rgba(255,46,79,0.07)';
+                    realisasiBadge.style.color = '#ff2e4f';
+                }
+            }
+
+            if (sisaTargetBadge) {
+                const sisaPercentage = calculatePercentage(sisaTarget, target);
+                sisaTargetBadge.textContent = (sisaPercentage > 0 ? '-' : '') + Math.abs(sisaPercentage) + '%';
+                if (sisaPercentage > 0) {
+                    sisaTargetBadge.style.background = 'rgba(255,46,79,0.07)';
+                    sisaTargetBadge.style.color = '#ff2e4f';
+                } else {
+                    sisaTargetBadge.style.background = 'rgba(41,192,108,0.10)';
+                    sisaTargetBadge.style.color = '#29c06c';
+                }
+            }
+        }
+
+        // Fetch Pendapatan Lainnya yang Sah tab data
+        async function fetchLainnyaTabData() {
+            try {
+                const data = await fetchAccountDetail(30524);
+                if (data) {
+                    // Handle different response formats
+                    const accountData = data.data || data;
+                    updateLainnyaTabData(accountData);
+                }
+            } catch (error) {
+                console.error('Error fetching Pendapatan Lainnya yang Sah tab data:', error);
+            }
+        }
+
         // Fetch Dana Transfer card data
         async function fetchDanaTransferCardData() {
             try {
@@ -1714,9 +1848,28 @@
             }
         }
 
+        // Fetch MBLB tab data
+        async function fetchMblbTabData() {
+            await fetchOpsenTabData('mblb', 30255);
+        }
+
         // Fetch PKB tab data
         async function fetchPkbTabData() {
-            await fetchOpsenTabData('pkb', 30465);
+            await fetchOpsenTabData('pkb', 30294);
+        }
+
+        // Fetch BBNKB tab data
+        async function fetchBbnkbTabData() {
+            await fetchOpsenTabData('bbnkb', 30297);
+        }
+
+        // Fetch all OPSEN tabs data
+        async function fetchAllOpsenTabsData() {
+            await Promise.all([
+                fetchMblbTabData(),
+                fetchPkbTabData(),
+                fetchBbnkbTabData()
+            ]);
         }
 
         // Update refresh counter display
@@ -1742,11 +1895,13 @@
             refreshInterval = setInterval(() => {
                 fetchAccountsData();
                 fetchPadTabData(); // Also refresh PAD tab data
+                fetchDanaTabData(); // Also refresh Dana Transfer tab data
+                fetchLainnyaTabData(); // Also refresh Pendapatan Lainnya yang Sah tab data
                 fetchDanaTransferCardData(); // Also refresh Dana Transfer card data
                 fetchPendapatanLainnyaCardData(); // Also refresh Pendapatan Lainnya yang Sah card data
                 fetchAllPbjtTabsData(); // Also refresh all PBJT tabs data
                 fetchAllLainTabsData(); // Also refresh all Objek Pajak Lain tabs data
-                fetchPkbTabData(); // Also refresh PKB tab data
+                fetchAllOpsenTabsData(); // Also refresh all OPSEN tabs data
             }, REFRESH_INTERVAL_MS);
         }
 
@@ -1766,6 +1921,12 @@
             // Fetch PAD tab data
             fetchPadTabData();
 
+            // Fetch Dana Transfer tab data
+            fetchDanaTabData();
+
+            // Fetch Pendapatan Lainnya yang Sah tab data
+            fetchLainnyaTabData();
+
             // Fetch Dana Transfer card data
             fetchDanaTransferCardData();
 
@@ -1778,8 +1939,8 @@
             // Fetch all Objek Pajak Lain tabs data
             fetchAllLainTabsData();
 
-            // Fetch PKB tab data
-            fetchPkbTabData();
+            // Fetch all OPSEN tabs data
+            fetchAllOpsenTabsData();
 
             // Start auto-refresh
             startAutoRefresh();
