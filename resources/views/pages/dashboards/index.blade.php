@@ -1,4 +1,4 @@
-<x-default-layout>
+<x-clean-layout>
 
     @section('title')
         Dashboard
@@ -7,9 +7,9 @@
     <!-- Header Banner -->
     <div class="row mb-4 mb-md-5">
         <div class="col-12">
-            <div class="rounded-4 overflow-hidden" style="background: linear-gradient(90deg,#FF8C00  0%, #FFB700 100%); min-height: 80px; padding: 0;">
-                <div class="container-fluid px-0">
-                    <div class="row align-items-center px-3 px-md-5 py-4 py-md-5 gx-0">
+            <div class="rounded-4 overflow-hidden" style="background: linear-gradient(90deg,#FF8C00  0%, #FFB700 100%); min-height: 80px;">
+                <div class="container-fluid">
+                    <div class="row align-items-center py-3 py-md-4">
                         <!-- Left: Date & Department -->
                         <div class="col-12 col-md-8 d-flex flex-column justify-content-center text-center text-md-start mb-3 mb-md-0">
                             <div class="fw-semibold fs-5 text-white mb-1">Senin, 15 September 2025</div>
@@ -1213,6 +1213,81 @@
             return 'Rp' + rounded.toLocaleString('id-ID');
         }
 
+        // Animate number with jQuery (counter.js style)
+        function animateNumber(element, endValue, options = {}) {
+            if (!element) return;
+            
+            const $element = $(element);
+            
+            // Get current value from element
+            const currentText = element.textContent || 'Rp0';
+            const currentValue = parseFloat(currentText.replace(/[^0-9,-]/g, '').replace(/\./g, '').replace(',', '.')) || 0;
+            const endNum = typeof endValue === 'number' ? endValue : parseFloat(endValue) || 0;
+            const roundedEnd = Math.round(endNum);
+            
+            // Skip animation if values are the same
+            if (Math.round(currentValue) === roundedEnd) {
+                element.textContent = formatRupiah(roundedEnd);
+                return;
+            }
+            
+            // Stop any existing animation
+            $element.stop(true, false);
+            
+            // Animate using jQuery
+            $({ counter: currentValue }).animate(
+                { counter: roundedEnd },
+                {
+                    duration: options.duration || 1500,
+                    easing: options.easing || 'swing',
+                    step: function() {
+                        const val = Math.round(this.counter);
+                        element.textContent = formatRupiah(val);
+                    },
+                    complete: function() {
+                        element.textContent = formatRupiah(roundedEnd);
+                        if (options.onComplete) options.onComplete();
+                    }
+                }
+            );
+        }
+
+        // Animate percentage with jQuery
+        function animatePercentage(element, endValue, options = {}) {
+            if (!element) return;
+            
+            const $element = $(element);
+            const currentText = element.textContent || '0%';
+            const currentValue = parseFloat(currentText.replace(/[^0-9-]/g, '')) || 0;
+            const endNum = typeof endValue === 'number' ? endValue : parseFloat(endValue) || 0;
+            
+            // Skip if same
+            if (currentValue === endNum) {
+                element.textContent = (options.prefix || '') + endNum + '%';
+                return;
+            }
+            
+            // Stop any existing animation
+            $element.stop(true, false);
+            
+            // Animate using jQuery
+            $({ counter: currentValue }).animate(
+                { counter: endNum },
+                {
+                    duration: options.duration || 1000,
+                    easing: options.easing || 'swing',
+                    step: function() {
+                        const val = Math.round(this.counter);
+                        element.textContent = (options.prefix || '') + val + '%';
+                    },
+                    complete: function() {
+                        element.textContent = (options.prefix || '') + endNum + '%';
+                        if (options.onComplete) options.onComplete();
+                    }
+                }
+            );
+        }
+
         // Calculate percentage
         function calculatePercentage(realisasi, target) {
             if (!target || target === 0) return 0;
@@ -1233,10 +1308,10 @@
 
             element.style.strokeDashoffset = offset;
 
-            // Update percentage text
+            // Update percentage text with animation
             const percentageText = container.querySelector('.fw-bold.fs-2.text-primary');
             if (percentageText) {
-                percentageText.textContent = percentage + '%';
+                animatePercentage(percentageText, percentage);
             }
         }
 
@@ -1259,23 +1334,23 @@
             const progressRingId = cardId.replace('Card', 'Progress');
             updateProgressRing(progressRingId, percentage);
 
-            // Update data values
+            // Update data values with animations
             const targetElement = card.querySelector('[data-field="target"]');
             const realisasiElement = card.querySelector('[data-field="realisasi"]');
             const realisasiHariIniElement = card.querySelector('[data-field="realisasi-hari-ini"]');
             const sisaTargetElement = card.querySelector('[data-field="sisa-target"]');
 
-            if (targetElement) targetElement.textContent = formatRupiah(target);
-            if (realisasiElement) realisasiElement.textContent = formatRupiah(realisasi);
-            if (realisasiHariIniElement) realisasiHariIniElement.textContent = formatRupiah(realisasiHariIni);
-            if (sisaTargetElement) sisaTargetElement.textContent = formatRupiah(sisaTarget);
+            if (targetElement) animateNumber(targetElement, target);
+            if (realisasiElement) animateNumber(realisasiElement, realisasi);
+            if (realisasiHariIniElement) animateNumber(realisasiHariIniElement, realisasiHariIni);
+            if (sisaTargetElement) animateNumber(sisaTargetElement, sisaTarget);
 
-            // Update badges
+            // Update badges with animations
             const realisasiBadge = card.querySelector('[data-badge="realisasi"]');
             const sisaTargetBadge = card.querySelector('[data-badge="sisa-target"]');
 
             if (realisasiBadge) {
-                realisasiBadge.textContent = percentage + '%';
+                animatePercentage(realisasiBadge, percentage);
                 realisasiBadge.className = 'badge rounded-pill fw-semibold fs-8';
                 if (percentage >= 80) {
                     realisasiBadge.style.background = 'rgba(41,192,108,0.10)';
@@ -1288,7 +1363,8 @@
 
             if (sisaTargetBadge) {
                 const sisaPercentage = calculatePercentage(sisaTarget, target);
-                sisaTargetBadge.textContent = (sisaPercentage > 0 ? '-' : '') + Math.abs(sisaPercentage) + '%';
+                const displayValue = (sisaPercentage > 0 ? -1 : 1) * Math.abs(sisaPercentage);
+                animatePercentage(sisaTargetBadge, displayValue, { prefix: sisaPercentage > 0 ? '-' : '' });
                 sisaTargetBadge.className = 'badge rounded-pill fw-semibold fs-8';
                 sisaTargetBadge.style.background = 'rgba(255,46,79,0.07)';
                 sisaTargetBadge.style.color = '#ff2e4f';
@@ -1403,23 +1479,23 @@
                 ? Math.round(data.percentage)
                 : calculatePercentage(realisasi, target);
 
-            // Update fields
+            // Update fields with animations
             const targetElement = tabPane.querySelector('[data-tab-field="target"]');
             const realisasiElement = tabPane.querySelector('[data-tab-field="realisasi"]');
             const realisasiHariIniElement = tabPane.querySelector('[data-tab-field="realisasi-hari-ini"]');
             const sisaTargetElement = tabPane.querySelector('[data-tab-field="sisa-target"]');
 
-            if (targetElement) targetElement.textContent = formatRupiah(target);
-            if (realisasiElement) realisasiElement.textContent = formatRupiah(realisasi);
-            if (realisasiHariIniElement) realisasiHariIniElement.textContent = formatRupiah(realisasiHariIni);
-            if (sisaTargetElement) sisaTargetElement.textContent = formatRupiah(sisaTarget);
+            if (targetElement) animateNumber(targetElement, target);
+            if (realisasiElement) animateNumber(realisasiElement, realisasi);
+            if (realisasiHariIniElement) animateNumber(realisasiHariIniElement, realisasiHariIni);
+            if (sisaTargetElement) animateNumber(sisaTargetElement, sisaTarget);
 
-            // Update badges
+            // Update badges with animations
             const realisasiBadge = tabPane.querySelector('[data-tab-badge="realisasi"]');
             const sisaTargetBadge = tabPane.querySelector('[data-tab-badge="sisa-target"]');
 
             if (realisasiBadge) {
-                realisasiBadge.textContent = percentage + '%';
+                animatePercentage(realisasiBadge, percentage);
                 if (percentage >= 80) {
                     realisasiBadge.style.background = 'rgba(41,192,108,0.10)';
                     realisasiBadge.style.color = '#29c06c';
@@ -1431,7 +1507,8 @@
 
             if (sisaTargetBadge) {
                 const sisaPercentage = calculatePercentage(sisaTarget, target);
-                sisaTargetBadge.textContent = (sisaPercentage > 0 ? '-' : '') + Math.abs(sisaPercentage) + '%';
+                const displayValue = (sisaPercentage > 0 ? -1 : 1) * Math.abs(sisaPercentage);
+                animatePercentage(sisaTargetBadge, displayValue, { prefix: sisaPercentage > 0 ? '-' : '' });
                 if (sisaPercentage > 0) {
                     sisaTargetBadge.style.background = 'rgba(255,46,79,0.07)';
                     sisaTargetBadge.style.color = '#ff2e4f';
@@ -1472,23 +1549,23 @@
                 ? Math.round(data.percentage)
                 : calculatePercentage(realisasi, target);
 
-            // Update fields
+            // Update fields with animations
             const targetElement = tabPane.querySelector('[data-tab-field="dana-target"]');
             const realisasiElement = tabPane.querySelector('[data-tab-field="dana-realisasi"]');
             const realisasiHariIniElement = tabPane.querySelector('[data-tab-field="dana-realisasi-hari-ini"]');
             const sisaTargetElement = tabPane.querySelector('[data-tab-field="dana-sisa-target"]');
 
-            if (targetElement) targetElement.textContent = formatRupiah(target);
-            if (realisasiElement) realisasiElement.textContent = formatRupiah(realisasi);
-            if (realisasiHariIniElement) realisasiHariIniElement.textContent = formatRupiah(realisasiHariIni);
-            if (sisaTargetElement) sisaTargetElement.textContent = formatRupiah(sisaTarget);
+            if (targetElement) animateNumber(targetElement, target);
+            if (realisasiElement) animateNumber(realisasiElement, realisasi);
+            if (realisasiHariIniElement) animateNumber(realisasiHariIniElement, realisasiHariIni);
+            if (sisaTargetElement) animateNumber(sisaTargetElement, sisaTarget);
 
-            // Update badges
+            // Update badges with animations
             const realisasiBadge = tabPane.querySelector('[data-tab-badge="dana-realisasi"]');
             const sisaTargetBadge = tabPane.querySelector('[data-tab-badge="dana-sisa-target"]');
 
             if (realisasiBadge) {
-                realisasiBadge.textContent = percentage + '%';
+                animatePercentage(realisasiBadge, percentage);
                 if (percentage >= 80) {
                     realisasiBadge.style.background = 'rgba(41,192,108,0.10)';
                     realisasiBadge.style.color = '#29c06c';
@@ -1500,7 +1577,8 @@
 
             if (sisaTargetBadge) {
                 const sisaPercentage = calculatePercentage(sisaTarget, target);
-                sisaTargetBadge.textContent = (sisaPercentage > 0 ? '-' : '') + Math.abs(sisaPercentage) + '%';
+                const displayValue = (sisaPercentage > 0 ? -1 : 1) * Math.abs(sisaPercentage);
+                animatePercentage(sisaTargetBadge, displayValue, { prefix: sisaPercentage > 0 ? '-' : '' });
                 if (sisaPercentage > 0) {
                     sisaTargetBadge.style.background = 'rgba(255,46,79,0.07)';
                     sisaTargetBadge.style.color = '#ff2e4f';
@@ -1545,17 +1623,17 @@
             const realisasiHariIniElement = tabPane.querySelector('[data-tab-field="lainnya-realisasi-hari-ini"]');
             const sisaTargetElement = tabPane.querySelector('[data-tab-field="lainnya-sisa-target"]');
 
-            if (targetElement) targetElement.textContent = formatRupiah(target);
-            if (realisasiElement) realisasiElement.textContent = formatRupiah(realisasi);
-            if (realisasiHariIniElement) realisasiHariIniElement.textContent = formatRupiah(realisasiHariIni);
-            if (sisaTargetElement) sisaTargetElement.textContent = formatRupiah(sisaTarget);
+            if (targetElement) animateNumber(targetElement, target);
+            if (realisasiElement) animateNumber(realisasiElement, realisasi);
+            if (realisasiHariIniElement) animateNumber(realisasiHariIniElement, realisasiHariIni);
+            if (sisaTargetElement) animateNumber(sisaTargetElement, sisaTarget);
 
-            // Update badges
+            // Update badges with animations
             const realisasiBadge = tabPane.querySelector('[data-tab-badge="lainnya-realisasi"]');
             const sisaTargetBadge = tabPane.querySelector('[data-tab-badge="lainnya-sisa-target"]');
 
             if (realisasiBadge) {
-                realisasiBadge.textContent = percentage + '%';
+                animatePercentage(realisasiBadge, percentage);
                 if (percentage >= 80) {
                     realisasiBadge.style.background = 'rgba(41,192,108,0.10)';
                     realisasiBadge.style.color = '#29c06c';
@@ -1567,7 +1645,8 @@
 
             if (sisaTargetBadge) {
                 const sisaPercentage = calculatePercentage(sisaTarget, target);
-                sisaTargetBadge.textContent = (sisaPercentage > 0 ? '-' : '') + Math.abs(sisaPercentage) + '%';
+                const displayValue = (sisaPercentage > 0 ? -1 : 1) * Math.abs(sisaPercentage);
+                animatePercentage(sisaTargetBadge, displayValue, { prefix: sisaPercentage > 0 ? '-' : '' });
                 if (sisaPercentage > 0) {
                     sisaTargetBadge.style.background = 'rgba(255,46,79,0.07)';
                     sisaTargetBadge.style.color = '#ff2e4f';
@@ -1640,17 +1719,17 @@
             const realisasiHariIniElement = tabPane.querySelector(`[data-pbjt-field="${tabId}-realisasi-hari-ini"]`);
             const sisaTargetElement = tabPane.querySelector(`[data-pbjt-field="${tabId}-sisa-target"]`);
 
-            if (targetElement) targetElement.textContent = formatRupiah(target);
-            if (realisasiElement) realisasiElement.textContent = formatRupiah(realisasi);
-            if (realisasiHariIniElement) realisasiHariIniElement.textContent = formatRupiah(realisasiHariIni);
-            if (sisaTargetElement) sisaTargetElement.textContent = formatRupiah(sisaTarget);
+            if (targetElement) animateNumber(targetElement, target);
+            if (realisasiElement) animateNumber(realisasiElement, realisasi);
+            if (realisasiHariIniElement) animateNumber(realisasiHariIniElement, realisasiHariIni);
+            if (sisaTargetElement) animateNumber(sisaTargetElement, sisaTarget);
 
-            // Update badges
+            // Update badges with animations
             const realisasiBadge = tabPane.querySelector(`[data-pbjt-badge="${tabId}-realisasi"]`);
             const sisaTargetBadge = tabPane.querySelector(`[data-pbjt-badge="${tabId}-sisa-target"]`);
 
             if (realisasiBadge) {
-                realisasiBadge.textContent = percentage + '%';
+                animatePercentage(realisasiBadge, percentage);
                 if (percentage >= 80) {
                     realisasiBadge.style.background = 'rgba(41,192,108,0.10)';
                     realisasiBadge.style.color = '#29c06c';
@@ -1662,7 +1741,8 @@
 
             if (sisaTargetBadge) {
                 const sisaPercentage = calculatePercentage(sisaTarget, target);
-                sisaTargetBadge.textContent = (sisaPercentage > 0 ? '-' : '') + Math.abs(sisaPercentage) + '%';
+                const displayValue = (sisaPercentage > 0 ? -1 : 1) * Math.abs(sisaPercentage);
+                animatePercentage(sisaTargetBadge, displayValue, { prefix: sisaPercentage > 0 ? '-' : '' });
                 if (sisaPercentage > 0) {
                     sisaTargetBadge.style.background = 'rgba(255,46,79,0.07)';
                     sisaTargetBadge.style.color = '#ff2e4f';
@@ -1718,17 +1798,17 @@
             const realisasiHariIniElement = tabPane.querySelector(`[data-lain-field="${tabId}-realisasi-hari-ini"]`);
             const sisaTargetElement = tabPane.querySelector(`[data-lain-field="${tabId}-sisa-target"]`);
 
-            if (targetElement) targetElement.textContent = formatRupiah(target);
-            if (realisasiElement) realisasiElement.textContent = formatRupiah(realisasi);
-            if (realisasiHariIniElement) realisasiHariIniElement.textContent = formatRupiah(realisasiHariIni);
-            if (sisaTargetElement) sisaTargetElement.textContent = formatRupiah(sisaTarget);
+            if (targetElement) animateNumber(targetElement, target);
+            if (realisasiElement) animateNumber(realisasiElement, realisasi);
+            if (realisasiHariIniElement) animateNumber(realisasiHariIniElement, realisasiHariIni);
+            if (sisaTargetElement) animateNumber(sisaTargetElement, sisaTarget);
 
-            // Update badges
+            // Update badges with animations
             const realisasiBadge = tabPane.querySelector(`[data-lain-badge="${tabId}-realisasi"]`);
             const sisaTargetBadge = tabPane.querySelector(`[data-lain-badge="${tabId}-sisa-target"]`);
 
             if (realisasiBadge) {
-                realisasiBadge.textContent = percentage + '%';
+                animatePercentage(realisasiBadge, percentage);
                 if (percentage >= 80) {
                     realisasiBadge.style.background = 'rgba(41,192,108,0.10)';
                     realisasiBadge.style.color = '#29c06c';
@@ -1740,7 +1820,8 @@
 
             if (sisaTargetBadge) {
                 const sisaPercentage = calculatePercentage(sisaTarget, target);
-                sisaTargetBadge.textContent = (sisaPercentage > 0 ? '-' : '') + Math.abs(sisaPercentage) + '%';
+                const displayValue = (sisaPercentage > 0 ? -1 : 1) * Math.abs(sisaPercentage);
+                animatePercentage(sisaTargetBadge, displayValue, { prefix: sisaPercentage > 0 ? '-' : '' });
                 if (sisaPercentage > 0) {
                     sisaTargetBadge.style.background = 'rgba(255,46,79,0.07)';
                     sisaTargetBadge.style.color = '#ff2e4f';
@@ -1795,17 +1876,17 @@
             const realisasiHariIniElement = tabPane.querySelector(`[data-opsen-field="${tabId}-realisasi-hari-ini"]`);
             const sisaTargetElement = tabPane.querySelector(`[data-opsen-field="${tabId}-sisa-target"]`);
 
-            if (targetElement) targetElement.textContent = formatRupiah(target);
-            if (realisasiElement) realisasiElement.textContent = formatRupiah(realisasi);
-            if (realisasiHariIniElement) realisasiHariIniElement.textContent = formatRupiah(realisasiHariIni);
-            if (sisaTargetElement) sisaTargetElement.textContent = formatRupiah(sisaTarget);
+            if (targetElement) animateNumber(targetElement, target);
+            if (realisasiElement) animateNumber(realisasiElement, realisasi);
+            if (realisasiHariIniElement) animateNumber(realisasiHariIniElement, realisasiHariIni);
+            if (sisaTargetElement) animateNumber(sisaTargetElement, sisaTarget);
 
-            // Update badges
+            // Update badges with animations
             const realisasiBadge = tabPane.querySelector(`[data-opsen-badge="${tabId}-realisasi"]`);
             const sisaTargetBadge = tabPane.querySelector(`[data-opsen-badge="${tabId}-sisa-target"]`);
 
             if (realisasiBadge) {
-                realisasiBadge.textContent = percentage + '%';
+                animatePercentage(realisasiBadge, percentage);
                 if (percentage >= 80) {
                     realisasiBadge.style.background = 'rgba(41,192,108,0.10)';
                     realisasiBadge.style.color = '#29c06c';
@@ -1817,7 +1898,8 @@
 
             if (sisaTargetBadge) {
                 const sisaPercentage = calculatePercentage(sisaTarget, target);
-                sisaTargetBadge.textContent = (sisaPercentage > 0 ? '-' : '') + Math.abs(sisaPercentage) + '%';
+                const displayValue = (sisaPercentage > 0 ? -1 : 1) * Math.abs(sisaPercentage);
+                animatePercentage(sisaTargetBadge, displayValue, { prefix: sisaPercentage > 0 ? '-' : '' });
                 if (sisaPercentage > 0) {
                     sisaTargetBadge.style.background = 'rgba(255,46,79,0.07)';
                     sisaTargetBadge.style.color = '#ff2e4f';
@@ -1963,4 +2045,4 @@
     </script>
     <!--begin::Row-->
     <!--end::Row-->
-</x-default-layout>
+</x-clean-layout>
