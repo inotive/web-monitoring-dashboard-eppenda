@@ -1200,7 +1200,7 @@
         // API Configuration
         const API_BASE_URL = 'https://e-penda.com/api/accounts';
         let refreshCounter = 0;
-        let refreshInterval = null;
+        let refreshInterval = 1000;
         const REFRESH_INTERVAL_MS = 30000; // 30 seconds
 
         // Format number to Indonesian Rupiah
@@ -1279,7 +1279,7 @@
                 realisasiBadge.className = 'badge rounded-pill fw-semibold fs-8';
                 if (percentage >= 80) {
                     realisasiBadge.style.background = 'rgba(41,192,108,0.10)';
-                    realisasiBadge.style.color = '#29c06c';
+                    realisasiBadge.style.color = '#29c06c'
                 } else {
                     realisasiBadge.style.background = 'rgba(255,46,79,0.07)';
                     realisasiBadge.style.color = '#ff2e4f';
@@ -1368,17 +1368,9 @@
                         updatedCards[cardId] = true;
                     }
                 });
-
-                // Update counter
-                refreshCounter++;
-                updateRefreshCounter();
             } catch (error) {
                 console.error('Error fetching accounts data:', error);
-                const counterEl = document.getElementById('refreshCounter');
-                if (counterEl) {
-                    counterEl.textContent = `Error: ${error.message}`;
-                    counterEl.style.color = '#ff6b6b';
-                }
+                throw error; // Re-throw to be handled by wrapper
             }
         }
 
@@ -1404,7 +1396,7 @@
 
             // Use field names from API response
             const target = data.target_sesudah || data.target || 0;
-            const realisasi = data.realisasi_sd_bulan_ini || data.realisasi || 0;
+            const realisasi = data.realisasi_sd_bulan_ini || 0;
             const realisasiHariIni = data.realisasi_hari_ini || 0;
             const sisaTarget = data.sisa_target || (target - realisasi) || 0;
             const percentage = data.percentage !== undefined && data.percentage !== null
@@ -1457,6 +1449,8 @@
                 if (data) {
                     // Handle different response formats
                     const accountData = data.data || data;
+
+                    console.log(accountData);
                     updatePadTabData(accountData);
                 }
             } catch (error) {
@@ -1696,11 +1690,11 @@
         // Fetch all PBJT tabs data
         async function fetchAllPbjtTabsData() {
             await Promise.all([
-                fetchPbjtTabData('tenaga-listrik', 30450),
-                fetchPbjtTabData('makanan', 30448),
-                fetchPbjtTabData('perhotelan', 30453),
-                fetchPbjtTabData('kesenian', 30457),
-                fetchPbjtTabData('parkir', 30455)
+                fetchPbjtTabData('tenaga-listrik', 30281),
+                fetchPbjtTabData('makanan', 30279),
+                fetchPbjtTabData('perhotelan', 30284),
+                fetchPbjtTabData('kesenian', 30288),
+                fetchPbjtTabData('parkir', 30286)
             ]);
         }
 
@@ -1887,21 +1881,37 @@
             }
         }
 
+        // Wrapper function to execute fetch with counter
+        async function fetchWithCounter(fetchFunction, functionName) {
+            try {
+                await fetchFunction();
+                refreshCounter++;
+                updateRefreshCounter();
+            } catch (error) {
+                console.error(`Error in ${functionName}:`, error);
+                const counterEl = document.getElementById('refreshCounter');
+                if (counterEl) {
+                    counterEl.textContent = `Error: ${error.message}`;
+                    counterEl.style.color = '#ff6b6b';
+                }
+            }
+        }
+
         // Start auto-refresh
         function startAutoRefresh() {
             if (refreshInterval) {
                 clearInterval(refreshInterval);
             }
             refreshInterval = setInterval(() => {
-                fetchAccountsData();
-                fetchPadTabData(); // Also refresh PAD tab data
-                fetchDanaTabData(); // Also refresh Dana Transfer tab data
-                fetchLainnyaTabData(); // Also refresh Pendapatan Lainnya yang Sah tab data
-                fetchDanaTransferCardData(); // Also refresh Dana Transfer card data
-                fetchPendapatanLainnyaCardData(); // Also refresh Pendapatan Lainnya yang Sah card data
-                fetchAllPbjtTabsData(); // Also refresh all PBJT tabs data
-                fetchAllLainTabsData(); // Also refresh all Objek Pajak Lain tabs data
-                fetchAllOpsenTabsData(); // Also refresh all OPSEN tabs data
+                fetchWithCounter(fetchAccountsData, 'fetchAccountsData');
+                fetchWithCounter(fetchPadTabData, 'fetchPadTabData'); // Also refresh PAD tab data
+                fetchWithCounter(fetchDanaTabData, 'fetchDanaTabData'); // Also refresh Dana Transfer tab data
+                fetchWithCounter(fetchLainnyaTabData, 'fetchLainnyaTabData'); // Also refresh Pendapatan Lainnya yang Sah tab data
+                fetchWithCounter(fetchDanaTransferCardData, 'fetchDanaTransferCardData'); // Also refresh Dana Transfer card data
+                fetchWithCounter(fetchPendapatanLainnyaCardData, 'fetchPendapatanLainnyaCardData'); // Also refresh Pendapatan Lainnya yang Sah card data
+                fetchWithCounter(fetchAllPbjtTabsData, 'fetchAllPbjtTabsData'); // Also refresh all PBJT tabs data
+                fetchWithCounter(fetchAllLainTabsData, 'fetchAllLainTabsData'); // Also refresh all Objek Pajak Lain tabs data
+                fetchWithCounter(fetchAllOpsenTabsData, 'fetchAllOpsenTabsData'); // Also refresh all OPSEN tabs data
             }, REFRESH_INTERVAL_MS);
         }
 
@@ -1915,32 +1925,32 @@
 
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
-            // Initial data fetch
-            fetchAccountsData();
+            // Initial data fetch with counter
+            fetchWithCounter(fetchAccountsData, 'fetchAccountsData');
 
-            // Fetch PAD tab data
-            fetchPadTabData();
+            // Fetch PAD tab data with counter
+            fetchWithCounter(fetchPadTabData, 'fetchPadTabData');
 
-            // Fetch Dana Transfer tab data
-            fetchDanaTabData();
+            // Fetch Dana Transfer tab data with counter
+            fetchWithCounter(fetchDanaTabData, 'fetchDanaTabData');
 
-            // Fetch Pendapatan Lainnya yang Sah tab data
-            fetchLainnyaTabData();
+            // Fetch Pendapatan Lainnya yang Sah tab data with counter
+            fetchWithCounter(fetchLainnyaTabData, 'fetchLainnyaTabData');
 
-            // Fetch Dana Transfer card data
-            fetchDanaTransferCardData();
+            // Fetch Dana Transfer card data with counter
+            fetchWithCounter(fetchDanaTransferCardData, 'fetchDanaTransferCardData');
 
-            // Fetch Pendapatan Lainnya yang Sah card data
-            fetchPendapatanLainnyaCardData();
+            // Fetch Pendapatan Lainnya yang Sah card data with counter
+            fetchWithCounter(fetchPendapatanLainnyaCardData, 'fetchPendapatanLainnyaCardData');
 
-            // Fetch all PBJT tabs data
-            fetchAllPbjtTabsData();
+            // Fetch all PBJT tabs data with counter
+            fetchWithCounter(fetchAllPbjtTabsData, 'fetchAllPbjtTabsData');
 
-            // Fetch all Objek Pajak Lain tabs data
-            fetchAllLainTabsData();
+            // Fetch all Objek Pajak Lain tabs data with counter
+            fetchWithCounter(fetchAllLainTabsData, 'fetchAllLainTabsData');
 
-            // Fetch all OPSEN tabs data
-            fetchAllOpsenTabsData();
+            // Fetch all OPSEN tabs data with counter
+            fetchWithCounter(fetchAllOpsenTabsData, 'fetchAllOpsenTabsData');
 
             // Start auto-refresh
             startAutoRefresh();
