@@ -14,7 +14,7 @@
                         <!-- Left: Date & Department -->
                         <div
                             class="col-12 col-md-8 d-flex flex-column justify-content-center text-center text-md-start mb-3 mb-md-0">
-                            <div class="fw-semibold fs-5 text-white mb-1">Senin, 15 September 2025</div>
+                            <div class="fw-semibold fs-5 text-white mb-1" id="currentDateTime">Memuat...</div>
                             <div class="fs-6 text-white mb-1">Badan Pendapatan Daerah Kabupaten Tabalong</div>
                             <div class="fs-7 text-white opacity-75" id="refreshCounter">Memuat data...</div>
                         </div>
@@ -463,24 +463,24 @@
                                         role="tablist" style="overflow-x: auto; width: 100%;">
                                         @foreach ($mainItem['children'] as $level1Index => $level1Item)
                                             @if (isset($level1Item['children']) && !empty($level1Item['children']))
-                                            <li class="flex-fill" role="presentation">
-                                                <button
-                                                    class="fw-semibold px-3 py-2 w-100 text-start {{ $level1Index === 0 ? 'active' : '' }}"
-                                                    id="sub-tab-{{ $index }}-{{ $level1Index }}-btn"
-                                                    data-sub-tab-index="{{ $level1Index }}"
-                                                    data-parent-index="{{ $index }}" type="button"
-                                                    style="
-                                                        border-radius: 6px;
-                                                        border: none;
-                                                        {{ $level1Index === 0
-                                                            ? 'color: #fff; background-color: #3b82f6;'
-                                                            : 'color: #6b7280; background-color: transparent;' }}
-                                                    ">
-                                                    {{ $level1Item['label'] }}
-                                                </button>
-                                            </li>
+                                                                    <li class="flex-fill" role="presentation">
+                                                                        <button
+                                                                            class="fw-semibold px-3 py-2 w-100 text-start {{ $level1Index === 0 ? 'active' : '' }}"
+                                                                            id="sub-tab-{{ $index }}-{{ $level1Index }}-btn"
+                                                                            data-sub-tab-index="{{ $level1Index }}"
+                                                                            data-parent-index="{{ $index }}" type="button"
+                                                                            style="
+                                                                                border-radius: 6px;
+                                                                                border: none;
+                                                                                {{ $level1Index === 0
+                                                ? 'color: #fff; background-color: #3b82f6;'
+                                                : 'color: #6b7280; background-color: transparent;' }}
+                                                                            ">
+                                                                            {{ $level1Item['label'] }}
+                                                                        </button>
+                                                                    </li>
                                             @endif
-                                            @endforeach
+                                        @endforeach
                                         </ul>
                                     </ul>
                                 </div>
@@ -2164,6 +2164,35 @@
             ]);
         }
 
+        // Update current date and time display
+        function updateDateTime() {
+            const dateTimeElement = document.getElementById('currentDateTime');
+            if (dateTimeElement) {
+                const now = new Date();
+                
+                // Array nama hari dalam Bahasa Indonesia
+                const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+                
+                // Array nama bulan dalam Bahasa Indonesia
+                const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 
+                               'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+                
+                const dayName = days[now.getDay()];
+                const date = now.getDate();
+                const monthName = months[now.getMonth()];
+                const year = now.getFullYear();
+                
+                // Format jam:menit dengan leading zero
+                const hours = String(now.getHours()).padStart(2, '0');
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+                
+                // Format: "Senin, 15 September 2025 - 17:25"
+                const dateTimeString = `${dayName}, ${date} ${monthName} ${year} - ${hours}:${minutes}`;
+                
+                dateTimeElement.textContent = dateTimeString;
+            }
+        }
+
         // Update refresh counter display
         function updateRefreshCounter() {
             const counterElement = document.getElementById('refreshCounter');
@@ -2230,6 +2259,12 @@
 
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
+            // Update date and time immediately
+            updateDateTime();
+            
+            // Update date and time every minute (60000ms)
+            setInterval(updateDateTime, 60000);
+            
             // Initial data fetch with counter
             fetchWithCounter(fetchAccountsData, 'fetchAccountsData');
 
