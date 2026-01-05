@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 // Public routes - no authentication required
 Route::get('/', [DashboardController::class, 'index']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard/full', [DashboardController::class, 'full'])->name('dashboard.full');
 
 // Protected routes - authentication required
 Route::middleware(['auth', 'verified'])->group(function () {

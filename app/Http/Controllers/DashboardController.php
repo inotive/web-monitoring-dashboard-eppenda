@@ -8,6 +8,11 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        return view('pages/dashboards.simple');
+    }
+
+    public function full()
+    {
         addVendors(['amcharts', 'amcharts-maps', 'amcharts-stock']);
 
         $menuDashboard = [
@@ -143,5 +148,10 @@ class DashboardController extends Controller
 
 
         return view('pages/dashboards.index', compact('menuDashboard'));
+    }
+
+    public function simple()
+    {
+        return view('pages/dashboards.simple');
     }
 }

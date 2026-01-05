@@ -31,40 +31,158 @@
     </div>
 
     <!-- Total Pendapatan Daerah Summary -->
-    <div class="row g-3 mb-4">
-        <div class="col-12 col-md-4">
-            <div class="card shadow-sm border-0" style="border-radius: 12px;">
-                <div class="card-body py-3 px-4">
-                    <div class="text-gray-600 fs-7 mb-2">Total Target</div>
-                    <div class="fw-bold fs-5 text-gray-800" id="summary-total-target">Rp0</div>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-4">
-            <div class="card shadow-sm border-0" style="border-radius: 12px;">
-                <div class="card-body py-3 px-4">
-                    <div class="d-flex justify-content-between align-items-start mb-2">
-                        <div class="text-gray-600 fs-7">Total Realisasi</div>
-                        <span class="badge rounded-pill fw-semibold fs-8" id="summary-realisasi-badge"
-                            style="background:rgba(41,192,108,0.15); color:#29c06c; padding:4px 10px;">0%</span>
+    <!-- Total Pendapatan Daerah Card -->
+    <div class="row g-4 mb-4 mb-md-5">
+        <div class="col-12">
+            <div class="card h-100 shadow-sm border-0" id="totalPendapatanCard" style="border-radius: 12px;">
+                <div class="card-body py-4 px-3 px-lg-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div class="d-flex align-items-center gap-2">
+                            <div class="bg-warning rounded-circle d-flex align-items-center justify-content-center"
+                                style="width:40px;height:40px;">
+                                <i class="ki-duotone ki-chart-simple fs-2 text-white">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                    <span class="path3"></span>
+                                    <span class="path4"></span>
+                                </i>
+                            </div>
+                            <span class="fw-bold fs-6 text-gray-800">Total Pendapatan Daerah</span>
+                        </div>
                     </div>
-                    <div class="fw-bold fs-5 text-gray-800" id="summary-total-realisasi">Rp0</div>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-4">
-            <div class="card shadow-sm border-0" style="border-radius: 12px;">
-                <div class="card-body py-3 px-4">
-                    <div class="d-flex justify-content-between align-items-start mb-2">
-                        <div class="text-gray-600 fs-7">Total Sisa Target</div>
-                        <span class="badge rounded-pill fw-semibold fs-8" id="summary-sisa-target-badge"
-                            style="background:rgba(255,46,79,0.15); color:#ff2e4f; padding:4px 10px;">0%</span>
+                    <div class="row align-items-center">
+                        <div class="col-4">
+                            <div class="d-flex justify-content-center">
+                                <div class="position-relative" style="width: 140px; height: 140px;"
+                                    id="totalPendapatanProgress">
+                                    <svg class="progress-ring" width="140" height="140">
+                                        <circle class="progress-ring-circle" stroke="#e5e7eb" stroke-width="14"
+                                            fill="transparent" r="58" cx="70" cy="70" />
+                                        <circle class="progress-ring-circle" stroke="#3b82f6" stroke-width="14"
+                                            fill="transparent" r="58" cx="70" cy="70"
+                                            stroke-dasharray="364.42" stroke-dashoffset="364.42" stroke-linecap="round"
+                                            id="total-pendapatan-ring" />
+                                    </svg>
+                                    <div class="position-absolute top-50 start-50 translate-middle text-center">
+                                        <div class="fw-bold fs-1 text-gray-800" id="summary-total-percentage">0%</div>
+                                        <div class="fs-7 text-gray-600">Realisasi</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <div class="p-3 rounded" style="background: #fff8ea;">
+                                        <div class="text-gray-600 fs-8 mb-1">Total Target</div>
+                                        <div class="fw-bold fs-5 text-gray-800" id="summary-total-target">Rp0</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="p-3 rounded bg-light">
+                                        <div class="d-flex justify-content-between align-items-start mb-1">
+                                            <div class="text-gray-600 fs-8">Total Realisasi</div>
+                                            <span class="badge rounded-pill fw-semibold fs-8"
+                                                id="summary-realisasi-badge"
+                                                style="background:rgba(41,192,108,0.15); color:#29c06c; padding:3px 8px;">0%</span>
+                                        </div>
+                                        <div class="fw-bold fs-5 text-gray-800" id="summary-total-realisasi">Rp0</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="p-3 rounded bg-light">
+                                        <div class="d-flex justify-content-between align-items-start mb-1">
+                                            <div class="text-gray-600 fs-8">Total Sisa Target</div>
+                                            <span class="badge rounded-pill fw-semibold fs-8"
+                                                id="summary-sisa-target-badge"
+                                                style="background:rgba(255,46,79,0.15); color:#ff2e4f; padding:3px 8px;">0%</span>
+                                        </div>
+                                        <div class="fw-bold fs-5 text-gray-800" id="summary-total-sisa-target">Rp0</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="fw-bold fs-5 text-gray-800" id="summary-total-sisa-target">Rp0</div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Top Row - Main Data Cards -->
+    <div class="row g-4 mb-4 mb-md-5">
+        <!-- PAD Card -->
+        <div class="col-12 col-md-4">
+            <div class="card h-100 shadow-sm border-0" id="padCard"
+                style="border-radius: 12px; border: 2px dashed #3b82f6;">
+                <div class="card-body py-4 px-3 px-lg-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div class="d-flex align-items-center gap-2">
+                            <div class="bg-warning rounded-circle d-flex align-items-center justify-content-center"
+                                style="width:40px;height:40px;">
+                                <i class="ki-duotone ki-pin fs-2 text-white">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                    <span class="path3"></span>
+                                    <span class="path4"></span>
+                                    <span class="path5"></span>
+                                    <span class="path6"></span>
+                                    <span class="path7"></span>
+                                    <span class="path8"></span>
+                                </i>
+                            </div>
+                            <span class="fw-bold fs-6 text-gray-800">Pendapatan Asli Daerah</span>
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-6">
+                            <div class="d-flex justify-content-center">
+                                <div class="position-relative" style="width: 110px; height: 110px;" id="padProgress">
+                                    <svg class="progress-ring" width="110" height="110">
+                                        <circle class="progress-ring-circle" stroke="#e5e7eb" stroke-width="11"
+                                            fill="transparent" r="48" cx="55" cy="55" />
+                                        <circle class="progress-ring-circle" stroke="#3b82f6" stroke-width="11"
+                                            fill="transparent" r="48" cx="55" cy="55"
+                                            stroke-dasharray="301.59" stroke-dashoffset="36.19"
+                                            stroke-linecap="round" />
+                                    </svg>
+                                    <div class="position-absolute top-50 start-50 translate-middle text-center">
+                                        <div class="fw-bold fs-2 text-gray-800" id="padProgressText">0%</div>
+                                        <div class="fs-7 text-gray-600">Realisasi</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex flex-column gap-2">
+                                <div class="p-2 rounded" style="background: #fff8ea;">
+                                    <div class="text-gray-600 fs-8 mb-1">Target</div>
+                                    <div class="fw-bold fs-6 text-gray-800" data-field="target"
+                                        id="summary-total-target">Rp0</div>
+                                </div>
+                                <div class="p-2 rounded bg-white d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <div class="text-gray-600 fs-8 mb-1">Realisasi</div>
+                                        <div class="fw-bold fs-6 text-gray-800" data-field="realisasi">Rp0</div>
+                                    </div>
+                                    <span class="badge rounded-pill fw-semibold fs-8" data-badge="realisasi"
+                                        style="background:rgba(41,192,108,0.15); color:#29c06c; padding:4px 10px;">0%</span>
+                                </div>
+                                <div class="p-2 rounded bg-white d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <div class="text-gray-600 fs-8 mb-1">Sisa Target</div>
+                                        <div class="fw-bold fs-6 text-gray-800" data-field="sisa-target">Rp0</div>
+                                    </div>
+                                    <span class="badge rounded-pill fw-semibold fs-8" data-badge="sisa-target"
+                                        style="background:rgba(255,46,79,0.15); color:#ff2e4f; padding:4px 10px;">0%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
     <!-- Top Row - Main Data Cards -->
     <div class="row g-4 mb-4 mb-md-5">
@@ -104,7 +222,7 @@
                                             stroke-linecap="round" />
                                     </svg>
                                     <div class="position-absolute top-50 start-50 translate-middle text-center">
-                                        <div class="fw-bold fs-2 text-gray-800">88%</div>
+                                        <div class="fw-bold fs-2 text-gray-800" id="padProgressText">0%</div>
                                         <div class="fs-7 text-gray-600">Realisasi</div>
                                     </div>
                                 </div>
@@ -169,7 +287,7 @@
                                             stroke-linecap="round" />
                                     </svg>
                                     <div class="position-absolute top-50 start-50 translate-middle text-center">
-                                        <div class="fw-bold fs-2 text-gray-800">88%</div>
+                                        <div class="fw-bold fs-2 text-gray-800" id="danaTransferProgressText">0%</div>
                                         <div class="fs-7 text-gray-600">Realisasi</div>
                                     </div>
                                 </div>
@@ -234,7 +352,8 @@
                                             stroke-linecap="round" />
                                     </svg>
                                     <div class="position-absolute top-50 start-50 translate-middle text-center">
-                                        <div class="fw-bold fs-2 text-gray-800">88%</div>
+                                        <div class="fw-bold fs-2 text-gray-800" id="pendapatanLainnyaProgressText">0%
+                                        </div>
                                         <div class="fs-7 text-gray-600">Realisasi</div>
                                     </div>
                                 </div>
@@ -285,13 +404,13 @@
                             data-panel-id="{{ $index === 0 ? 'panel-pad' : ($index === 1 ? 'panel-transfer' : 'panel-other') }}"
                             type="button"
                             style="
-                                color: {{ $index === 0 ? '#fff' : '#374151' }};
-                                background-color: {{ $index === 0 ? '#3b82f6' : 'transparent' }};
-                                border: none;
-                                border-radius: 6px;
-                                transition: background 0.2s, color 0.2s;
-                                min-width: 132px;
-                                white-space: normal;">
+                                                                                    color: {{ $index === 0 ? '#fff' : '#374151' }};
+                                                                                    background-color: {{ $index === 0 ? '#3b82f6' : 'transparent' }};
+                                                                                    border: none;
+                                                                                    border-radius: 6px;
+                                                                                    transition: background 0.2s, color 0.2s;
+                                                                                    min-width: 132px;
+                                                                                    white-space: normal;">
                             {{ $item['label'] }}
                         </button>
                     </li>
@@ -319,7 +438,8 @@
                             @php
                                 $summaryAccountId = isset($mainItem['id']) ? $mainItem['id'] : null;
                             @endphp
-                            <div class="row g-3 mb-4" data-summary-account-id="{{ $summaryAccountId }}" data-summary-id="{{ $index }}">
+                            <div class="row g-3 mb-4" data-summary-account-id="{{ $summaryAccountId }}"
+                                data-summary-id="{{ $index }}">
                                 <div class="col-12 col-md-4">
                                     <div class="card shadow-sm border-0 position-relative">
                                         <div class="card-body py-3 px-4">
@@ -339,7 +459,8 @@
                                                     style="background:rgba(41,192,108,0.15); color:#29c06c; padding:4px 10px;">0%</span>
                                             </div>
                                             <div class="fw-bold fs-5 text-gray-800"
-                                                data-summary="realisasi-{{ $index }}">Rp0</div>
+                                                data-summary="realisasi-{{ $index }}">Rp0
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -353,7 +474,8 @@
                                                     style="background:rgba(255,46,79,0.15); color:#ff2e4f; padding:4px 10px;">0%</span>
                                             </div>
                                             <div class="fw-bold fs-5 text-gray-800"
-                                                data-summary="sisa-target-{{ $index }}">Rp0</div>
+                                                data-summary="sisa-target-{{ $index }}">Rp0
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -369,7 +491,8 @@
                                     @endphp
                                     <div class="col-12 col-sm-6 col-lg-3">
                                         <div class="card shadow-sm border-0 h-100" style="border-radius: 12px;"
-                                            data-account-id="{{ $accountId }}" data-card-slug="{{ $cardSlug }}">
+                                            data-account-id="{{ $accountId }}"
+                                            data-card-slug="{{ $cardSlug }}">
                                             <div class="card-body py-4 px-3">
                                                 <div class="d-flex align-items-center justify-content-between mb-3">
                                                     <span class="fw-bold fs-6 text-gray-800"
@@ -438,6 +561,21 @@
                                     </div>
                                 @endforeach
                             </div>
+
+                            {{-- Grafik Realisasi Section --}}
+                            <div class="row mt-5">
+                                <div class="col-12">
+                                    <div class="card shadow-sm border-0" style="border-radius: 12px;">
+                                        <div class="card-body p-4">
+                                            <h3 class="fw-bold fs-4 text-gray-800 mb-4">Grafik Realisasi
+                                                {{ $mainItem['label'] }}
+                                            </h3>
+                                            <div id="chart-{{ $index }}" style="width: 100%; height: 400px;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -463,25 +601,25 @@
                                         role="tablist" style="overflow-x: auto; width: 100%;">
                                         @foreach ($mainItem['children'] as $level1Index => $level1Item)
                                             @if (isset($level1Item['children']) && !empty($level1Item['children']))
-                                                                    <li class="flex-fill" role="presentation">
-                                                                        <button
-                                                                            class="fw-semibold px-3 py-2 w-100 text-start {{ $level1Index === 0 ? 'active' : '' }}"
-                                                                            id="sub-tab-{{ $index }}-{{ $level1Index }}-btn"
-                                                                            data-sub-tab-index="{{ $level1Index }}"
-                                                                            data-parent-index="{{ $index }}" type="button"
-                                                                            style="
-                                                                                border-radius: 6px;
-                                                                                border: none;
-                                                                                {{ $level1Index === 0
-                                                ? 'color: #fff; background-color: #3b82f6;'
-                                                : 'color: #6b7280; background-color: transparent;' }}
-                                                                            ">
-                                                                            {{ $level1Item['label'] }}
-                                                                        </button>
-                                                                    </li>
+                                                <li class="flex-fill" role="presentation">
+                                                    <button
+                                                        class="fw-semibold px-3 py-2 w-100 text-start {{ $level1Index === 0 ? 'active' : '' }}"
+                                                        id="sub-tab-{{ $index }}-{{ $level1Index }}-btn"
+                                                        data-sub-tab-index="{{ $level1Index }}"
+                                                        data-parent-index="{{ $index }}" type="button"
+                                                        style="
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        border-radius: 6px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        border: none;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        {{ $level1Index === 0
+                                                                                                                                                                                                                                                                                                                                                                                                                                                            ? 'color: #fff; background-color: #3b82f6;'
+                                                                                                                                                                                                                                                                                                                                                                                                                                                            : 'color: #6b7280; background-color: transparent;' }}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    ">
+                                                        {{ $level1Item['label'] }}
+                                                    </button>
+                                                </li>
                                             @endif
                                         @endforeach
-                                        </ul>
+                                    </ul>
                                     </ul>
                                 </div>
                             </div>
@@ -532,14 +670,19 @@
                                                                 <!-- Section Title -->
                                                                 <div class="mb-4">
                                                                     <h2 class="fw-bold fs-2 text-gray-800 mb-0">
-                                                                        {{ $level2Item['label'] }}</h2>
+                                                                        {{ $level2Item['label'] }}
+                                                                    </h2>
                                                                 </div>
 
                                                                 <!-- Summary Section for level 2 tab -->
                                                                 @php
-                                                                    $level2SummaryAccountId = isset($level2Item['id']) ? $level2Item['id'] : null;
+                                                                    $level2SummaryAccountId = isset($level2Item['id'])
+                                                                        ? $level2Item['id']
+                                                                        : null;
                                                                 @endphp
-                                                                <div class="row g-3 mb-4" data-summary-account-id="{{ $level2SummaryAccountId }}" data-summary-id="{{ $index }}-{{ $level1Index }}-{{ $level2Index }}">
+                                                                <div class="row g-3 mb-4"
+                                                                    data-summary-account-id="{{ $level2SummaryAccountId }}"
+                                                                    data-summary-id="{{ $index }}-{{ $level1Index }}-{{ $level2Index }}">
                                                                     <div class="col-12 col-md-4">
                                                                         <div
                                                                             class="card shadow-sm border-0 position-relative">
@@ -609,12 +752,15 @@
                                                                                 $cardSlug = \Illuminate\Support\Str::slug(
                                                                                     $level3Item['label'],
                                                                                 );
-                                                                                $accountId = isset($level3Item['id']) ? $level3Item['id'] : null;
+                                                                                $accountId = isset($level3Item['id'])
+                                                                                    ? $level3Item['id']
+                                                                                    : null;
                                                                             @endphp
                                                                             <div class="col-12 col-sm-6 col-lg-3">
                                                                                 <div class="card shadow-sm border-0 h-100"
                                                                                     style="border-radius: 12px;"
-                                                                                    data-account-id="{{ $accountId }}" data-card-slug="{{ $cardSlug }}">
+                                                                                    data-account-id="{{ $accountId }}"
+                                                                                    data-card-slug="{{ $cardSlug }}">
                                                                                     <div class="card-body py-4 px-3">
                                                                                         <div
                                                                                             class="d-flex align-items-center justify-content-between mb-3">
@@ -723,6 +869,25 @@
                                                                                 </div>
                                                                             </div>
                                                                         @endforeach
+                                                                    </div>
+
+                                                                    {{-- Grafik Realisasi untuk Level 2 --}}
+                                                                    <div class="row mt-5">
+                                                                        <div class="col-12">
+                                                                            <div class="card shadow-sm border-0"
+                                                                                style="border-radius: 12px; background: #f8f9fa;">
+                                                                                <div class="card-body p-4">
+                                                                                    <h4
+                                                                                        class="fw-bold fs-5 text-gray-800 mb-4">
+                                                                                        Grafik Realisasi
+                                                                                        {{ $level2Item['label'] }}
+                                                                                    </h4>
+                                                                                    <div id="chart-{{ $index }}-{{ $level1Index }}-{{ $level2Index }}"
+                                                                                        style="width: 100%; height: 400px;">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 @endif
                                                             </div>
@@ -900,7 +1065,7 @@
                 const level2TabButtons = document.querySelectorAll(
                     `#level2Tabs-${parentIndex}-${level1Index} button[data-level2-tab-index]`);
                 const level2TabContent = document.getElementById(
-                `level2-tab-content-${parentIndex}-${level1Index}`);
+                    `level2-tab-content-${parentIndex}-${level1Index}`);
 
                 if (!level2TabContent || level2TabButtons.length === 0) return;
 
@@ -913,7 +1078,7 @@
                         // Remove active from all level 2 tabs
                         const allLevel2Tabs = document.querySelectorAll(
                             `#level2Tabs-${parentIdx}-${level1Idx} button[data-level2-tab-index]`
-                            );
+                        );
                         allLevel2Tabs.forEach(tab => {
                             tab.classList.remove('active');
                             tab.style.color = '#6b7280';
@@ -1111,77 +1276,105 @@
         function animateNumber(element, endValue, options = {}) {
             if (!element) return;
 
-            const $element = $(element);
-
-            // Get current value from element
-            const currentText = element.textContent || 'Rp0';
-            const currentValue = parseFloat(currentText.replace(/[^0-9,-]/g, '').replace(/\./g, '').replace(',', '.')) || 0;
             const endNum = typeof endValue === 'number' ? endValue : parseFloat(endValue) || 0;
             const roundedEnd = Math.round(endNum);
 
-            // Skip animation if values are the same
-            if (Math.round(currentValue) === roundedEnd) {
-                element.textContent = formatRupiah(roundedEnd);
+            // IMMEDIATELY set the value first to ensure it shows
+            element.textContent = formatRupiah(roundedEnd);
+
+            // Check if jQuery is available
+            if (typeof $ === 'undefined' || typeof $.fn.animate === 'undefined') {
+                console.warn('jQuery not available, skipping animation');
                 return;
             }
 
-            // Stop any existing animation
-            $element.stop(true, false);
+            const $element = $(element);
 
-            // Animate using jQuery
-            $({
-                counter: currentValue
-            }).animate({
-                counter: roundedEnd
-            }, {
-                duration: options.duration || 1500,
-                easing: options.easing || 'swing',
-                step: function() {
-                    const val = Math.round(this.counter);
-                    element.textContent = formatRupiah(val);
-                },
-                complete: function() {
-                    element.textContent = formatRupiah(roundedEnd);
-                    if (options.onComplete) options.onComplete();
-                }
-            });
+            // Get current value from element (after setting it)
+            const currentText = element.textContent || 'Rp0';
+            const currentValue = parseFloat(currentText.replace(/[^0-9,-]/g, '').replace(/\./g, '').replace(',', '.')) || 0;
+
+            // Skip animation if values are the same
+            if (Math.round(currentValue) === roundedEnd) {
+                return;
+            }
+
+            // Stop any existing animation on this element
+            $element.stop(true, true);
+
+            // Animate using jQuery (visual enhancement only)
+            try {
+                $({
+                    counter: 0
+                }).animate({
+                    counter: roundedEnd
+                }, {
+                    duration: options.duration || 1500,
+                    easing: options.easing || 'swing',
+                    step: function() {
+                        const val = Math.round(this.counter);
+                        element.textContent = formatRupiah(val);
+                    },
+                    complete: function() {
+                        element.textContent = formatRupiah(roundedEnd);
+                        if (options.onComplete) options.onComplete();
+                    }
+                });
+            } catch (error) {
+                console.warn('Animation error, setting value directly:', error);
+                element.textContent = formatRupiah(roundedEnd);
+            }
         }
 
         // Animate percentage with jQuery
         function animatePercentage(element, endValue, options = {}) {
             if (!element) return;
 
+            const endNum = typeof endValue === 'number' ? endValue : parseFloat(endValue) || 0;
+
+            // IMMEDIATELY set the value first to ensure it shows
+            element.textContent = (options.prefix || '') + endNum + '%';
+
+            // Check if jQuery is available
+            if (typeof $ === 'undefined' || typeof $.fn.animate === 'undefined') {
+                console.warn('jQuery not available for percentage animation');
+                return;
+            }
+
             const $element = $(element);
             const currentText = element.textContent || '0%';
             const currentValue = parseFloat(currentText.replace(/[^0-9-]/g, '')) || 0;
-            const endNum = typeof endValue === 'number' ? endValue : parseFloat(endValue) || 0;
 
             // Skip if same
             if (currentValue === endNum) {
-                element.textContent = (options.prefix || '') + endNum + '%';
                 return;
             }
 
             // Stop any existing animation
-            $element.stop(true, false);
+            $element.stop(true, true);
 
-            // Animate using jQuery
-            $({
-                counter: currentValue
-            }).animate({
-                counter: endNum
-            }, {
-                duration: options.duration || 1000,
-                easing: options.easing || 'swing',
-                step: function() {
-                    const val = Math.round(this.counter);
-                    element.textContent = (options.prefix || '') + val + '%';
-                },
-                complete: function() {
-                    element.textContent = (options.prefix || '') + endNum + '%';
-                    if (options.onComplete) options.onComplete();
-                }
-            });
+            // Animate using jQuery (visual enhancement only)
+            try {
+                $({
+                    counter: 0
+                }).animate({
+                    counter: endNum
+                }, {
+                    duration: options.duration || 1000,
+                    easing: options.easing || 'swing',
+                    step: function() {
+                        const val = Math.round(this.counter);
+                        element.textContent = (options.prefix || '') + val + '%';
+                    },
+                    complete: function() {
+                        element.textContent = (options.prefix || '') + endNum + '%';
+                        if (options.onComplete) options.onComplete();
+                    }
+                });
+            } catch (error) {
+                console.warn('Percentage animation error:', error);
+                element.textContent = (options.prefix || '') + endNum + '%';
+            }
         }
 
         // Calculate percentage
@@ -1193,10 +1386,16 @@
         // Update circular progress ring
         function updateProgressRing(elementId, percentage) {
             const container = document.getElementById(elementId);
-            if (!container) return;
+            if (!container) {
+                console.warn(`updateProgressRing: Container not found: ${elementId}`);
+                return;
+            }
 
             const element = container.querySelector('.progress-ring-circle:last-child');
-            if (!element) return;
+            if (!element) {
+                console.warn(`updateProgressRing: Progress ring circle not found in ${elementId}`);
+                return;
+            }
 
             const radius = 48;
             const circumference = 2 * Math.PI * radius;
@@ -1204,10 +1403,20 @@
 
             element.style.strokeDashoffset = offset;
 
-            // Update percentage text with animation
-            const percentageText = container.querySelector('.fw-bold.fs-2.text-gray-800');
+            // Update percentage text - first try by ID (more specific), then by class selector
+            const textId = elementId.replace('Progress', 'ProgressText');
+            let percentageText = document.getElementById(textId);
+
+            if (!percentageText) {
+                // Fallback to class selector within container
+                percentageText = container.querySelector('.fw-bold.fs-2.text-gray-800');
+            }
+
             if (percentageText) {
-                animatePercentage(percentageText, percentage);
+                console.log(`updateProgressRing: Updating ${elementId} percentage to ${percentage}%`);
+                percentageText.textContent = Math.round(percentage) + '%';
+            } else {
+                console.warn(`updateProgressRing: Percentage text element not found for ${elementId}`);
             }
         }
 
@@ -1218,14 +1427,31 @@
             const totalSisaTargetEl = document.getElementById('summary-total-sisa-target');
             const realisasiBadgeEl = document.getElementById('summary-realisasi-badge');
             const sisaTargetBadgeEl = document.getElementById('summary-sisa-target-badge');
+            const totalPercentageEl = document.getElementById('summary-total-percentage');
+            const totalRingEl = document.getElementById('total-pendapatan-ring');
 
             if (totalTargetEl) animateNumber(totalTargetEl, totals.target);
             if (totalRealisasiEl) animateNumber(totalRealisasiEl, totals.realisasi);
             if (totalSisaTargetEl) animateNumber(totalSisaTargetEl, totals.sisaTarget);
 
+            // Calculate percentage
+            const percentage = totals.target > 0 ? Math.round((totals.realisasi / totals.target) * 100) : 0;
+
+            // Update pie chart ring
+            if (totalRingEl) {
+                const circumference = 364.42; // 2 * PI * 58
+                const offset = circumference - (percentage / 100) * circumference;
+                totalRingEl.style.strokeDashoffset = Math.max(0, offset);
+                totalRingEl.style.transition = 'stroke-dashoffset 0.8s ease';
+            }
+
+            // Update percentage text
+            if (totalPercentageEl) {
+                totalPercentageEl.textContent = percentage + '%';
+            }
+
             // Update badges
             if (realisasiBadgeEl && totals.target > 0) {
-                const percentage = Math.round((totals.realisasi / totals.target) * 100);
                 animatePercentage(realisasiBadgeEl, percentage);
             }
 
@@ -1241,7 +1467,12 @@
         // Update card data
         function updateCardData(cardId, data) {
             const card = document.getElementById(cardId);
-            if (!card) return;
+            if (!card) {
+                console.warn(`updateCardData: Card not found: ${cardId}`);
+                return;
+            }
+
+            console.log(`updateCardData: Updating ${cardId} with data:`, data);
 
             // Use field names from API response
             const target = data.target_sesudah || data.target || data.total_target || data.target_value || 0;
@@ -1255,6 +1486,10 @@
                 Math.round(data.percentage) :
                 calculatePercentage(realisasi, target);
 
+            console.log(
+                `updateCardData: ${cardId} - Target: ${target}, Realisasi: ${realisasi}, SisaTarget: ${sisaTarget}, Percentage: ${percentage}`
+            );
+
             // Update progress ring (this also updates the percentage text)
             const progressRingId = cardId.replace('Card', 'Progress');
             updateProgressRing(progressRingId, percentage);
@@ -1263,6 +1498,12 @@
             const targetElement = card.querySelector('[data-field="target"]');
             const realisasiElement = card.querySelector('[data-field="realisasi"]');
             const sisaTargetElement = card.querySelector('[data-field="sisa-target"]');
+
+            console.log(`updateCardData: ${cardId} - Elements found:`, {
+                targetElement: !!targetElement,
+                realisasiElement: !!realisasiElement,
+                sisaTargetElement: !!sisaTargetElement
+            });
 
             if (targetElement) animateNumber(targetElement, target);
             if (realisasiElement) animateNumber(realisasiElement, realisasi);
@@ -1404,23 +1645,49 @@
         // Fetch all accounts data from /api/accounts endpoint
         async function fetchAllAccountsData() {
             try {
+                console.log('Fetching data from:', API_BASE_URL);
                 const response = await fetch(API_BASE_URL);
+
                 if (!response.ok) {
                     throw new Error(`HTTP ${response.status}: ${response.statusText}`);
                 }
-                const result = await response.json();
 
-                // Extract data array from response
-                const accountsData = result.data || result;
+                const result = await response.json();
+                console.log('API Response:', result);
+
+                // Handle different response formats
+                let accountsData = [];
+
+                if (Array.isArray(result)) {
+                    // Response is directly an array
+                    accountsData = result;
+                } else if (result.data && Array.isArray(result.data)) {
+                    // Response has data property that is an array
+                    accountsData = result.data;
+                } else if (result.data && typeof result.data === 'object') {
+                    // Response has data property that is a single object
+                    console.log('Response is a single object, not an array');
+                    // Fallback: fetch individual accounts
+                    return await fetchIndividualAccountsData();
+                } else {
+                    console.warn('Unknown response format:', result);
+                    return await fetchIndividualAccountsData();
+                }
+
+                console.log('Accounts Data (array):', accountsData);
 
                 // Create a map for quick lookup by ID
                 const accountsMap = {};
-                if (Array.isArray(accountsData)) {
+                if (Array.isArray(accountsData) && accountsData.length > 0) {
                     accountsData.forEach(account => {
                         if (account.id) {
                             accountsMap[account.id] = account;
                         }
                     });
+                    console.log('Accounts Map created with', Object.keys(accountsMap).length, 'accounts');
+                } else {
+                    console.warn('accountsData is empty or not an array, using fallback');
+                    return await fetchIndividualAccountsData();
                 }
 
                 accountsDataCache = accountsMap;
@@ -1429,8 +1696,100 @@
                 return accountsMap;
             } catch (error) {
                 console.error('Error fetching all accounts data:', error);
-                return null;
+                // Show error in UI
+                const counterEl = document.getElementById('refreshCounter');
+                if (counterEl) {
+                    counterEl.textContent = `Error loading data: ${error.message}`;
+                    counterEl.style.color = '#ff6b6b';
+                }
+                // Try fallback
+                return await fetchIndividualAccountsData();
             }
+        }
+
+        // Fallback: Fetch individual account data for required account IDs
+        async function fetchIndividualAccountsData() {
+            console.log('Using fallback: fetching individual accounts');
+
+            // List of required account IDs from the menu structure
+            const requiredAccountIds = [
+                // Main categories
+                30240, // PAD
+                30481, // Dana Transfer
+                30524, // Pendapatan Lainnya
+
+                // PAD children
+                30241, // Pajak Daerah
+                30300, // Retribusi Daerah
+                30397, // Hasil Pengelolaan Kekayaan Daerah
+                30427, // Lain-lain PAD yang Sah
+
+                // Pajak Daerah children
+                30242, // PBB-P2
+                30248, // BPHTB
+                30251, // Pajak Reklame
+                30254, // Pajak Air Tanah
+                30255, // MBLB
+                30260, // Pajak Sarang Burung Walet
+                30263, // PBJT
+
+                // PBJT children
+                30264, // Makanan/Minuman
+                30267, // Tenaga Listrik
+                30270, // Hotel
+                30273, // Parkir
+                30276, // Kesenian/Hiburan
+                30279, // Jasa Perhotelan
+
+                // Opsen
+                30294, // Opsen PKB
+                30297, // Opsen BBNKB
+
+                // Dana Transfer children
+                30482, // Dana Perimbangan
+                30496, // Transfer Antar Daerah
+
+                // Pendapatan Lainnya
+                30525, // Pendapatan Hibah
+            ];
+
+            const accountsMap = {};
+
+            // Fetch accounts in batches to avoid rate limiting
+            const batchSize = 5;
+            for (let i = 0; i < requiredAccountIds.length; i += batchSize) {
+                const batch = requiredAccountIds.slice(i, i + batchSize);
+
+                const batchPromises = batch.map(async (id) => {
+                    try {
+                        const response = await fetch(`${API_BASE_URL}/${id}`);
+                        if (response.ok) {
+                            const result = await response.json();
+                            const accountData = result.data || result;
+                            if (accountData && accountData.id) {
+                                accountsMap[accountData.id] = accountData;
+                                console.log(`Fetched account ${id}:`, accountData.name);
+                            }
+                        }
+                    } catch (error) {
+                        console.warn(`Failed to fetch account ${id}:`, error);
+                    }
+                });
+
+                await Promise.all(batchPromises);
+
+                // Small delay between batches to avoid rate limiting
+                if (i + batchSize < requiredAccountIds.length) {
+                    await delay(200);
+                }
+            }
+
+            console.log('Individual fetch complete. Accounts Map has', Object.keys(accountsMap).length, 'accounts');
+
+            accountsDataCache = accountsMap;
+            accountsDataCacheTime = Date.now();
+
+            return accountsMap;
         }
 
         // Get account data by ID from cache
@@ -1450,7 +1809,9 @@
             // First try to get from cache
             const cachedData = getAccountDataById(id);
             if (cachedData) {
-                return { data: cachedData };
+                return {
+                    data: cachedData
+                };
             }
 
             // If not in cache, fetch individually (fallback)
@@ -1461,7 +1822,8 @@
                     // Handle 429 Too Many Requests
                     if (response.status === 429) {
                         const retryAfter = response.headers.get('Retry-After');
-                        const waitTime = retryAfter ? parseInt(retryAfter) * 1000 : Math.pow(2, attempt) * 1000; // Exponential backoff
+                        const waitTime = retryAfter ? parseInt(retryAfter) * 1000 : Math.pow(2, attempt) *
+                            1000; // Exponential backoff
 
                         if (attempt < retries - 1) {
                             console.warn(`Rate limited for account ${id}. Retrying after ${waitTime}ms...`);
@@ -1482,7 +1844,9 @@
                 } catch (error) {
                     if (attempt < retries - 1) {
                         const waitTime = Math.pow(2, attempt) * 1000; // Exponential backoff
-                        console.warn(`Error fetching account ${id} (attempt ${attempt + 1}/${retries}). Retrying after ${waitTime}ms...`, error);
+                        console.warn(
+                            `Error fetching account ${id} (attempt ${attempt + 1}/${retries}). Retrying after ${waitTime}ms...`,
+                            error);
                         await delay(waitTime);
                     } else {
                         console.error(`Error fetching account detail for ID ${id}:`, error);
@@ -1522,7 +1886,8 @@
 
             // Use field names from API response
             const target = data.target_sesudah || data.target || data.total_target || data.target_value || 0;
-            const realisasi = data.realisasi_sd_bulan_ini || data.realisasi || data.total_realisasi || data.realisasi_value || 0;
+            const realisasi = data.realisasi_sd_bulan_ini || data.realisasi || data.total_realisasi || data
+                .realisasi_value || 0;
             const sisaTarget = data.sisa_target || data.sisaTarget || data.sisa || (target - realisasi) || 0;
             const percentage = data.percentage !== undefined && data.percentage !== null ?
                 Math.round(data.percentage) :
@@ -1561,7 +1926,8 @@
                     const sisaTargetBadge = card.querySelector(`[data-card-badge="${cardSlug}-sisa-target"]`);
                     if (sisaTargetBadge) {
                         const sisaPercentage = calculatePercentage(sisaTarget, target);
-                        const displayValue = sisaPercentage > 0 ? -Math.abs(sisaPercentage) : Math.abs(sisaPercentage);
+                        const displayValue = sisaPercentage > 0 ? -Math.abs(sisaPercentage) : Math.abs(
+                            sisaPercentage);
                         animatePercentage(sisaTargetBadge, displayValue, {
                             prefix: displayValue < 0 ? '' : ''
                         });
@@ -1575,7 +1941,8 @@
         // Update summary data by ID
         function updateSummaryDataById(summaryId, data) {
             const target = data.target_sesudah || data.target || data.total_target || data.target_value || 0;
-            const realisasi = data.realisasi_sd_bulan_ini || data.realisasi || data.total_realisasi || data.realisasi_value || 0;
+            const realisasi = data.realisasi_sd_bulan_ini || data.realisasi || data.total_realisasi || data
+                .realisasi_value || 0;
             const sisaTarget = data.sisa_target || data.sisaTarget || data.sisa || (target - realisasi) || 0;
             const percentage = data.percentage !== undefined && data.percentage !== null ?
                 Math.round(data.percentage) :
@@ -1623,17 +1990,22 @@
             }
         }
 
-        // Fetch all cards data from menu structure (using single fetch from /api/accounts)
+        // Fetch all cards data from menu structure (using cache)
         async function fetchAllCardsData() {
-            // First, fetch all accounts data once
-            const accountsMap = await fetchAllAccountsData();
-            if (!accountsMap) {
-                console.error('Failed to fetch accounts data');
+            console.log('fetchAllCardsData: Starting...');
+
+            // Check if cache exists
+            if (!accountsDataCache) {
+                console.warn('fetchAllCardsData: Cache is empty, skipping update');
                 return;
             }
 
+            console.log('fetchAllCardsData: Cache has', Object.keys(accountsDataCache).length, 'accounts');
+
             // Get all cards with data-account-id attribute
             const cards = document.querySelectorAll('[data-account-id]');
+            console.log('fetchAllCardsData: Found', cards.length, 'cards with data-account-id');
+
             const accountIds = new Set();
 
             cards.forEach(card => {
@@ -1643,30 +2015,52 @@
                 }
             });
 
+            console.log('fetchAllCardsData: Updating', accountIds.size, 'unique account IDs:', Array.from(accountIds));
+
             // Update all cards from cache
             accountIds.forEach(accountId => {
-                updateCardDataFromCache(accountId);
+                const accountData = getAccountDataById(accountId);
+                if (accountData) {
+                    console.log(`Updating card for account ${accountId}:`, accountData);
+                    updateCardDataFromCache(accountId);
+                } else {
+                    console.warn(`No data found in cache for account ${accountId}`);
+                }
             });
+
+            console.log('fetchAllCardsData: Complete');
         }
 
-        // Fetch all summary data from menu structure (using single fetch from /api/accounts)
+        // Fetch all summary data from menu structure (using cache)
         async function fetchAllSummaryData() {
-            // First, fetch all accounts data once (if not already cached)
-            if (!accountsDataCache || (Date.now() - accountsDataCacheTime) > CACHE_DURATION) {
-                await fetchAllAccountsData();
+            console.log('fetchAllSummaryData: Starting...');
+
+            // Check if cache exists
+            if (!accountsDataCache) {
+                console.warn('fetchAllSummaryData: Cache is empty, skipping update');
+                return;
             }
 
             // Get all summary containers with data-summary-account-id attribute
             const summaryContainers = document.querySelectorAll('[data-summary-account-id]');
+            console.log('fetchAllSummaryData: Found', summaryContainers.length, 'summary containers');
 
             summaryContainers.forEach(container => {
                 const accountId = container.getAttribute('data-summary-account-id');
                 const summaryId = container.getAttribute('data-summary-id');
 
                 if (accountId && accountId !== 'null' && accountId !== '' && summaryId) {
-                    updateSummaryDataFromCache(parseInt(accountId), summaryId);
+                    const accountData = getAccountDataById(parseInt(accountId));
+                    if (accountData) {
+                        console.log(`Updating summary ${summaryId} for account ${accountId}:`, accountData);
+                        updateSummaryDataFromCache(parseInt(accountId), summaryId);
+                    } else {
+                        console.warn(`No data found in cache for account ${accountId}`);
+                    }
                 }
             });
+
+            console.log('fetchAllSummaryData: Complete');
         }
 
         // Update tab data for PAD tab
@@ -2164,31 +2558,200 @@
             ]);
         }
 
+        // Store chart instances
+        const chartInstances = {};
+
+        // Create AmCharts bar chart for realization
+        function createRealizationChart(chartId, data) {
+            // Dispose existing chart if any
+            if (chartInstances[chartId]) {
+                chartInstances[chartId].dispose();
+            }
+
+            const chartDiv = document.getElementById(chartId);
+            if (!chartDiv) return null;
+
+            // Create chart instance
+            const root = am5.Root.new(chartId);
+
+            // Set themes
+            root.setThemes([
+                am5themes_Animated.new(root)
+            ]);
+
+            // Create chart
+            const chart = root.container.children.push(am5xy.XYChart.new(root, {
+                panX: false,
+                panY: false,
+                wheelX: "panX",
+                wheelY: "zoomX",
+                layout: root.verticalLayout,
+                paddingLeft: 0,
+                paddingRight: 0
+            }));
+
+            // Create axes
+            const yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
+                categoryField: "category",
+                renderer: am5xy.AxisRendererY.new(root, {
+                    minGridDistance: 20,
+                    cellStartLocation: 0.1,
+                    cellEndLocation: 0.9
+                })
+            }));
+
+            yAxis.data.setAll(data);
+
+            const xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
+                renderer: am5xy.AxisRendererX.new(root, {}),
+                min: 0
+            }));
+
+            // Add series for Target
+            const targetSeries = chart.series.push(am5xy.ColumnSeries.new(root, {
+                name: "Target",
+                xAxis: xAxis,
+                yAxis: yAxis,
+                valueXField: "target",
+                categoryYField: "category",
+                fill: am5.color(0xFFB700),
+                stroke: am5.color(0xFFB700),
+                tooltip: am5.Tooltip.new(root, {
+                    labelText: "Target: Rp{valueX}"
+                })
+            }));
+
+            targetSeries.columns.template.setAll({
+                height: am5.percent(70),
+                strokeOpacity: 0
+            });
+
+            targetSeries.data.setAll(data);
+
+            // Add series for Realisasi
+            const realisasiSeries = chart.series.push(am5xy.ColumnSeries.new(root, {
+                name: "Realisasi",
+                xAxis: xAxis,
+                yAxis: yAxis,
+                valueXField: "realisasi",
+                categoryYField: "category",
+                fill: am5.color(0x3b82f6),
+                stroke: am5.color(0x3b82f6),
+                tooltip: am5.Tooltip.new(root, {
+                    labelText: "Realisasi: Rp{valueX} ({percentage}%)"
+                })
+            }));
+
+            realisasiSeries.columns.template.setAll({
+                height: am5.percent(70),
+                strokeOpacity: 0
+            });
+
+            realisasiSeries.data.setAll(data);
+
+            // Add legend
+            const legend = chart.children.push(am5.Legend.new(root, {
+                centerX: am5.percent(50),
+                x: am5.percent(50)
+            }));
+
+            legend.data.setAll(chart.series.values);
+
+            // Make stuff animate on load
+            chart.appear(1000, 100);
+
+            // Store chart instance
+            chartInstances[chartId] = root;
+
+            return root;
+        }
+
+        // Update chart data
+        function updateChartData(chartId, data) {
+            if (chartInstances[chartId]) {
+                // Chart exists, update data
+                const root = chartInstances[chartId];
+                const chart = root.container.children.values[0];
+
+                if (chart && chart.series) {
+                    chart.series.values.forEach((series, index) => {
+                        series.data.setAll(data);
+                    });
+
+                    const yAxis = chart.yAxes.values[0];
+                    if (yAxis) {
+                        yAxis.data.setAll(data);
+                    }
+                }
+            } else {
+                // Chart doesn't exist, create it
+                createRealizationChart(chartId, data);
+            }
+        }
+
+        // Fetch and update chart data for a specific account and its children
+        async function fetchChartDataForAccount(accountId, chartId) {
+            try {
+                // Get account data from cache
+                const accountData = getAccountDataById(parseInt(accountId));
+
+                if (!accountData || !accountData.children) {
+                    console.log(`No children data for account ${accountId}`);
+                    return;
+                }
+
+                // Prepare chart data from children
+                const chartData = [];
+
+                for (const child of accountData.children) {
+                    const target = child.target_sesudah || child.target || 0;
+                    const realisasi = child.realisasi_sd_bulan_ini || child.realisasi || 0;
+                    const percentage = target > 0 ? Math.round((realisasi / target) * 100) : 0;
+
+                    chartData.push({
+                        category: child.name || child.label || 'Unknown',
+                        target: target,
+                        realisasi: realisasi,
+                        percentage: percentage
+                    });
+                }
+
+                // Update or create chart
+                if (chartData.length > 0) {
+                    updateChartData(chartId, chartData);
+                }
+            } catch (error) {
+                console.error(`Error fetching chart data for account ${accountId}:`, error);
+            }
+        }
+
         // Update current date and time display
         function updateDateTime() {
             const dateTimeElement = document.getElementById('currentDateTime');
             if (dateTimeElement) {
                 const now = new Date();
-                
+
                 // Array nama hari dalam Bahasa Indonesia
                 const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
-                
+
                 // Array nama bulan dalam Bahasa Indonesia
-                const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 
-                               'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
-                
+                const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+                    'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+                ];
+
                 const dayName = days[now.getDay()];
                 const date = now.getDate();
                 const monthName = months[now.getMonth()];
                 const year = now.getFullYear();
-                
-                // Format jam:menit dengan leading zero
+
+                // Format jam:menit:detik dengan leading zero
                 const hours = String(now.getHours()).padStart(2, '0');
                 const minutes = String(now.getMinutes()).padStart(2, '0');
-                
-                // Format: "Senin, 15 September 2025 - 17:25"
-                const dateTimeString = `${dayName}, ${date} ${monthName} ${year} - ${hours}:${minutes}`;
-                
+                const seconds = String(now.getSeconds()).padStart(2, '0');
+
+                // Format: "Senin, 15 September 2025 - 17:25:30"
+                const dateTimeString = `${dayName}, ${date} ${monthName} ${year} - ${hours}:${minutes}:${seconds}`;
+
                 dateTimeElement.textContent = dateTimeString;
             }
         }
@@ -2198,11 +2761,13 @@
             const counterElement = document.getElementById('refreshCounter');
             if (counterElement) {
                 const now = new Date();
-                const timeString = now.toLocaleTimeString('id-ID', {
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    second: '2-digit'
-                });
+
+                // Format jam:menit:detik dengan leading zero (17:11:32)
+                const hours = String(now.getHours()).padStart(2, '0');
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+                const seconds = String(now.getSeconds()).padStart(2, '0');
+                const timeString = `${hours}:${minutes}:${seconds}`;
+
                 counterElement.textContent = `Terakhir diupdate: ${timeString} (Refresh ke-${refreshCounter})`;
                 counterElement.style.color = 'rgba(255, 255, 255, 0.75)';
             }
@@ -2230,22 +2795,15 @@
                 clearInterval(refreshInterval);
             }
             refreshInterval = setInterval(() => {
-                fetchWithCounter(fetchAccountsData, 'fetchAccountsData');
-                fetchWithCounter(fetchPadTabData, 'fetchPadTabData'); // Also refresh PAD tab data
-                fetchWithCounter(fetchDanaTabData, 'fetchDanaTabData'); // Also refresh Dana Transfer tab data
-                fetchWithCounter(fetchLainnyaTabData,
-                    'fetchLainnyaTabData'); // Also refresh Pendapatan Lainnya yang Sah tab data
-                fetchWithCounter(fetchDanaTransferCardData,
-                    'fetchDanaTransferCardData'); // Also refresh Dana Transfer card data
-                fetchWithCounter(fetchPendapatanLainnyaCardData,
-                    'fetchPendapatanLainnyaCardData'); // Also refresh Pendapatan Lainnya yang Sah card data
-                fetchWithCounter(fetchAllPbjtTabsData, 'fetchAllPbjtTabsData'); // Also refresh all PBJT tabs data
-                fetchWithCounter(fetchAllLainTabsData,
-                    'fetchAllLainTabsData'); // Also refresh all Objek Pajak Lain tabs data
-                fetchWithCounter(fetchAllOpsenTabsData,
-                    'fetchAllOpsenTabsData'); // Also refresh all OPSEN tabs data
-                fetchWithCounter(fetchAllCardsData, 'fetchAllCardsData'); // Fetch all cards data based on account ID
-                fetchWithCounter(fetchAllSummaryData, 'fetchAllSummaryData'); // Fetch all summary data based on account ID
+                // Fetch all data in sequence to avoid race conditions
+                fetchWithCounter(async () => {
+                    // First, refresh the cache
+                    await fetchAllAccountsData();
+
+                    // Then update all cards and summaries from cache
+                    await fetchAllCardsData();
+                    await fetchAllSummaryData();
+                }, 'refreshAllData');
             }, REFRESH_INTERVAL_MS);
         }
 
@@ -2261,42 +2819,49 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Update date and time immediately
             updateDateTime();
-            
-            // Update date and time every minute (60000ms)
-            setInterval(updateDateTime, 60000);
-            
-            // Initial data fetch with counter
-            fetchWithCounter(fetchAccountsData, 'fetchAccountsData');
 
-            // Fetch PAD tab data with counter
-            fetchWithCounter(fetchPadTabData, 'fetchPadTabData');
+            // Update date and time every second (1000ms) for real-time clock
+            setInterval(updateDateTime, 1000);
 
-            // Fetch Dana Transfer tab data with counter
-            fetchWithCounter(fetchDanaTabData, 'fetchDanaTabData');
+            // Initial data fetch - run sequentially to avoid race conditions
+            fetchWithCounter(async () => {
+                // Step 1: Fetch and cache all accounts data
+                await fetchAllAccountsData();
 
-            // Fetch Pendapatan Lainnya yang Sah tab data with counter
-            fetchWithCounter(fetchLainnyaTabData, 'fetchLainnyaTabData');
+                // Step 2: Update all cards from cache
+                await fetchAllCardsData();
 
-            // Fetch Dana Transfer card data with counter
-            fetchWithCounter(fetchDanaTransferCardData, 'fetchDanaTransferCardData');
+                // Step 3: Update all summaries from cache
+                await fetchAllSummaryData();
+            }, 'initialDataLoad');
 
-            // Fetch Pendapatan Lainnya yang Sah card data with counter
-            fetchWithCounter(fetchPendapatanLainnyaCardData, 'fetchPendapatanLainnyaCardData');
+            // Initialize charts after data is loaded (with delay to ensure data is available)
+            setTimeout(async () => {
+                // Wait for all accounts data to be cached
+                if (!accountsDataCache) {
+                    await fetchAllAccountsData();
+                }
 
-            // Fetch all PBJT tabs data with counter
-            fetchWithCounter(fetchAllPbjtTabsData, 'fetchAllPbjtTabsData');
+                // Initialize charts for main categories (PAD, Transfer, Lainnya)
+                // Chart for PAD (index 0)
+                fetchChartDataForAccount(30240, 'chart-0');
 
-            // Fetch all Objek Pajak Lain tabs data with counter
-            fetchWithCounter(fetchAllLainTabsData, 'fetchAllLainTabsData');
+                // Chart for Transfer (index 1)
+                fetchChartDataForAccount(30481, 'chart-1');
 
-            // Fetch all OPSEN tabs data with counter
-            fetchWithCounter(fetchAllOpsenTabsData, 'fetchAllOpsenTabsData');
+                // Chart for Lainnya (index 2)
+                fetchChartDataForAccount(30524, 'chart-2');
 
-            // Fetch all cards data based on account ID
-            fetchWithCounter(fetchAllCardsData, 'fetchAllCardsData');
+                // Initialize charts for level 2 tabs
+                // PAD -> Pajak Daerah (chart-0-0-0)
+                fetchChartDataForAccount(30241, 'chart-0-0-0');
 
-            // Fetch all summary data based on account ID
-            fetchWithCounter(fetchAllSummaryData, 'fetchAllSummaryData');
+                // PAD -> Retribusi Daerah -> Retribusi Jasa Umum (chart-0-1-0)
+                fetchChartDataForAccount(30301, 'chart-0-1-0');
+
+                // PAD -> Retribusi Daerah -> Retribusi Jasa Usaha (chart-0-1-1)
+                fetchChartDataForAccount(30351, 'chart-0-1-1');
+            }, 3000); // Wait 3 seconds for data to be fetched
 
             // Start auto-refresh
             startAutoRefresh();
