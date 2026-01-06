@@ -146,24 +146,30 @@
            HEADER STYLES
            ======================================== */
         .dashboard-header {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
             border-radius: 16px;
             padding: 20px 28px;
             margin-bottom: 16px;
             color: white;
-            box-shadow: 0 10px 40px rgba(245, 158, 11, 0.25);
+            box-shadow: 0 10px 40px rgba(15, 23, 42, 0.4);
         }
 
         .dashboard-header h1 {
             font-size: 1.5rem;
             letter-spacing: -0.5px;
             margin-bottom: 4px !important;
+            color: #ffffff;
         }
 
         .dashboard-header h2 {
             font-size: 1rem;
             letter-spacing: -0.3px;
             margin-bottom: 4px !important;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .dashboard-header p {
+            color: rgba(255, 255, 255, 0.7);
         }
 
         @media (min-width: 768px) {
@@ -1534,13 +1540,8 @@
         }
 
         function updateDateTime() {
-            const now = new Date();
-            const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
-            const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
-                'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
-            ];
-
-            const text = `${days[now.getDay()]}, ${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}`;
+            // Static date: 31 Desember 2025
+            const text = 'Rabu, 31 Desember 2025';
             document.getElementById('currentDateTime').textContent = text;
         }
 
