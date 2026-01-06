@@ -131,27 +131,56 @@
         }
 
         .loading .data-content {
-            display: none;
+            display: none !important;
         }
 
         .loading .skeleton-wrapper {
-            display: block;
+            display: block !important;
         }
 
         .skeleton-wrapper {
             display: none;
         }
 
+        .loading>.data-content {
+            display: none !important;
+        }
+
+        .loading>.skeleton-wrapper {
+            display: block !important;
+        }
+
+        /* Specific selectors for sections */
+        .section-card.loading .data-content,
+        .section-card.loading>.data-content {
+            display: none !important;
+        }
+
+        .section-card.loading .skeleton-wrapper,
+        .section-card.loading>.skeleton-wrapper {
+            display: block !important;
+        }
+
+        .main-card.loading .data-content,
+        .main-card.loading>.data-content {
+            display: none !important;
+        }
+
+        .main-card.loading .skeleton-wrapper,
+        .main-card.loading>.skeleton-wrapper {
+            display: block !important;
+        }
+
         /* ========================================
            HEADER STYLES
            ======================================== */
         .dashboard-header {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
             border-radius: 16px;
             padding: 20px 28px;
             margin-bottom: 16px;
             color: white;
-            box-shadow: 0 10px 40px rgba(15, 23, 42, 0.4);
+            box-shadow: 0 10px 40px rgba(245, 158, 11, 0.25);
         }
 
         .dashboard-header h1 {
@@ -169,7 +198,7 @@
         }
 
         .dashboard-header p {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.8);
         }
 
         @media (min-width: 768px) {
@@ -632,13 +661,17 @@
          ======================================== -->
     <div class="dashboard-header">
         <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
-            <div>
-                <h1 class="fw-bolder mb-1" id="currentDateTime">Memuat...</h1>
-                <h2 class="fw-bold mb-1 opacity-90">Badan Pendapatan Daerah Kabupaten Tabalong</h2>
-                <p class="mb-0 opacity-75 fs-7" id="refreshStatus">Memuat data...</p>
+            <div class="d-flex align-items-center gap-3">
+                <img src="{{ asset('Logo-Tabalong-Blue-Print-Latar-Hijau2-226x300.png') }}" alt="Logo Tabalong"
+                    style="height: 70px;" class="d-none d-md-block">
+                <div>
+                    <h1 class="fw-bolder mb-1" id="currentDateTime">Memuat...</h1>
+                    <h2 class="fw-bold mb-1 opacity-90">Badan Pendapatan Daerah Kabupaten Tabalong</h2>
+                    <p class="mb-0 opacity-75 fs-7" id="refreshStatus">Memuat data...</p>
+                </div>
             </div>
-            <img src="{{ asset('assets/media/illustrations/sigma-1/17.png') }}" alt="Logo" style="height: 60px;"
-                class="d-none d-md-block">
+            <img src="{{ asset('logo-tabalong-smart.png') }}" alt="Logo Tabalong Smart"
+                style="height: 65px; background: white; padding: 8px; border-radius: 12px;" class="d-none d-md-block">
         </div>
     </div>
 
@@ -823,7 +856,7 @@
          ======================================== -->
     <div class="section-card mb-3 loading" id="section-detail-pendapatan">
         <!-- Skeleton Loading -->
-        <div class="skeleton-wrapper">
+        <div class="skeleton-wrapper" style="display: block;">
             <div class="detail-tabs-wrapper">
                 <div class="skeleton" style="height: 45px; flex: 1;"></div>
                 <div class="skeleton" style="height: 45px; flex: 1;"></div>
@@ -860,7 +893,7 @@
         </div>
 
         <!-- Actual Content -->
-        <div class="data-content">
+        <div class="data-content" style="display: none;">
             <!-- Main Tabs -->
             <div class="detail-tabs-wrapper">
                 <button class="detail-tab active" data-detail-tab="detail-pad"
@@ -1149,7 +1182,7 @@
          ======================================== -->
     <div class="section-card loading" id="section-pajak-retribusi">
         <!-- Skeleton Loading -->
-        <div class="skeleton-wrapper">
+        <div class="skeleton-wrapper" style="display: block;">
             <div class="p-4">
                 <div class="skeleton skeleton-text mb-4" style="width: 200px; height: 24px;"></div>
                 <div class="d-flex gap-2 mb-4">
@@ -1175,7 +1208,7 @@
         </div>
 
         <!-- Actual Content -->
-        <div class="data-content">
+        <div class="data-content" style="display: none;">
             <div class="section-header d-flex justify-content-between align-items-center"
                 onclick="toggleSection('section-pajak-retribusi')">
                 <h5 class="fw-bold mb-0">Pajak & Retribusi Daerah</h5>
@@ -1635,12 +1668,26 @@
 
         function removeLoading(cardId) {
             const card = document.getElementById(`card-${cardId}`);
-            if (card) card.classList.remove('loading');
+            if (card) {
+                card.classList.remove('loading');
+                // Also update inline styles
+                const skeleton = card.querySelector('.skeleton-wrapper');
+                const content = card.querySelector('.data-content');
+                if (skeleton) skeleton.style.display = 'none';
+                if (content) content.style.display = '';
+            }
         }
 
         function removeSectionLoading(sectionId) {
             const section = document.getElementById(sectionId);
-            if (section) section.classList.remove('loading');
+            if (section) {
+                section.classList.remove('loading');
+                // Also update inline styles
+                const skeleton = section.querySelector('.skeleton-wrapper');
+                const content = section.querySelector('.data-content');
+                if (skeleton) skeleton.style.display = 'none';
+                if (content) content.style.display = '';
+            }
         }
 
         function setEl(id, value) {
@@ -1766,11 +1813,13 @@
             const canvas = document.getElementById(`chart-${chartId}`);
             if (!canvas) return;
 
-            const remaining = 100 - percentage;
+            // Cap percentage at 100 for chart display, but show actual value in text
+            const displayPct = Math.min(percentage, 100);
+            const remaining = Math.max(0, 100 - displayPct);
 
             if (mainCharts[chartId]) {
                 // Update existing chart
-                mainCharts[chartId].data.datasets[0].data = [percentage, remaining];
+                mainCharts[chartId].data.datasets[0].data = [displayPct, remaining];
                 mainCharts[chartId].update('none');
             } else {
                 // Create new chart
@@ -1779,7 +1828,7 @@
                     type: 'doughnut',
                     data: {
                         datasets: [{
-                            data: [percentage, remaining],
+                            data: [displayPct, remaining],
                             backgroundColor: [color, '#e5e7eb'],
                             borderWidth: 0,
                             borderRadius: 5
@@ -1871,9 +1920,6 @@
                     updatePajakChart(tabId, percentage);
                 }
             });
-
-            // Remove loading state from Pajak & Retribusi section
-            removeSectionLoading('section-pajak-retribusi');
         }
 
         // Create or update Chart.js doughnut chart for Pajak tabs
@@ -1881,11 +1927,13 @@
             const canvas = document.getElementById(`chart-pajak-${tabId}`);
             if (!canvas) return;
 
-            const remaining = 100 - percentage;
+            // Cap percentage at 100 for chart display
+            const displayPct = Math.min(percentage, 100);
+            const remaining = Math.max(0, 100 - displayPct);
 
             if (pajakCharts[tabId]) {
                 // Update existing chart
-                pajakCharts[tabId].data.datasets[0].data = [percentage, remaining];
+                pajakCharts[tabId].data.datasets[0].data = [displayPct, remaining];
                 pajakCharts[tabId].update('none');
             } else {
                 // Create new chart
@@ -1894,7 +1942,7 @@
                     type: 'doughnut',
                     data: {
                         datasets: [{
-                            data: [percentage, remaining],
+                            data: [displayPct, remaining],
                             backgroundColor: ['#3b82f6', '#e5e7eb'],
                             borderWidth: 0,
                             borderRadius: 5
@@ -1959,11 +2007,13 @@
             const canvas = document.getElementById(`chart-retribusi-${tabId}`);
             if (!canvas) return;
 
-            const remaining = 100 - percentage;
+            // Cap percentage at 100 for chart display
+            const displayPct = Math.min(percentage, 100);
+            const remaining = Math.max(0, 100 - displayPct);
 
             if (retribusiCharts[tabId]) {
                 // Update existing chart
-                retribusiCharts[tabId].data.datasets[0].data = [percentage, remaining];
+                retribusiCharts[tabId].data.datasets[0].data = [displayPct, remaining];
                 retribusiCharts[tabId].update('none');
             } else {
                 // Create new chart
@@ -1972,7 +2022,7 @@
                     type: 'doughnut',
                     data: {
                         datasets: [{
-                            data: [percentage, remaining],
+                            data: [displayPct, remaining],
                             backgroundColor: ['#8b5cf6', '#e5e7eb'],
                             borderWidth: 0,
                             borderRadius: 5
@@ -2004,11 +2054,13 @@
             const canvas = document.getElementById(`chart-detail-${chartId}`);
             if (!canvas) return;
 
-            const remaining = 100 - percentage;
+            // Cap percentage at 100 for chart display
+            const displayPct = Math.min(percentage, 100);
+            const remaining = Math.max(0, 100 - displayPct);
 
             if (detailCharts[chartId]) {
                 // Update existing chart
-                detailCharts[chartId].data.datasets[0].data = [percentage, remaining];
+                detailCharts[chartId].data.datasets[0].data = [displayPct, remaining];
                 detailCharts[chartId].update('none');
             } else {
                 // Create new chart
@@ -2017,7 +2069,7 @@
                     type: 'doughnut',
                     data: {
                         datasets: [{
-                            data: [percentage, remaining],
+                            data: [displayPct, remaining],
                             backgroundColor: [color, '#e5e7eb'],
                             borderWidth: 0,
                             borderRadius: 5
@@ -2193,9 +2245,6 @@
                     updateDetailChart(childId, percentage, config.color);
                 }
             });
-
-            // Remove loading state from detail section
-            removeSectionLoading('section-detail-pendapatan');
         }
 
         function updatePbjtSection() {
@@ -2258,6 +2307,10 @@
                 updatePajakTabs();
                 updateRetribusiTabs();
                 updatePbjtSection();
+
+                // Remove all loading states after all data is loaded
+                removeSectionLoading('section-detail-pendapatan');
+                removeSectionLoading('section-pajak-retribusi');
 
                 const now = new Date();
                 const timeStr =
