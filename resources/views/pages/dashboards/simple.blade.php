@@ -13,13 +13,13 @@
                     ['id' => 'retribusi', 'account_id' => 30300, 'title' => 'Retribusi Daerah', 'color' => '#8b5cf6'],
                     [
                         'id' => 'kekayaan',
-                        'account_id' => 30397,
+                        'account_id' => 30398,
                         'title' => 'Hasil Pengelolaan Kekayaan Daerah yang Dipisahkan',
                         'color' => '#a855f7',
                     ],
                     [
                         'id' => 'lain-pad',
-                        'account_id' => 30427,
+                        'account_id' => 30402,
                         'title' => 'Lain-Lain PAD yang Sah',
                         'color' => '#d946ef',
                     ],
@@ -769,8 +769,7 @@
     <div class="row g-3 mb-3">
         @foreach ($mainCards as $card)
             <div class="col-lg-4 col-md-6">
-                <div class="main-card loading" id="card-{{ $card['id'] }}"
-                    data-account-id="{{ $card['account_id'] }}">
+                <div class="main-card loading" id="card-{{ $card['id'] }}" data-account-id="{{ $card['account_id'] }}">
                     <!-- Skeleton Loading -->
                     <div class="skeleton-wrapper">
                         <div class="d-flex align-items-center gap-2 mb-3">
@@ -808,8 +807,7 @@
                             <div class="col-4">
                                 <div class="progress-container">
                                     <div class="chartjs-ring-wrapper">
-                                        <canvas id="chart-{{ $card['id'] }}" width="100"
-                                            height="100"></canvas>
+                                        <canvas id="chart-{{ $card['id'] }}" width="100" height="100"></canvas>
                                         <div class="chartjs-center-text">
                                             <span class="progress-percent" id="percent-{{ $card['id'] }}">0%</span>
                                         </div>
@@ -896,16 +894,14 @@
         <div class="data-content" style="display: none;">
             <!-- Main Tabs -->
             <div class="detail-tabs-wrapper">
-                <button class="detail-tab active" data-detail-tab="detail-pad"
-                    onclick="switchDetailTab('detail-pad')">
+                <button class="detail-tab active" data-detail-tab="detail-pad" onclick="switchDetailTab('detail-pad')">
                     Pendapatan Asli Daerah (PAD)
                 </button>
                 <button class="detail-tab" data-detail-tab="detail-transfer"
                     onclick="switchDetailTab('detail-transfer')">
                     Dana Transfer
                 </button>
-                <button class="detail-tab" data-detail-tab="detail-lainnya"
-                    onclick="switchDetailTab('detail-lainnya')">
+                <button class="detail-tab" data-detail-tab="detail-lainnya" onclick="switchDetailTab('detail-lainnya')">
                     Pendapatan Lainnya yang Sah
                 </button>
             </div>
@@ -959,8 +955,7 @@
                                     </div>
                                     <div class="text-center mb-3">
                                         <div class="chartjs-ring-wrapper-sm">
-                                            <canvas id="chart-detail-{{ $child['id'] }}" width="100"
-                                                height="100"></canvas>
+                                            <canvas id="chart-detail-{{ $child['id'] }}" width="100" height="100"></canvas>
                                             <div class="chartjs-center-text">
                                                 <span class="progress-percent-sm"
                                                     id="percent-detail-{{ $child['id'] }}">0%</span>
@@ -988,8 +983,7 @@
                                                 <div class="data-value" id="sisa-detail-{{ $child['id'] }}">Rp0
                                                 </div>
                                             </div>
-                                            <span class="badge-danger"
-                                                id="sisa-badge-detail-{{ $child['id'] }}">-0%</span>
+                                            <span class="badge-danger" id="sisa-badge-detail-{{ $child['id'] }}">-0%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1047,8 +1041,7 @@
                                     </div>
                                     <div class="text-center mb-3">
                                         <div class="chartjs-ring-wrapper-sm">
-                                            <canvas id="chart-detail-{{ $child['id'] }}" width="100"
-                                                height="100"></canvas>
+                                            <canvas id="chart-detail-{{ $child['id'] }}" width="100" height="100"></canvas>
                                             <div class="chartjs-center-text">
                                                 <span class="progress-percent-sm"
                                                     id="percent-detail-{{ $child['id'] }}">0%</span>
@@ -1076,8 +1069,7 @@
                                                 <div class="data-value" id="sisa-detail-{{ $child['id'] }}">Rp0
                                                 </div>
                                             </div>
-                                            <span class="badge-danger"
-                                                id="sisa-badge-detail-{{ $child['id'] }}">-0%</span>
+                                            <span class="badge-danger" id="sisa-badge-detail-{{ $child['id'] }}">-0%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1135,8 +1127,7 @@
                                     </div>
                                     <div class="text-center mb-3">
                                         <div class="chartjs-ring-wrapper-sm">
-                                            <canvas id="chart-detail-{{ $child['id'] }}" width="100"
-                                                height="100"></canvas>
+                                            <canvas id="chart-detail-{{ $child['id'] }}" width="100" height="100"></canvas>
                                             <div class="chartjs-center-text">
                                                 <span class="progress-percent-sm"
                                                     id="percent-detail-{{ $child['id'] }}">0%</span>
@@ -1164,8 +1155,7 @@
                                                 <div class="data-value" id="sisa-detail-{{ $child['id'] }}">Rp0
                                                 </div>
                                             </div>
-                                            <span class="badge-danger"
-                                                id="sisa-badge-detail-{{ $child['id'] }}">-0%</span>
+                                            <span class="badge-danger" id="sisa-badge-detail-{{ $child['id'] }}">-0%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1232,8 +1222,7 @@
                     <!-- Sub Tabs -->
                     <div class="custom-tabs" id="pajak-tabs">
                         @foreach ($pajakItems as $index => $item)
-                            <button class="custom-tab {{ $index === 0 ? 'active' : '' }}"
-                                data-tab="{{ $item['id'] }}"
+                            <button class="custom-tab {{ $index === 0 ? 'active' : '' }}" data-tab="{{ $item['id'] }}"
                                 onclick="switchTab('pajak-tabs', '{{ $item['id'] }}')">
                                 {{ $item['title'] }}
                             </button>
@@ -1248,8 +1237,7 @@
                                 <div class="col-md-2 col-4">
                                     <div class="progress-container">
                                         <div class="chartjs-ring-wrapper">
-                                            <canvas id="chart-pajak-{{ $item['id'] }}" width="100"
-                                                height="100"></canvas>
+                                            <canvas id="chart-pajak-{{ $item['id'] }}" width="100" height="100"></canvas>
                                             <div class="chartjs-center-text">
                                                 <span class="progress-percent"
                                                     id="percent-pajak-{{ $item['id'] }}">0%</span>
@@ -1265,8 +1253,7 @@
                                         <!-- Target -->
                                         <div class="data-box data-box-target">
                                             <div class="data-label">Target</div>
-                                            <div class="data-value data-value-lg"
-                                                id="target-pajak-{{ $item['id'] }}">
+                                            <div class="data-value data-value-lg" id="target-pajak-{{ $item['id'] }}">
                                                 Rp0
                                             </div>
                                         </div>
@@ -1288,8 +1275,7 @@
                                                 <div class="data-label">Sisa Target</div>
                                                 <div class="data-value" id="sisa-pajak-{{ $item['id'] }}">Rp0</div>
                                             </div>
-                                            <span class="badge-danger"
-                                                id="sisa-badge-pajak-{{ $item['id'] }}">0%</span>
+                                            <span class="badge-danger" id="sisa-badge-pajak-{{ $item['id'] }}">0%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1303,8 +1289,7 @@
                     <!-- Sub Tabs -->
                     <div class="custom-tabs" id="retribusi-tabs">
                         @foreach ($retribusiItems as $index => $item)
-                            <button class="custom-tab {{ $index === 0 ? 'active' : '' }}"
-                                data-tab="{{ $item['id'] }}"
+                            <button class="custom-tab {{ $index === 0 ? 'active' : '' }}" data-tab="{{ $item['id'] }}"
                                 onclick="switchTab('retribusi-tabs', '{{ $item['id'] }}')">
                                 {{ $item['title'] }}
                             </button>
@@ -1320,8 +1305,8 @@
                                 <div class="col-md-3 col-5">
                                     <div class="progress-container">
                                         <div class="chartjs-ring-wrapper">
-                                            <canvas id="chart-retribusi-{{ $item['id'] }}" width="140"
-                                                height="140"></canvas>
+                                            <canvas id="chart-retribusi-{{ $item['id'] }}" width="100"
+                                                height="100"></canvas>
                                             <div class="chartjs-center-text">
                                                 <span class="progress-percent"
                                                     id="percent-retribusi-{{ $item['id'] }}">0%</span>
@@ -1337,8 +1322,8 @@
                                         <!-- Target -->
                                         <div class="data-box data-box-target">
                                             <div class="data-label">Target</div>
-                                            <div class="data-value data-value-lg"
-                                                id="target-retribusi-{{ $item['id'] }}">Rp0
+                                            <div class="data-value data-value-lg" id="target-retribusi-{{ $item['id'] }}">
+                                                Rp0
                                             </div>
                                         </div>
 
@@ -1361,8 +1346,7 @@
                                                 <div class="data-value" id="sisa-retribusi-{{ $item['id'] }}">Rp0
                                                 </div>
                                             </div>
-                                            <span class="badge-danger"
-                                                id="sisa-badge-retribusi-{{ $item['id'] }}">0%</span>
+                                            <span class="badge-danger" id="sisa-badge-retribusi-{{ $item['id'] }}">0%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1434,12 +1418,10 @@
                                 <div class="text-center mb-3">
                                     <div class="position-relative d-inline-block">
                                         <svg class="mini-progress-ring" viewBox="0 0 90 90">
-                                            <circle cx="45" cy="45" r="36" fill="none"
-                                                stroke="#e5e7eb" stroke-width="8" />
-                                            <circle id="ring-{{ $item['id'] }}" cx="45" cy="45"
-                                                r="36" fill="none" stroke="#3b82f6" stroke-width="8"
-                                                stroke-linecap="round" stroke-dasharray="226.19"
-                                                stroke-dashoffset="226.19" />
+                                            <circle cx="45" cy="45" r="36" fill="none" stroke="#e5e7eb" stroke-width="8" />
+                                            <circle id="ring-{{ $item['id'] }}" cx="45" cy="45" r="36" fill="none"
+                                                stroke="#3b82f6" stroke-width="8" stroke-linecap="round"
+                                                stroke-dasharray="226.19" stroke-dashoffset="226.19" />
                                         </svg>
                                         <div class="position-absolute top-50 start-50 translate-middle text-center">
                                             <div class="fw-bold fs-5" id="percent-{{ $item['id'] }}">0%</div>
@@ -1455,8 +1437,7 @@
                                     <div class="d-flex justify-content-between align-items-center">
                                         <span class="text-muted fs-8">Realisasi</span>
                                         <div class="d-flex align-items-center gap-2">
-                                            <span class="fw-semibold fs-8"
-                                                id="realisasi-{{ $item['id'] }}">Rp0</span>
+                                            <span class="fw-semibold fs-8" id="realisasi-{{ $item['id'] }}">Rp0</span>
                                             <span class="badge-success" style="padding: 2px 8px; font-size: 11px;"
                                                 id="realisasi-badge-{{ $item['id'] }}">0%</span>
                                         </div>
@@ -1494,12 +1475,14 @@
         const mainCharts = {}; // For Total Pendapatan, PAD, Transfer, Lainnya
         const detailCharts = {}; // For PAD, Transfer, Lainnya children
 
+
+
         // All account IDs to fetch
         const ACCOUNT_IDS = [
             30239, // Total Pendapatan Daerah (parent)
             30240, 30481, 30524,
             // PAD children
-            30241, 30300, 30397, 30427,
+            30241, 30300, 30398, 30402,
             // Transfer children
             30482, 30516,
             // Lainnya children
@@ -1519,8 +1502,8 @@
             // PAD children
             30241: 'pajak',
             30300: 'retribusi',
-            30397: 'kekayaan',
-            30427: 'lain-pad',
+            30398: 'kekayaan',
+            30402: 'lain-pad',
             // Transfer children
             30482: 'pusat',
             30516: 'antar',
@@ -1601,6 +1584,13 @@
                 content.classList.add('d-none');
             });
             document.getElementById(`main-tab-${tabId}`).classList.remove('d-none');
+
+            // Re-render charts when switching to retribusi tab (Chart.js needs visible canvas)
+            if (tabId === 'retribusi-daerah') {
+                setTimeout(() => {
+                    updateRetribusiTabs();
+                }, 100);
+            }
         }
 
         function switchDetailTab(tabId) {
@@ -1731,18 +1721,18 @@
             requestAnimationFrame(update);
         }
 
-        // Count up animation for percentage values
+        // Count up animation for percentage values (supports 1 decimal place)
         function animatePercent(elementId, endValue, prefix = '', suffix = '%', duration = 800) {
             const el = document.getElementById(elementId);
             if (!el) return;
 
-            // Get current value from element
+            // Get current value from element (parse as float)
             const currentText = el.textContent || '0';
-            const startValue = parseInt(currentText.replace(/[^0-9-]/g, '')) || 0;
+            const startValue = parseFloat(currentText.replace(/[^0-9.-]/g, '')) || 0;
 
             // If values are the same, no need to animate
-            if (startValue === endValue) {
-                el.textContent = prefix + endValue + suffix;
+            if (Math.abs(startValue - endValue) < 0.01) {
+                el.textContent = prefix + endValue.toFixed(1) + suffix;
                 return;
             }
 
@@ -1756,8 +1746,8 @@
                 // Easing function (ease-out)
                 const easeOut = 1 - Math.pow(1 - progress, 3);
 
-                const currentValue = Math.round(startValue + (diff * easeOut));
-                el.textContent = prefix + currentValue + suffix;
+                const currentValue = startValue + (diff * easeOut);
+                el.textContent = prefix + currentValue.toFixed(1) + suffix;
 
                 if (progress < 1) {
                     requestAnimationFrame(update);
@@ -1781,7 +1771,8 @@
         function updateCard(cardId, data) {
             if (!data) return;
 
-            const target = data.target_sesudah || data.target || 0;
+            // Always use target_sesudah (target after) as the target value
+            const target = data.target_sesudah || 0;
             const realisasi = data.realisasi_sd_bulan_ini || data.realisasi || 0;
             const sisaTarget = target - realisasi; // Calculate sisa target
             const percentage = data.percentage || (target > 0 ? (realisasi / target) * 100 : 0);
@@ -1792,10 +1783,10 @@
             animateValue(`sisa-${cardId}`, sisaTarget);
 
             // Animate percentage values
-            animatePercent(`realisasi-badge-${cardId}`, Math.round(percentage));
-            animatePercent(`percent-${cardId}`, Math.round(percentage));
+            animatePercent(`realisasi-badge-${cardId}`, percentage);
+            animatePercent(`percent-${cardId}`, percentage);
 
-            const sisaPct = target > 0 ? Math.round((sisaTarget / target) * 100) : 0;
+            const sisaPct = target > 0 ? ((sisaTarget / target) * 100) : 0;
             animatePercent(`sisa-badge-${cardId}`, sisaPct, '-');
 
             // Update Chart.js for main cards
@@ -1864,7 +1855,7 @@
             const totalRealisasi = data.realisasi_sd_bulan_ini || 0;
             const totalSisa = totalTarget - totalRealisasi;
             const realisasiPct = data.percentage || (totalTarget > 0 ? (totalRealisasi / totalTarget) * 100 : 0);
-            const sisaPct = totalTarget > 0 ? Math.round((totalSisa / totalTarget) * 100) : 0;
+            const sisaPct = totalTarget > 0 ? ((totalSisa / totalTarget) * 100) : 0;
 
             // Animate currency values
             animateValue('summaryTarget', totalTarget);
@@ -1872,9 +1863,9 @@
             animateValue('summarySisa', totalSisa);
 
             // Animate percentage values
-            animatePercent('summaryRealisasiBadge', Math.round(realisasiPct));
+            animatePercent('summaryRealisasiBadge', realisasiPct);
             animatePercent('summarySisaBadge', sisaPct, '-');
-            animatePercent('summaryPercentage', Math.round(realisasiPct));
+            animatePercent('summaryPercentage', realisasiPct);
 
             // Update Chart.js for Total Pendapatan
             updateMainChart('total-pendapatan', realisasiPct, '#3b82f6');
@@ -1910,10 +1901,10 @@
                     animateValue(`sisa-pajak-${tabId}`, sisaTarget);
 
                     // Animate percentage values
-                    animatePercent(`realisasi-badge-pajak-${tabId}`, Math.round(percentage));
-                    animatePercent(`percent-pajak-${tabId}`, Math.round(percentage));
+                    animatePercent(`realisasi-badge-pajak-${tabId}`, percentage);
+                    animatePercent(`percent-pajak-${tabId}`, percentage);
 
-                    const sisaPct = target > 0 ? Math.round((sisaTarget / target) * 100) : 0;
+                    const sisaPct = target > 0 ? ((sisaTarget / target) * 100) : 0;
                     animatePercent(`sisa-badge-pajak-${tabId}`, sisaPct, '-');
 
                     // Update Chart.js doughnut
@@ -1990,10 +1981,10 @@
                     animateValue(`sisa-retribusi-${tabId}`, sisaTarget);
 
                     // Animate percentage values
-                    animatePercent(`realisasi-badge-retribusi-${tabId}`, Math.round(percentage));
-                    animatePercent(`percent-retribusi-${tabId}`, Math.round(percentage));
+                    animatePercent(`realisasi-badge-retribusi-${tabId}`, percentage);
+                    animatePercent(`percent-retribusi-${tabId}`, percentage);
 
-                    const sisaPct = target > 0 ? Math.round((sisaTarget / target) * 100) : 0;
+                    const sisaPct = target > 0 ? ((sisaTarget / target) * 100) : 0;
                     animatePercent(`sisa-badge-retribusi-${tabId}`, sisaPct, '-');
 
                     // Update Chart.js doughnut
@@ -2011,42 +2002,42 @@
             const displayPct = Math.min(percentage, 100);
             const remaining = Math.max(0, 100 - displayPct);
 
+            // Destroy existing chart if exists to ensure proper re-render
             if (retribusiCharts[tabId]) {
-                // Update existing chart
-                retribusiCharts[tabId].data.datasets[0].data = [displayPct, remaining];
-                retribusiCharts[tabId].update('none');
-            } else {
-                // Create new chart
-                const ctx = canvas.getContext('2d');
-                retribusiCharts[tabId] = new Chart(ctx, {
-                    type: 'doughnut',
-                    data: {
-                        datasets: [{
-                            data: [displayPct, remaining],
-                            backgroundColor: ['#8b5cf6', '#e5e7eb'],
-                            borderWidth: 0,
-                            borderRadius: 5
-                        }]
-                    },
-                    options: {
-                        responsive: false,
-                        maintainAspectRatio: true,
-                        cutout: '65%',
-                        plugins: {
-                            legend: {
-                                display: false
-                            },
-                            tooltip: {
-                                enabled: false
-                            }
-                        },
-                        animation: {
-                            animateRotate: true,
-                            duration: 800
-                        }
-                    }
-                });
+                retribusiCharts[tabId].destroy();
+                delete retribusiCharts[tabId];
             }
+
+            // Create new chart
+            const ctx = canvas.getContext('2d');
+            retribusiCharts[tabId] = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    datasets: [{
+                        data: [displayPct, remaining],
+                        backgroundColor: ['#8b5cf6', '#e5e7eb'],
+                        borderWidth: 0,
+                        borderRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: false,
+                    maintainAspectRatio: true,
+                    cutout: '65%',
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            enabled: false
+                        }
+                    },
+                    animation: {
+                        animateRotate: true,
+                        duration: 800
+                    }
+                }
+            });
         }
 
         // Create or update Chart.js doughnut chart for detail children
@@ -2105,12 +2096,12 @@
                 const realisasi = padData.realisasi_sd_bulan_ini || 0;
                 const sisaTarget = target - realisasi;
                 const percentage = padData.percentage || 0;
-                const sisaPct = target > 0 ? Math.round((sisaTarget / target) * 100) : 0;
+                const sisaPct = target > 0 ? ((sisaTarget / target) * 100) : 0;
 
                 animateValue('pad-detail-target', target);
                 animateValue('pad-detail-realisasi', realisasi);
                 animateValue('pad-detail-sisa', sisaTarget);
-                animatePercent('pad-detail-realisasi-badge', Math.round(percentage));
+                animatePercent('pad-detail-realisasi-badge', percentage);
                 animatePercent('pad-detail-sisa-badge', sisaPct, '-');
             }
 
@@ -2125,11 +2116,11 @@
                     color: '#8b5cf6'
                 },
                 'kekayaan': {
-                    id: 30397,
+                    id: 30398,
                     color: '#a855f7'
                 },
                 'lain-pad': {
-                    id: 30427,
+                    id: 30402,
                     color: '#d946ef'
                 }
             };
@@ -2141,14 +2132,14 @@
                     const realisasi = data.realisasi_sd_bulan_ini || 0;
                     const sisaTarget = target - realisasi;
                     const percentage = data.percentage || 0;
-                    const sisaPct = target > 0 ? Math.round((sisaTarget / target) * 100) : 0;
+                    const sisaPct = target > 0 ? ((sisaTarget / target) * 100) : 0;
 
                     animateValue(`target-detail-${childId}`, target);
                     animateValue(`realisasi-detail-${childId}`, realisasi);
                     animateValue(`sisa-detail-${childId}`, sisaTarget);
-                    animatePercent(`realisasi-badge-detail-${childId}`, Math.round(percentage));
+                    animatePercent(`realisasi-badge-detail-${childId}`, percentage);
                     animatePercent(`sisa-badge-detail-${childId}`, sisaPct, '-');
-                    animatePercent(`percent-detail-${childId}`, Math.round(percentage));
+                    animatePercent(`percent-detail-${childId}`, percentage);
 
                     updateDetailChart(childId, percentage, config.color);
                 }
@@ -2161,12 +2152,12 @@
                 const realisasi = transferData.realisasi_sd_bulan_ini || 0;
                 const sisaTarget = target - realisasi;
                 const percentage = transferData.percentage || 0;
-                const sisaPct = target > 0 ? Math.round((sisaTarget / target) * 100) : 0;
+                const sisaPct = target > 0 ? ((sisaTarget / target) * 100) : 0;
 
                 animateValue('transfer-detail-target', target);
                 animateValue('transfer-detail-realisasi', realisasi);
                 animateValue('transfer-detail-sisa', sisaTarget);
-                animatePercent('transfer-detail-realisasi-badge', Math.round(percentage));
+                animatePercent('transfer-detail-realisasi-badge', percentage);
                 animatePercent('transfer-detail-sisa-badge', sisaPct, '-');
             }
 
@@ -2189,14 +2180,14 @@
                     const realisasi = data.realisasi_sd_bulan_ini || 0;
                     const sisaTarget = target - realisasi;
                     const percentage = data.percentage || 0;
-                    const sisaPct = target > 0 ? Math.round((sisaTarget / target) * 100) : 0;
+                    const sisaPct = target > 0 ? ((sisaTarget / target) * 100) : 0;
 
                     animateValue(`target-detail-${childId}`, target);
                     animateValue(`realisasi-detail-${childId}`, realisasi);
                     animateValue(`sisa-detail-${childId}`, sisaTarget);
-                    animatePercent(`realisasi-badge-detail-${childId}`, Math.round(percentage));
+                    animatePercent(`realisasi-badge-detail-${childId}`, percentage);
                     animatePercent(`sisa-badge-detail-${childId}`, sisaPct, '-');
-                    animatePercent(`percent-detail-${childId}`, Math.round(percentage));
+                    animatePercent(`percent-detail-${childId}`, percentage);
 
                     updateDetailChart(childId, percentage, config.color);
                 }
@@ -2209,12 +2200,12 @@
                 const realisasi = lainnyaData.realisasi_sd_bulan_ini || 0;
                 const sisaTarget = target - realisasi;
                 const percentage = lainnyaData.percentage || 0;
-                const sisaPct = target > 0 ? Math.round((sisaTarget / target) * 100) : 0;
+                const sisaPct = target > 0 ? ((sisaTarget / target) * 100) : 0;
 
                 animateValue('lainnya-detail-target', target);
                 animateValue('lainnya-detail-realisasi', realisasi);
                 animateValue('lainnya-detail-sisa', sisaTarget);
-                animatePercent('lainnya-detail-realisasi-badge', Math.round(percentage));
+                animatePercent('lainnya-detail-realisasi-badge', percentage);
                 animatePercent('lainnya-detail-sisa-badge', sisaPct, '-');
             }
 
@@ -2233,14 +2224,14 @@
                     const realisasi = data.realisasi_sd_bulan_ini || 0;
                     const sisaTarget = target - realisasi;
                     const percentage = data.percentage || 0;
-                    const sisaPct = target > 0 ? Math.round((sisaTarget / target) * 100) : 0;
+                    const sisaPct = target > 0 ? ((sisaTarget / target) * 100) : 0;
 
                     animateValue(`target-detail-${childId}`, target);
                     animateValue(`realisasi-detail-${childId}`, realisasi);
                     animateValue(`sisa-detail-${childId}`, sisaTarget);
-                    animatePercent(`realisasi-badge-detail-${childId}`, Math.round(percentage));
+                    animatePercent(`realisasi-badge-detail-${childId}`, percentage);
                     animatePercent(`sisa-badge-detail-${childId}`, sisaPct, '-');
-                    animatePercent(`percent-detail-${childId}`, Math.round(percentage));
+                    animatePercent(`percent-detail-${childId}`, percentage);
 
                     updateDetailChart(childId, percentage, config.color);
                 }
@@ -2257,8 +2248,8 @@
                 animateValue('pbjt-total-target', target);
                 animateValue('pbjt-total-realisasi', realisasi);
                 animateValue('pbjt-total-sisa', sisaTarget);
-                animatePercent('pbjt-total-realisasi-badge', Math.round(pbjtData.percentage || 0));
-                const sisaPct = target > 0 ? Math.round((sisaTarget / target) * 100) : 0;
+                animatePercent('pbjt-total-realisasi-badge', pbjtData.percentage || 0);
+                const sisaPct = target > 0 ? ((sisaTarget / target) * 100) : 0;
                 animatePercent('pbjt-total-sisa-badge', sisaPct, '-');
             }
         }
@@ -2327,7 +2318,7 @@
         // INITIALIZATION
         // ============================================
 
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             updateDateTime();
             setInterval(updateDateTime, 1000);
 
