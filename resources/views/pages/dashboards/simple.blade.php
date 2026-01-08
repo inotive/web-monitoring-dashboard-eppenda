@@ -769,7 +769,8 @@
     <div class="row g-3 mb-3">
         @foreach ($mainCards as $card)
             <div class="col-lg-4 col-md-6">
-                <div class="main-card loading" id="card-{{ $card['id'] }}" data-account-id="{{ $card['account_id'] }}">
+                <div class="main-card loading" id="card-{{ $card['id'] }}"
+                    data-account-id="{{ $card['account_id'] }}">
                     <!-- Skeleton Loading -->
                     <div class="skeleton-wrapper">
                         <div class="d-flex align-items-center gap-2 mb-3">
@@ -807,7 +808,8 @@
                             <div class="col-4">
                                 <div class="progress-container">
                                     <div class="chartjs-ring-wrapper">
-                                        <canvas id="chart-{{ $card['id'] }}" width="100" height="100"></canvas>
+                                        <canvas id="chart-{{ $card['id'] }}" width="100"
+                                            height="100"></canvas>
                                         <div class="chartjs-center-text">
                                             <span class="progress-percent" id="percent-{{ $card['id'] }}">0%</span>
                                         </div>
@@ -894,14 +896,16 @@
         <div class="data-content" style="display: none;">
             <!-- Main Tabs -->
             <div class="detail-tabs-wrapper">
-                <button class="detail-tab active" data-detail-tab="detail-pad" onclick="switchDetailTab('detail-pad')">
+                <button class="detail-tab active" data-detail-tab="detail-pad"
+                    onclick="switchDetailTab('detail-pad')">
                     Pendapatan Asli Daerah (PAD)
                 </button>
                 <button class="detail-tab" data-detail-tab="detail-transfer"
                     onclick="switchDetailTab('detail-transfer')">
                     Dana Transfer
                 </button>
-                <button class="detail-tab" data-detail-tab="detail-lainnya" onclick="switchDetailTab('detail-lainnya')">
+                <button class="detail-tab" data-detail-tab="detail-lainnya"
+                    onclick="switchDetailTab('detail-lainnya')">
                     Pendapatan Lainnya yang Sah
                 </button>
             </div>
@@ -955,7 +959,8 @@
                                     </div>
                                     <div class="text-center mb-3">
                                         <div class="chartjs-ring-wrapper-sm">
-                                            <canvas id="chart-detail-{{ $child['id'] }}" width="100" height="100"></canvas>
+                                            <canvas id="chart-detail-{{ $child['id'] }}" width="100"
+                                                height="100"></canvas>
                                             <div class="chartjs-center-text">
                                                 <span class="progress-percent-sm"
                                                     id="percent-detail-{{ $child['id'] }}">0%</span>
@@ -983,7 +988,8 @@
                                                 <div class="data-value" id="sisa-detail-{{ $child['id'] }}">Rp0
                                                 </div>
                                             </div>
-                                            <span class="badge-danger" id="sisa-badge-detail-{{ $child['id'] }}">-0%</span>
+                                            <span class="badge-danger"
+                                                id="sisa-badge-detail-{{ $child['id'] }}">-0%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1041,7 +1047,8 @@
                                     </div>
                                     <div class="text-center mb-3">
                                         <div class="chartjs-ring-wrapper-sm">
-                                            <canvas id="chart-detail-{{ $child['id'] }}" width="100" height="100"></canvas>
+                                            <canvas id="chart-detail-{{ $child['id'] }}" width="100"
+                                                height="100"></canvas>
                                             <div class="chartjs-center-text">
                                                 <span class="progress-percent-sm"
                                                     id="percent-detail-{{ $child['id'] }}">0%</span>
@@ -1069,7 +1076,8 @@
                                                 <div class="data-value" id="sisa-detail-{{ $child['id'] }}">Rp0
                                                 </div>
                                             </div>
-                                            <span class="badge-danger" id="sisa-badge-detail-{{ $child['id'] }}">-0%</span>
+                                            <span class="badge-danger"
+                                                id="sisa-badge-detail-{{ $child['id'] }}">-0%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1127,7 +1135,8 @@
                                     </div>
                                     <div class="text-center mb-3">
                                         <div class="chartjs-ring-wrapper-sm">
-                                            <canvas id="chart-detail-{{ $child['id'] }}" width="100" height="100"></canvas>
+                                            <canvas id="chart-detail-{{ $child['id'] }}" width="100"
+                                                height="100"></canvas>
                                             <div class="chartjs-center-text">
                                                 <span class="progress-percent-sm"
                                                     id="percent-detail-{{ $child['id'] }}">0%</span>
@@ -1155,7 +1164,8 @@
                                                 <div class="data-value" id="sisa-detail-{{ $child['id'] }}">Rp0
                                                 </div>
                                             </div>
-                                            <span class="badge-danger" id="sisa-badge-detail-{{ $child['id'] }}">-0%</span>
+                                            <span class="badge-danger"
+                                                id="sisa-badge-detail-{{ $child['id'] }}">-0%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1222,7 +1232,8 @@
                     <!-- Sub Tabs -->
                     <div class="custom-tabs" id="pajak-tabs">
                         @foreach ($pajakItems as $index => $item)
-                            <button class="custom-tab {{ $index === 0 ? 'active' : '' }}" data-tab="{{ $item['id'] }}"
+                            <button class="custom-tab {{ $index === 0 ? 'active' : '' }}"
+                                data-tab="{{ $item['id'] }}"
                                 onclick="switchTab('pajak-tabs', '{{ $item['id'] }}')">
                                 {{ $item['title'] }}
                             </button>
@@ -1237,7 +1248,8 @@
                                 <div class="col-md-2 col-4">
                                     <div class="progress-container">
                                         <div class="chartjs-ring-wrapper">
-                                            <canvas id="chart-pajak-{{ $item['id'] }}" width="100" height="100"></canvas>
+                                            <canvas id="chart-pajak-{{ $item['id'] }}" width="100"
+                                                height="100"></canvas>
                                             <div class="chartjs-center-text">
                                                 <span class="progress-percent"
                                                     id="percent-pajak-{{ $item['id'] }}">0%</span>
@@ -1253,7 +1265,8 @@
                                         <!-- Target -->
                                         <div class="data-box data-box-target">
                                             <div class="data-label">Target</div>
-                                            <div class="data-value data-value-lg" id="target-pajak-{{ $item['id'] }}">
+                                            <div class="data-value data-value-lg"
+                                                id="target-pajak-{{ $item['id'] }}">
                                                 Rp0
                                             </div>
                                         </div>
@@ -1275,7 +1288,8 @@
                                                 <div class="data-label">Sisa Target</div>
                                                 <div class="data-value" id="sisa-pajak-{{ $item['id'] }}">Rp0</div>
                                             </div>
-                                            <span class="badge-danger" id="sisa-badge-pajak-{{ $item['id'] }}">0%</span>
+                                            <span class="badge-danger"
+                                                id="sisa-badge-pajak-{{ $item['id'] }}">0%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1289,7 +1303,8 @@
                     <!-- Sub Tabs -->
                     <div class="custom-tabs" id="retribusi-tabs">
                         @foreach ($retribusiItems as $index => $item)
-                            <button class="custom-tab {{ $index === 0 ? 'active' : '' }}" data-tab="{{ $item['id'] }}"
+                            <button class="custom-tab {{ $index === 0 ? 'active' : '' }}"
+                                data-tab="{{ $item['id'] }}"
                                 onclick="switchTab('retribusi-tabs', '{{ $item['id'] }}')">
                                 {{ $item['title'] }}
                             </button>
@@ -1322,7 +1337,8 @@
                                         <!-- Target -->
                                         <div class="data-box data-box-target">
                                             <div class="data-label">Target</div>
-                                            <div class="data-value data-value-lg" id="target-retribusi-{{ $item['id'] }}">
+                                            <div class="data-value data-value-lg"
+                                                id="target-retribusi-{{ $item['id'] }}">
                                                 Rp0
                                             </div>
                                         </div>
@@ -1346,7 +1362,8 @@
                                                 <div class="data-value" id="sisa-retribusi-{{ $item['id'] }}">Rp0
                                                 </div>
                                             </div>
-                                            <span class="badge-danger" id="sisa-badge-retribusi-{{ $item['id'] }}">0%</span>
+                                            <span class="badge-danger"
+                                                id="sisa-badge-retribusi-{{ $item['id'] }}">0%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1418,10 +1435,12 @@
                                 <div class="text-center mb-3">
                                     <div class="position-relative d-inline-block">
                                         <svg class="mini-progress-ring" viewBox="0 0 90 90">
-                                            <circle cx="45" cy="45" r="36" fill="none" stroke="#e5e7eb" stroke-width="8" />
-                                            <circle id="ring-{{ $item['id'] }}" cx="45" cy="45" r="36" fill="none"
-                                                stroke="#3b82f6" stroke-width="8" stroke-linecap="round"
-                                                stroke-dasharray="226.19" stroke-dashoffset="226.19" />
+                                            <circle cx="45" cy="45" r="36" fill="none"
+                                                stroke="#e5e7eb" stroke-width="8" />
+                                            <circle id="ring-{{ $item['id'] }}" cx="45" cy="45"
+                                                r="36" fill="none" stroke="#3b82f6" stroke-width="8"
+                                                stroke-linecap="round" stroke-dasharray="226.19"
+                                                stroke-dashoffset="226.19" />
                                         </svg>
                                         <div class="position-absolute top-50 start-50 translate-middle text-center">
                                             <div class="fw-bold fs-5" id="percent-{{ $item['id'] }}">0%</div>
@@ -1437,7 +1456,8 @@
                                     <div class="d-flex justify-content-between align-items-center">
                                         <span class="text-muted fs-8">Realisasi</span>
                                         <div class="d-flex align-items-center gap-2">
-                                            <span class="fw-semibold fs-8" id="realisasi-{{ $item['id'] }}">Rp0</span>
+                                            <span class="fw-semibold fs-8"
+                                                id="realisasi-{{ $item['id'] }}">Rp0</span>
                                             <span class="badge-success" style="padding: 2px 8px; font-size: 11px;"
                                                 id="realisasi-badge-{{ $item['id'] }}">0%</span>
                                         </div>
@@ -2270,28 +2290,33 @@
             }
         }
 
+        async function fetchAllAccounts() {
+            try {
+                const response = await fetch('https://e-penda.com/api/accounts/list-accounts');
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                const result = await response.json();
+                return result.data || [];
+            } catch (error) {
+                console.error('Error fetching accounts list:', error);
+                return [];
+            }
+        }
+
         async function refreshAllData() {
             refreshCount++;
             setEl('refreshStatus', `Memuat data... (Refresh ke-${refreshCount})`);
 
             try {
-                const batchSize = 5;
-                for (let i = 0; i < ACCOUNT_IDS.length; i += batchSize) {
-                    const batch = ACCOUNT_IDS.slice(i, i + batchSize);
-                    const results = await Promise.all(batch.map(id => fetchAccount(id)));
+                // Fetch all accounts at once
+                const allAccounts = await fetchAllAccounts();
 
-                    batch.forEach((id, index) => {
-                        if (results[index]) {
-                            accountsData[id] = results[index];
-                            const cardId = CARD_MAPPING[id];
-                            if (cardId) updateCard(cardId, results[index]);
-                        }
-                    });
-
-                    if (i + batchSize < ACCOUNT_IDS.length) {
-                        await new Promise(r => setTimeout(r, 100));
-                    }
-                }
+                // Process the data
+                allAccounts.forEach(account => {
+                    const accountId = account.id;
+                    accountsData[accountId] = account;
+                    const cardId = CARD_MAPPING[accountId];
+                    if (cardId) updateCard(cardId, account);
+                });
 
                 updateSummary();
                 updateDetailSection();
@@ -2318,7 +2343,7 @@
         // INITIALIZATION
         // ============================================
 
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             updateDateTime();
             setInterval(updateDateTime, 1000);
 
