@@ -69,6 +69,24 @@ services:
             - eppenda_network
         command: redis-server --appendonly yes
 
+    # phpMyAdmin Service
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin:latest
+        container_name: eppenda_phpmyadmin
+        restart: unless-stopped
+        environment:
+            PMA_HOST: mysql
+            PMA_PORT: 3306
+            PMA_USER: ${DB_USERNAME:-eppenda}
+            PMA_PASSWORD: ${DB_PASSWORD:-secret}
+            UPLOAD_LIMIT: 100M
+        ports:
+            - "8081:80"
+        networks:
+            - eppenda_network
+        depends_on:
+            - mysql
+
     # Node.js for asset compilation (optional, run as needed)
     node:
         image: node:20-alpine
