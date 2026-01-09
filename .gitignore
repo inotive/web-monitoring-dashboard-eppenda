@@ -16,3 +16,7 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+
+# Docker
+.env.docker
+docker-compose.override.yml
