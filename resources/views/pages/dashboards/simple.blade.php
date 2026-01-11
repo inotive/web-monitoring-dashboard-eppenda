@@ -78,8 +78,8 @@
         // Retribusi Daerah sub-items
         $retribusiItems = [
             ['id' => 'retribusi-jasa-umum', 'account_id' => 30301, 'title' => 'Retribusi Jasa Umum'],
-            ['id' => 'retribusi-jasa-usaha', 'account_id' => 30350, 'title' => 'Retribusi Jasa Usaha'],
-            ['id' => 'retribusi-perizinan', 'account_id' => 30380, 'title' => 'Retribusi Perizinan Tertentu'],
+            ['id' => 'retribusi-jasa-usaha', 'account_id' => 30351, 'title' => 'Retribusi Jasa Usaha'],
+            ['id' => 'retribusi-perizinan', 'account_id' => 30393, 'title' => 'Retribusi Perizinan Tertentu'],
         ];
     @endphp
 
@@ -541,13 +541,13 @@
         /* Chart.js Ring Wrapper Small */
         .chartjs-ring-wrapper-sm {
             position: relative;
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             margin: 0 auto;
         }
 
         .progress-percent-sm {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
             color: #1f2937;
         }
@@ -637,8 +637,8 @@
         /* Chart.js Ring Wrapper */
         .chartjs-ring-wrapper {
             position: relative;
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
         }
 
         .chartjs-center-text {
@@ -650,7 +650,7 @@
         }
 
         .chartjs-center-text .progress-percent {
-            font-size: 22px;
+            font-size: 18px;
             font-weight: 700;
             color: #1f2937;
         }
@@ -670,8 +670,23 @@
                     <p class="mb-0 opacity-75 fs-7" id="refreshStatus">Memuat data...</p>
                 </div>
             </div>
-            <img src="{{ asset('logo-tabalong-smart.png') }}" alt="Logo Tabalong Smart"
-                style="height: 65px; background: white; padding: 8px; border-radius: 12px;" class="d-none d-md-block">
+            <div class="d-flex align-items-center gap-3">
+                <!-- Year Filter Dropdown -->
+                <div class="bg-white rounded-3 px-3 py-2 shadow-sm">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="fw-bold" style="color: #d97706; font-size: 13px;">Tahun:</span>
+                        <select id="yearFilter" class="form-select form-select-sm border-0 fw-bold"
+                            style="color: #d97706; background-color: #FEF3C7; min-width: 85px; cursor: pointer;">
+                            <option value="2026">2026</option>
+                            <option value="2025" selected>2025</option>
+                            <option value="2024">2024</option>
+                        </select>
+                    </div>
+                </div>
+                <img src="{{ asset('logo-tabalong-smart.png') }}" alt="Logo Tabalong Smart"
+                    style="height: 65px; background: white; padding: 8px; border-radius: 12px;"
+                    class="d-none d-md-block">
+            </div>
         </div>
     </div>
 
@@ -720,7 +735,7 @@
                         <div class="col-md-2 col-4">
                             <div class="progress-container">
                                 <div class="chartjs-ring-wrapper">
-                                    <canvas id="chart-total-pendapatan" width="100" height="100"></canvas>
+                                    <canvas id="chart-total-pendapatan" width="120" height="120"></canvas>
                                     <div class="chartjs-center-text">
                                         <span class="progress-percent" id="summaryPercentage">0%</span>
                                     </div>
@@ -769,8 +784,7 @@
     <div class="row g-3 mb-3">
         @foreach ($mainCards as $card)
             <div class="col-lg-4 col-md-6">
-                <div class="main-card loading" id="card-{{ $card['id'] }}"
-                    data-account-id="{{ $card['account_id'] }}">
+                <div class="main-card loading" id="card-{{ $card['id'] }}" data-account-id="{{ $card['account_id'] }}">
                     <!-- Skeleton Loading -->
                     <div class="skeleton-wrapper">
                         <div class="d-flex align-items-center gap-2 mb-3">
@@ -808,8 +822,7 @@
                             <div class="col-4">
                                 <div class="progress-container">
                                     <div class="chartjs-ring-wrapper">
-                                        <canvas id="chart-{{ $card['id'] }}" width="100"
-                                            height="100"></canvas>
+                                        <canvas id="chart-{{ $card['id'] }}" width="120" height="120"></canvas>
                                         <div class="chartjs-center-text">
                                             <span class="progress-percent" id="percent-{{ $card['id'] }}">0%</span>
                                         </div>
@@ -896,16 +909,14 @@
         <div class="data-content" style="display: none;">
             <!-- Main Tabs -->
             <div class="detail-tabs-wrapper">
-                <button class="detail-tab active" data-detail-tab="detail-pad"
-                    onclick="switchDetailTab('detail-pad')">
+                <button class="detail-tab active" data-detail-tab="detail-pad" onclick="switchDetailTab('detail-pad')">
                     Pendapatan Asli Daerah (PAD)
                 </button>
                 <button class="detail-tab" data-detail-tab="detail-transfer"
                     onclick="switchDetailTab('detail-transfer')">
                     Dana Transfer
                 </button>
-                <button class="detail-tab" data-detail-tab="detail-lainnya"
-                    onclick="switchDetailTab('detail-lainnya')">
+                <button class="detail-tab" data-detail-tab="detail-lainnya" onclick="switchDetailTab('detail-lainnya')">
                     Pendapatan Lainnya yang Sah
                 </button>
             </div>
@@ -959,8 +970,7 @@
                                     </div>
                                     <div class="text-center mb-3">
                                         <div class="chartjs-ring-wrapper-sm">
-                                            <canvas id="chart-detail-{{ $child['id'] }}" width="100"
-                                                height="100"></canvas>
+                                            <canvas id="chart-detail-{{ $child['id'] }}" width="120" height="120"></canvas>
                                             <div class="chartjs-center-text">
                                                 <span class="progress-percent-sm"
                                                     id="percent-detail-{{ $child['id'] }}">0%</span>
@@ -988,8 +998,7 @@
                                                 <div class="data-value" id="sisa-detail-{{ $child['id'] }}">Rp0
                                                 </div>
                                             </div>
-                                            <span class="badge-danger"
-                                                id="sisa-badge-detail-{{ $child['id'] }}">-0%</span>
+                                            <span class="badge-danger" id="sisa-badge-detail-{{ $child['id'] }}">-0%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1047,8 +1056,7 @@
                                     </div>
                                     <div class="text-center mb-3">
                                         <div class="chartjs-ring-wrapper-sm">
-                                            <canvas id="chart-detail-{{ $child['id'] }}" width="100"
-                                                height="100"></canvas>
+                                            <canvas id="chart-detail-{{ $child['id'] }}" width="120" height="120"></canvas>
                                             <div class="chartjs-center-text">
                                                 <span class="progress-percent-sm"
                                                     id="percent-detail-{{ $child['id'] }}">0%</span>
@@ -1076,8 +1084,7 @@
                                                 <div class="data-value" id="sisa-detail-{{ $child['id'] }}">Rp0
                                                 </div>
                                             </div>
-                                            <span class="badge-danger"
-                                                id="sisa-badge-detail-{{ $child['id'] }}">-0%</span>
+                                            <span class="badge-danger" id="sisa-badge-detail-{{ $child['id'] }}">-0%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1135,8 +1142,7 @@
                                     </div>
                                     <div class="text-center mb-3">
                                         <div class="chartjs-ring-wrapper-sm">
-                                            <canvas id="chart-detail-{{ $child['id'] }}" width="100"
-                                                height="100"></canvas>
+                                            <canvas id="chart-detail-{{ $child['id'] }}" width="120" height="120"></canvas>
                                             <div class="chartjs-center-text">
                                                 <span class="progress-percent-sm"
                                                     id="percent-detail-{{ $child['id'] }}">0%</span>
@@ -1164,8 +1170,7 @@
                                                 <div class="data-value" id="sisa-detail-{{ $child['id'] }}">Rp0
                                                 </div>
                                             </div>
-                                            <span class="badge-danger"
-                                                id="sisa-badge-detail-{{ $child['id'] }}">-0%</span>
+                                            <span class="badge-danger" id="sisa-badge-detail-{{ $child['id'] }}">-0%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1232,8 +1237,7 @@
                     <!-- Sub Tabs -->
                     <div class="custom-tabs" id="pajak-tabs">
                         @foreach ($pajakItems as $index => $item)
-                            <button class="custom-tab {{ $index === 0 ? 'active' : '' }}"
-                                data-tab="{{ $item['id'] }}"
+                            <button class="custom-tab {{ $index === 0 ? 'active' : '' }}" data-tab="{{ $item['id'] }}"
                                 onclick="switchTab('pajak-tabs', '{{ $item['id'] }}')">
                                 {{ $item['title'] }}
                             </button>
@@ -1248,8 +1252,7 @@
                                 <div class="col-md-2 col-4">
                                     <div class="progress-container">
                                         <div class="chartjs-ring-wrapper">
-                                            <canvas id="chart-pajak-{{ $item['id'] }}" width="100"
-                                                height="100"></canvas>
+                                            <canvas id="chart-pajak-{{ $item['id'] }}" width="120" height="120"></canvas>
                                             <div class="chartjs-center-text">
                                                 <span class="progress-percent"
                                                     id="percent-pajak-{{ $item['id'] }}">0%</span>
@@ -1265,8 +1268,7 @@
                                         <!-- Target -->
                                         <div class="data-box data-box-target">
                                             <div class="data-label">Target</div>
-                                            <div class="data-value data-value-lg"
-                                                id="target-pajak-{{ $item['id'] }}">
+                                            <div class="data-value data-value-lg" id="target-pajak-{{ $item['id'] }}">
                                                 Rp0
                                             </div>
                                         </div>
@@ -1288,8 +1290,7 @@
                                                 <div class="data-label">Sisa Target</div>
                                                 <div class="data-value" id="sisa-pajak-{{ $item['id'] }}">Rp0</div>
                                             </div>
-                                            <span class="badge-danger"
-                                                id="sisa-badge-pajak-{{ $item['id'] }}">0%</span>
+                                            <span class="badge-danger" id="sisa-badge-pajak-{{ $item['id'] }}">0%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1303,8 +1304,7 @@
                     <!-- Sub Tabs -->
                     <div class="custom-tabs" id="retribusi-tabs">
                         @foreach ($retribusiItems as $index => $item)
-                            <button class="custom-tab {{ $index === 0 ? 'active' : '' }}"
-                                data-tab="{{ $item['id'] }}"
+                            <button class="custom-tab {{ $index === 0 ? 'active' : '' }}" data-tab="{{ $item['id'] }}"
                                 onclick="switchTab('retribusi-tabs', '{{ $item['id'] }}')">
                                 {{ $item['title'] }}
                             </button>
@@ -1320,8 +1320,8 @@
                                 <div class="col-md-3 col-5">
                                     <div class="progress-container">
                                         <div class="chartjs-ring-wrapper">
-                                            <canvas id="chart-retribusi-{{ $item['id'] }}" width="100"
-                                                height="100"></canvas>
+                                            <canvas id="chart-retribusi-{{ $item['id'] }}" width="120"
+                                                height="120"></canvas>
                                             <div class="chartjs-center-text">
                                                 <span class="progress-percent"
                                                     id="percent-retribusi-{{ $item['id'] }}">0%</span>
@@ -1337,8 +1337,7 @@
                                         <!-- Target -->
                                         <div class="data-box data-box-target">
                                             <div class="data-label">Target</div>
-                                            <div class="data-value data-value-lg"
-                                                id="target-retribusi-{{ $item['id'] }}">
+                                            <div class="data-value data-value-lg" id="target-retribusi-{{ $item['id'] }}">
                                                 Rp0
                                             </div>
                                         </div>
@@ -1362,8 +1361,7 @@
                                                 <div class="data-value" id="sisa-retribusi-{{ $item['id'] }}">Rp0
                                                 </div>
                                             </div>
-                                            <span class="badge-danger"
-                                                id="sisa-badge-retribusi-{{ $item['id'] }}">0%</span>
+                                            <span class="badge-danger" id="sisa-badge-retribusi-{{ $item['id'] }}">0%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1435,12 +1433,10 @@
                                 <div class="text-center mb-3">
                                     <div class="position-relative d-inline-block">
                                         <svg class="mini-progress-ring" viewBox="0 0 90 90">
-                                            <circle cx="45" cy="45" r="36" fill="none"
-                                                stroke="#e5e7eb" stroke-width="8" />
-                                            <circle id="ring-{{ $item['id'] }}" cx="45" cy="45"
-                                                r="36" fill="none" stroke="#3b82f6" stroke-width="8"
-                                                stroke-linecap="round" stroke-dasharray="226.19"
-                                                stroke-dashoffset="226.19" />
+                                            <circle cx="45" cy="45" r="36" fill="none" stroke="#e5e7eb" stroke-width="8" />
+                                            <circle id="ring-{{ $item['id'] }}" cx="45" cy="45" r="36" fill="none"
+                                                stroke="#3b82f6" stroke-width="8" stroke-linecap="round"
+                                                stroke-dasharray="226.19" stroke-dashoffset="226.19" />
                                         </svg>
                                         <div class="position-absolute top-50 start-50 translate-middle text-center">
                                             <div class="fw-bold fs-5" id="percent-{{ $item['id'] }}">0%</div>
@@ -1456,8 +1452,7 @@
                                     <div class="d-flex justify-content-between align-items-center">
                                         <span class="text-muted fs-8">Realisasi</span>
                                         <div class="d-flex align-items-center gap-2">
-                                            <span class="fw-semibold fs-8"
-                                                id="realisasi-{{ $item['id'] }}">Rp0</span>
+                                            <span class="fw-semibold fs-8" id="realisasi-{{ $item['id'] }}">Rp0</span>
                                             <span class="badge-success" style="padding: 2px 8px; font-size: 11px;"
                                                 id="realisasi-badge-{{ $item['id'] }}">0%</span>
                                         </div>
@@ -1487,6 +1482,8 @@
         // CONFIGURATION
         // ============================================
         const API_BASE = 'https://e-penda.com/api/accounts';
+        let selectedYear = 2025; // Default tahun 2025
+        const CURRENT_YEAR = new Date().getFullYear();
         const REFRESH_INTERVAL = 30000;
 
         // Chart.js instances storage
@@ -1511,44 +1508,50 @@
             30242, 30249, 30252, 30255, 30270, 30273, 30278, 30294, 30297,
             30279, 30281, 30284, 30286, 30288,
             // Retribusi Daerah
-            30301, 30350, 30380
+            30301, 30351, 30393
         ];
 
-        // ID to card mapping
+        // NUMBER to card mapping (using number field, not ID - karena ID berubah setiap tahun)
         const CARD_MAPPING = {
-            30240: 'pad',
-            30481: 'transfer',
-            30524: 'lainnya',
+            // Main Categories
+            '4': 'total-pendapatan',     // PENDAPATAN DAERAH (Level 1)
+            '4.1': 'pad',                 // PAD
+            '4.2': 'transfer',            // PENDAPATAN TRANSFER
+            '4.3': 'lainnya',             // LAIN-LAIN PENDAPATAN DAERAH YANG SAH
             // PAD children
-            30241: 'pajak',
-            30300: 'retribusi',
-            30398: 'kekayaan',
-            30402: 'lain-pad',
+            '4.1.01': 'pajak',            // Pajak Daerah
+            '4.1.02': 'retribusi',        // Retribusi Daerah
+            '4.1.03': 'kekayaan',         // Hasil Pengelolaan Kekayaan Daerah yang Dipisahkan
+            '4.1.04': 'lain-pad',         // Lain-Lain PAD yang Sah
             // Transfer children
-            30482: 'pusat',
-            30516: 'antar',
+            '4.2.01': 'pusat',            // Pendapatan Transfer Pemerintah Pusat
+            '4.2.02': 'antar',            // Pendapatan Transfer Antar Daerah
             // Lainnya children
-            30525: 'hibah',
+            '4.3.01': 'hibah',            // Pendapatan Hibah
             // Pajak Daerah items
-            30242: 'reklame',
-            30249: 'air-tanah',
-            30252: 'sarang-walet',
-            30255: 'mblb',
-            30270: 'pbb-p2',
-            30273: 'bphtb',
-            30278: 'pbjt',
-            30294: 'opsen-pkb',
-            30297: 'opsen-bbnkb',
-            30279: 'pbjt-makanan',
-            30281: 'pbjt-listrik',
-            30284: 'pbjt-hotel',
-            30286: 'pbjt-parkir',
-            30288: 'pbjt-hiburan',
+            '4.1.01.09': 'reklame',       // Pajak Reklame
+            '4.1.01.11': 'air-tanah',     // Pajak Air Tanah
+            '4.1.01.13': 'sarang-walet',  // Pajak Sarang Burung Walet
+            '4.1.01.12': 'mblb',          // Pajak Mineral Bukan Logam dan Batuan
+            '4.1.01.14': 'pbb-p2',        // Pajak Bumi dan Bangunan
+            '4.1.01.15': 'bphtb',         // Bea Perolehan Hak Atas Tanah dan Bangunan
+            '4.1.01.19': 'pbjt',          // Pajak Barang dan Jasa Tertentu (PBJT)
+            '4.1.01.20': 'opsen-pkb',     // Opsen Pajak Kendaraan Bermotor
+            '4.1.01.21': 'opsen-bbnkb',   // Opsen Bea Balik Nama Kendaraan Bermotor
+            // PBJT sub-items
+            '4.1.01.19.01': 'pbjt-makanan',  // PBJT-Makanan dan Minuman
+            '4.1.01.19.02': 'pbjt-listrik',  // PBJT-Tenaga Listrik
+            '4.1.01.19.03': 'pbjt-hotel',    // PBJT-Perhotelan
+            '4.1.01.19.04': 'pbjt-parkir',   // PBJT-Parkir
+            '4.1.01.19.05': 'pbjt-hiburan',  // PBJT-Kesenian dan Hiburan
             // Retribusi Daerah
-            30301: 'retribusi-jasa-umum',
-            30350: 'retribusi-jasa-usaha',
-            30380: 'retribusi-perizinan'
+            '4.1.02.01': 'retribusi-jasa-umum',   // Retribusi Jasa Umum
+            '4.1.02.02': 'retribusi-jasa-usaha',  // Retribusi Jasa Usaha
+            '4.1.02.03': 'retribusi-perizinan'    // Retribusi Perizinan Tertentu
         };
+
+        // Store accounts data by number instead of ID
+        const accountsDataByNumber = {};
 
         // Ring configurations
         const RING_CONFIG = {
@@ -1576,9 +1579,31 @@
         }
 
         function updateDateTime() {
-            // Static date: 31 Desember 2025
-            const text = 'Rabu, 31 Desember 2025';
-            document.getElementById('currentDateTime').textContent = text;
+            const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+            const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+                'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+
+            let dateTimeString;
+
+            if (selectedYear >= CURRENT_YEAR) {
+                // Current year: show realtime date/time
+                const now = new Date();
+                const dayName = days[now.getDay()];
+                const date = now.getDate();
+                const monthName = months[now.getMonth()];
+                const year = now.getFullYear();
+                const hours = String(now.getHours()).padStart(2, '0');
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+                const seconds = String(now.getSeconds()).padStart(2, '0');
+                dateTimeString = `${dayName}, ${date} ${monthName} ${year} - ${hours}:${minutes}:${seconds}`;
+            } else {
+                // Past year: show December 31st of that year
+                const displayDate = new Date(selectedYear, 11, 31);
+                const dayName = days[displayDate.getDay()];
+                dateTimeString = `${dayName}, 31 Desember ${selectedYear}`;
+            }
+
+            document.getElementById('currentDateTime').textContent = dateTimeString;
         }
 
         // ============================================
@@ -1793,7 +1818,7 @@
 
             // Always use target_sesudah (target after) as the target value
             const target = data.target_sesudah || 0;
-            const realisasi = data.realisasi_sd_bulan_ini || data.realisasi || 0;
+            const realisasi = data.total_sd_bulan_ini || 0;
             const sisaTarget = target - realisasi; // Calculate sisa target
             const percentage = data.percentage || (target > 0 ? (realisasi / target) * 100 : 0);
 
@@ -1806,8 +1831,22 @@
             animatePercent(`realisasi-badge-${cardId}`, percentage);
             animatePercent(`percent-${cardId}`, percentage);
 
-            const sisaPct = target > 0 ? ((sisaTarget / target) * 100) : 0;
-            animatePercent(`sisa-badge-${cardId}`, sisaPct, '-');
+            // Calculate sisa percentage and update badge with correct logic
+            const sisaPct = target > 0 ? Math.abs((sisaTarget / target) * 100) : 0;
+            const isOverTarget = sisaTarget < 0; // Negative sisa = over target = GOOD
+
+            const sisaBadge = document.getElementById(`sisa-badge-${cardId}`);
+            if (sisaBadge) {
+                if (isOverTarget) {
+                    // Over target (sisa negatif) = GOOD = GREEN with +
+                    animatePercent(`sisa-badge-${cardId}`, sisaPct, '+');
+                    sisaBadge.className = 'badge-success';
+                } else {
+                    // Under target (sisa positif) = NEEDS ATTENTION = RED with -
+                    animatePercent(`sisa-badge-${cardId}`, sisaPct, '-');
+                    sisaBadge.className = 'badge-danger';
+                }
+            }
 
             // Update Chart.js for main cards
             const isMain = ['pad', 'transfer', 'lainnya'].includes(cardId);
@@ -1867,15 +1906,19 @@
         }
 
         function updateSummary() {
-            // Use account 30239 (PENDAPATAN DAERAH) for total
-            const data = accountsData[30239];
-            if (!data) return;
+            // Use account number '4' (PENDAPATAN DAERAH) for total - not ID since it changes per year
+            const data = accountsDataByNumber['4'];
+            if (!data) {
+                console.log('No data found for PENDAPATAN DAERAH (number: 4)');
+                return;
+            }
 
             const totalTarget = data.target_sesudah || 0;
-            const totalRealisasi = data.realisasi_sd_bulan_ini || 0;
+            const totalRealisasi = data.total_sd_bulan_ini || 0;
             const totalSisa = totalTarget - totalRealisasi;
             const realisasiPct = data.percentage || (totalTarget > 0 ? (totalRealisasi / totalTarget) * 100 : 0);
-            const sisaPct = totalTarget > 0 ? ((totalSisa / totalTarget) * 100) : 0;
+            const sisaPct = totalTarget > 0 ? Math.abs((totalSisa / totalTarget) * 100) : 0;
+            const isOverTarget = totalSisa < 0; // Negative sisa = over target = GOOD
 
             // Animate currency values
             animateValue('summaryTarget', totalTarget);
@@ -1884,8 +1927,21 @@
 
             // Animate percentage values
             animatePercent('summaryRealisasiBadge', realisasiPct);
-            animatePercent('summarySisaBadge', sisaPct, '-');
             animatePercent('summaryPercentage', realisasiPct);
+
+            // Update sisa badge with correct logic
+            const sisaBadge = document.getElementById('summarySisaBadge');
+            if (sisaBadge) {
+                if (isOverTarget) {
+                    // Over target (sisa negatif) = GOOD = GREEN with +
+                    animatePercent('summarySisaBadge', sisaPct, '+');
+                    sisaBadge.className = 'badge-success';
+                } else {
+                    // Under target (sisa positif) = NEEDS ATTENTION = RED with -
+                    animatePercent('summarySisaBadge', sisaPct, '-');
+                    sisaBadge.className = 'badge-danger';
+                }
+            }
 
             // Update Chart.js for Total Pendapatan
             updateMainChart('total-pendapatan', realisasiPct, '#3b82f6');
@@ -1895,25 +1951,28 @@
         }
 
         function updatePajakTabs() {
-            const pajakIds = {
-                'reklame': 30242,
-                'air-tanah': 30249,
-                'sarang-walet': 30252,
-                'mblb': 30255,
-                'pbb-p2': 30270,
-                'bphtb': 30273,
-                'pbjt': 30278,
-                'opsen-pkb': 30294,
-                'opsen-bbnkb': 30297
+            // Use number instead of ID for mapping
+            const pajakNumbers = {
+                'reklame': '4.1.01.09',
+                'air-tanah': '4.1.01.11',
+                'sarang-walet': '4.1.01.13',
+                'mblb': '4.1.01.12',
+                'pbb-p2': '4.1.01.14',
+                'bphtb': '4.1.01.15',
+                'pbjt': '4.1.01.19',
+                'opsen-pkb': '4.1.01.20',
+                'opsen-bbnkb': '4.1.01.21'
             };
 
-            Object.entries(pajakIds).forEach(([tabId, accountId]) => {
-                const data = accountsData[accountId];
+            Object.entries(pajakNumbers).forEach(([tabId, accountNumber]) => {
+                const data = accountsDataByNumber[accountNumber];
                 if (data) {
                     const target = data.target_sesudah || 0;
-                    const realisasi = data.realisasi_sd_bulan_ini || 0;
-                    const sisaTarget = target - realisasi; // Calculate sisa target
+                    const realisasi = data.total_sd_bulan_ini || 0;
+                    const sisaTarget = target - realisasi;
                     const percentage = data.percentage || 0;
+                    const sisaPct = target > 0 ? Math.abs((sisaTarget / target) * 100) : 0;
+                    const isOverTarget = sisaTarget < 0;
 
                     // Animate currency values
                     animateValue(`target-pajak-${tabId}`, target);
@@ -1924,8 +1983,11 @@
                     animatePercent(`realisasi-badge-pajak-${tabId}`, percentage);
                     animatePercent(`percent-pajak-${tabId}`, percentage);
 
-                    const sisaPct = target > 0 ? ((sisaTarget / target) * 100) : 0;
-                    animatePercent(`sisa-badge-pajak-${tabId}`, sisaPct, '-');
+                    const sisaBadge = document.getElementById(`sisa-badge-pajak-${tabId}`);
+                    if (sisaBadge) {
+                        animatePercent(`sisa-badge-pajak-${tabId}`, sisaPct, isOverTarget ? '+' : '-');
+                        sisaBadge.className = isOverTarget ? 'badge-success' : 'badge-danger';
+                    }
 
                     // Update Chart.js doughnut
                     updatePajakChart(tabId, percentage);
@@ -1981,19 +2043,22 @@
         }
 
         function updateRetribusiTabs() {
-            const retribusiIds = {
-                'retribusi-jasa-umum': 30301,
-                'retribusi-jasa-usaha': 30350,
-                'retribusi-perizinan': 30380
+            // Use number instead of ID for mapping
+            const retribusiNumbers = {
+                'retribusi-jasa-umum': '4.1.02.01',
+                'retribusi-jasa-usaha': '4.1.02.02',
+                'retribusi-perizinan': '4.1.02.03'
             };
 
-            Object.entries(retribusiIds).forEach(([tabId, accountId]) => {
-                const data = accountsData[accountId];
+            Object.entries(retribusiNumbers).forEach(([tabId, accountNumber]) => {
+                const data = accountsDataByNumber[accountNumber];
                 if (data) {
                     const target = data.target_sesudah || 0;
-                    const realisasi = data.realisasi_sd_bulan_ini || 0;
-                    const sisaTarget = target - realisasi; // Calculate sisa target
+                    const realisasi = data.total_sd_bulan_ini || 0;
+                    const sisaTarget = target - realisasi;
                     const percentage = data.percentage || 0;
+                    const sisaPct = target > 0 ? Math.abs((sisaTarget / target) * 100) : 0;
+                    const isOverTarget = sisaTarget < 0;
 
                     // Animate currency values
                     animateValue(`target-retribusi-${tabId}`, target);
@@ -2004,8 +2069,11 @@
                     animatePercent(`realisasi-badge-retribusi-${tabId}`, percentage);
                     animatePercent(`percent-retribusi-${tabId}`, percentage);
 
-                    const sisaPct = target > 0 ? ((sisaTarget / target) * 100) : 0;
-                    animatePercent(`sisa-badge-retribusi-${tabId}`, sisaPct, '-');
+                    const sisaBadge = document.getElementById(`sisa-badge-retribusi-${tabId}`);
+                    if (sisaBadge) {
+                        animatePercent(`sisa-badge-retribusi-${tabId}`, sisaPct, isOverTarget ? '+' : '-');
+                        sisaBadge.className = isOverTarget ? 'badge-success' : 'badge-danger';
+                    }
 
                     // Update Chart.js doughnut
                     updateRetribusiChart(tabId, percentage);
@@ -2109,148 +2177,163 @@
 
         // Update detail section (PAD, Transfer, Lainnya children)
         function updateDetailSection() {
-            // PAD Detail Summary
-            const padData = accountsData[30240];
+            // PAD Detail Summary - using number '4.1' instead of ID
+            const padData = accountsDataByNumber['4.1'];
             if (padData) {
                 const target = padData.target_sesudah || 0;
-                const realisasi = padData.realisasi_sd_bulan_ini || 0;
+                const realisasi = padData.total_sd_bulan_ini || 0;
                 const sisaTarget = target - realisasi;
                 const percentage = padData.percentage || 0;
-                const sisaPct = target > 0 ? ((sisaTarget / target) * 100) : 0;
+                const sisaPct = target > 0 ? Math.abs((sisaTarget / target) * 100) : 0;
+                const isOverTarget = sisaTarget < 0;
 
                 animateValue('pad-detail-target', target);
                 animateValue('pad-detail-realisasi', realisasi);
                 animateValue('pad-detail-sisa', sisaTarget);
                 animatePercent('pad-detail-realisasi-badge', percentage);
-                animatePercent('pad-detail-sisa-badge', sisaPct, '-');
+
+                const padSisaBadge = document.getElementById('pad-detail-sisa-badge');
+                if (padSisaBadge) {
+                    animatePercent('pad-detail-sisa-badge', sisaPct, isOverTarget ? '+' : '-');
+                    padSisaBadge.className = isOverTarget ? 'badge-success' : 'badge-danger';
+                }
             }
 
-            // PAD Children
+            // PAD Children - using number instead of ID
             const padChildren = {
-                'pajak': {
-                    id: 30241,
-                    color: '#6366f1'
-                },
-                'retribusi': {
-                    id: 30300,
-                    color: '#8b5cf6'
-                },
-                'kekayaan': {
-                    id: 30398,
-                    color: '#a855f7'
-                },
-                'lain-pad': {
-                    id: 30402,
-                    color: '#d946ef'
-                }
+                'pajak': { number: '4.1.01', color: '#6366f1' },
+                'retribusi': { number: '4.1.02', color: '#8b5cf6' },
+                'kekayaan': { number: '4.1.03', color: '#a855f7' },
+                'lain-pad': { number: '4.1.04', color: '#d946ef' }
             };
 
             Object.entries(padChildren).forEach(([childId, config]) => {
-                const data = accountsData[config.id];
+                const data = accountsDataByNumber[config.number];
                 if (data) {
                     const target = data.target_sesudah || 0;
-                    const realisasi = data.realisasi_sd_bulan_ini || 0;
+                    const realisasi = data.total_sd_bulan_ini || 0;
                     const sisaTarget = target - realisasi;
                     const percentage = data.percentage || 0;
-                    const sisaPct = target > 0 ? ((sisaTarget / target) * 100) : 0;
+                    const sisaPct = target > 0 ? Math.abs((sisaTarget / target) * 100) : 0;
+                    const isOverTarget = sisaTarget < 0;
 
                     animateValue(`target-detail-${childId}`, target);
                     animateValue(`realisasi-detail-${childId}`, realisasi);
                     animateValue(`sisa-detail-${childId}`, sisaTarget);
                     animatePercent(`realisasi-badge-detail-${childId}`, percentage);
-                    animatePercent(`sisa-badge-detail-${childId}`, sisaPct, '-');
+
+                    const sisaBadge = document.getElementById(`sisa-badge-detail-${childId}`);
+                    if (sisaBadge) {
+                        animatePercent(`sisa-badge-detail-${childId}`, sisaPct, isOverTarget ? '+' : '-');
+                        sisaBadge.className = isOverTarget ? 'badge-success' : 'badge-danger';
+                    }
                     animatePercent(`percent-detail-${childId}`, percentage);
 
                     updateDetailChart(childId, percentage, config.color);
                 }
             });
 
-            // Transfer Detail Summary
-            const transferData = accountsData[30481];
+            // Transfer Detail Summary - using number '4.2' instead of ID
+            const transferData = accountsDataByNumber['4.2'];
             if (transferData) {
                 const target = transferData.target_sesudah || 0;
-                const realisasi = transferData.realisasi_sd_bulan_ini || 0;
+                const realisasi = transferData.total_sd_bulan_ini || 0;
                 const sisaTarget = target - realisasi;
                 const percentage = transferData.percentage || 0;
-                const sisaPct = target > 0 ? ((sisaTarget / target) * 100) : 0;
+                const sisaPct = target > 0 ? Math.abs((sisaTarget / target) * 100) : 0;
+                const isOverTarget = sisaTarget < 0;
 
                 animateValue('transfer-detail-target', target);
                 animateValue('transfer-detail-realisasi', realisasi);
                 animateValue('transfer-detail-sisa', sisaTarget);
                 animatePercent('transfer-detail-realisasi-badge', percentage);
-                animatePercent('transfer-detail-sisa-badge', sisaPct, '-');
+
+                const transferSisaBadge = document.getElementById('transfer-detail-sisa-badge');
+                if (transferSisaBadge) {
+                    animatePercent('transfer-detail-sisa-badge', sisaPct, isOverTarget ? '+' : '-');
+                    transferSisaBadge.className = isOverTarget ? 'badge-success' : 'badge-danger';
+                }
             }
 
-            // Transfer Children
+            // Transfer Children - using number instead of ID
             const transferChildren = {
-                'pusat': {
-                    id: 30482,
-                    color: '#f97316'
-                },
-                'antar': {
-                    id: 30516,
-                    color: '#fb923c'
-                }
+                'pusat': { number: '4.2.01', color: '#f97316' },
+                'antar': { number: '4.2.02', color: '#fb923c' }
             };
 
             Object.entries(transferChildren).forEach(([childId, config]) => {
-                const data = accountsData[config.id];
+                const data = accountsDataByNumber[config.number];
                 if (data) {
                     const target = data.target_sesudah || 0;
-                    const realisasi = data.realisasi_sd_bulan_ini || 0;
+                    const realisasi = data.total_sd_bulan_ini || 0;
                     const sisaTarget = target - realisasi;
                     const percentage = data.percentage || 0;
-                    const sisaPct = target > 0 ? ((sisaTarget / target) * 100) : 0;
+                    const sisaPct = target > 0 ? Math.abs((sisaTarget / target) * 100) : 0;
+                    const isOverTarget = sisaTarget < 0;
 
                     animateValue(`target-detail-${childId}`, target);
                     animateValue(`realisasi-detail-${childId}`, realisasi);
                     animateValue(`sisa-detail-${childId}`, sisaTarget);
                     animatePercent(`realisasi-badge-detail-${childId}`, percentage);
-                    animatePercent(`sisa-badge-detail-${childId}`, sisaPct, '-');
+
+                    const sisaBadge = document.getElementById(`sisa-badge-detail-${childId}`);
+                    if (sisaBadge) {
+                        animatePercent(`sisa-badge-detail-${childId}`, sisaPct, isOverTarget ? '+' : '-');
+                        sisaBadge.className = isOverTarget ? 'badge-success' : 'badge-danger';
+                    }
                     animatePercent(`percent-detail-${childId}`, percentage);
 
                     updateDetailChart(childId, percentage, config.color);
                 }
             });
 
-            // Lainnya Detail Summary
-            const lainnyaData = accountsData[30524];
+            // Lainnya Detail Summary - using number '4.3' instead of ID
+            const lainnyaData = accountsDataByNumber['4.3'];
             if (lainnyaData) {
                 const target = lainnyaData.target_sesudah || 0;
-                const realisasi = lainnyaData.realisasi_sd_bulan_ini || 0;
+                const realisasi = lainnyaData.total_sd_bulan_ini || 0;
                 const sisaTarget = target - realisasi;
                 const percentage = lainnyaData.percentage || 0;
-                const sisaPct = target > 0 ? ((sisaTarget / target) * 100) : 0;
+                const sisaPct = target > 0 ? Math.abs((sisaTarget / target) * 100) : 0;
+                const isOverTarget = sisaTarget < 0;
 
                 animateValue('lainnya-detail-target', target);
                 animateValue('lainnya-detail-realisasi', realisasi);
                 animateValue('lainnya-detail-sisa', sisaTarget);
                 animatePercent('lainnya-detail-realisasi-badge', percentage);
-                animatePercent('lainnya-detail-sisa-badge', sisaPct, '-');
+
+                const lainnyaSisaBadge = document.getElementById('lainnya-detail-sisa-badge');
+                if (lainnyaSisaBadge) {
+                    animatePercent('lainnya-detail-sisa-badge', sisaPct, isOverTarget ? '+' : '-');
+                    lainnyaSisaBadge.className = isOverTarget ? 'badge-success' : 'badge-danger';
+                }
             }
 
-            // Lainnya Children
+            // Lainnya Children - using number instead of ID
             const lainnyaChildren = {
-                'hibah': {
-                    id: 30525,
-                    color: '#34d399'
-                }
+                'hibah': { number: '4.3.01', color: '#34d399' }
             };
 
             Object.entries(lainnyaChildren).forEach(([childId, config]) => {
-                const data = accountsData[config.id];
+                const data = accountsDataByNumber[config.number];
                 if (data) {
                     const target = data.target_sesudah || 0;
-                    const realisasi = data.realisasi_sd_bulan_ini || 0;
+                    const realisasi = data.total_sd_bulan_ini || 0;
                     const sisaTarget = target - realisasi;
                     const percentage = data.percentage || 0;
-                    const sisaPct = target > 0 ? ((sisaTarget / target) * 100) : 0;
+                    const sisaPct = target > 0 ? Math.abs((sisaTarget / target) * 100) : 0;
+                    const isOverTarget = sisaTarget < 0;
 
                     animateValue(`target-detail-${childId}`, target);
                     animateValue(`realisasi-detail-${childId}`, realisasi);
                     animateValue(`sisa-detail-${childId}`, sisaTarget);
                     animatePercent(`realisasi-badge-detail-${childId}`, percentage);
-                    animatePercent(`sisa-badge-detail-${childId}`, sisaPct, '-');
+
+                    const sisaBadge = document.getElementById(`sisa-badge-detail-${childId}`);
+                    if (sisaBadge) {
+                        animatePercent(`sisa-badge-detail-${childId}`, sisaPct, isOverTarget ? '+' : '-');
+                        sisaBadge.className = isOverTarget ? 'badge-success' : 'badge-danger';
+                    }
                     animatePercent(`percent-detail-${childId}`, percentage);
 
                     updateDetailChart(childId, percentage, config.color);
@@ -2259,18 +2342,25 @@
         }
 
         function updatePbjtSection() {
-            const pbjtData = accountsData[30278];
+            // Use number '4.1.01.19' for PBJT instead of ID
+            const pbjtData = accountsDataByNumber['4.1.01.19'];
             if (pbjtData) {
                 const target = pbjtData.target_sesudah || 0;
-                const realisasi = pbjtData.realisasi_sd_bulan_ini || 0;
-                const sisaTarget = target - realisasi; // Calculate sisa target
+                const realisasi = pbjtData.total_sd_bulan_ini || 0;
+                const sisaTarget = target - realisasi;
+                const sisaPct = target > 0 ? Math.abs((sisaTarget / target) * 100) : 0;
+                const isOverTarget = sisaTarget < 0;
 
                 animateValue('pbjt-total-target', target);
                 animateValue('pbjt-total-realisasi', realisasi);
                 animateValue('pbjt-total-sisa', sisaTarget);
                 animatePercent('pbjt-total-realisasi-badge', pbjtData.percentage || 0);
-                const sisaPct = target > 0 ? ((sisaTarget / target) * 100) : 0;
-                animatePercent('pbjt-total-sisa-badge', sisaPct, '-');
+
+                const pbjtSisaBadge = document.getElementById('pbjt-total-sisa-badge');
+                if (pbjtSisaBadge) {
+                    animatePercent('pbjt-total-sisa-badge', sisaPct, isOverTarget ? '+' : '-');
+                    pbjtSisaBadge.className = isOverTarget ? 'badge-success' : 'badge-danger';
+                }
             }
         }
 
@@ -2280,7 +2370,7 @@
 
         async function fetchAccount(accountId) {
             try {
-                const response = await fetch(`${API_BASE}/${accountId}`);
+                const response = await fetch(`${API_BASE}/${accountId}?year=${selectedYear}`);
                 if (!response.ok) throw new Error(`HTTP ${response.status}`);
                 const result = await response.json();
                 return result.data || result;
@@ -2292,7 +2382,10 @@
 
         async function fetchAllAccounts() {
             try {
-                const response = await fetch('https://e-penda.com/api/accounts/list-accounts');
+                // Use dynamic year from selectedYear
+                const apiUrl = `${API_BASE}/list-accounts?year=${selectedYear}`;
+                console.log('Fetching data for year:', selectedYear, 'URL:', apiUrl);
+                const response = await fetch(apiUrl);
                 if (!response.ok) throw new Error(`HTTP ${response.status}`);
                 const result = await response.json();
                 return result.data || [];
@@ -2310,12 +2403,26 @@
                 // Fetch all accounts at once
                 const allAccounts = await fetchAllAccounts();
 
-                // Process the data
+                // Debug: log first account to see field names
+                if (allAccounts.length > 0) {
+                    console.log('Sample account data:', allAccounts[0]);
+                    console.log('All field names:', Object.keys(allAccounts[0]));
+                }
+
+                // Process the data - use NUMBER as key instead of ID
                 allAccounts.forEach(account => {
+                    const accountNumber = account.number || account.order_number;
                     const accountId = account.id;
+
+                    // Store by both ID and Number for compatibility
                     accountsData[accountId] = account;
-                    const cardId = CARD_MAPPING[accountId];
-                    if (cardId) updateCard(cardId, account);
+                    accountsDataByNumber[accountNumber] = account;
+
+                    // Get card ID from number-based mapping
+                    const cardId = CARD_MAPPING[accountNumber];
+                    if (cardId && cardId !== 'total-pendapatan') {
+                        updateCard(cardId, account);
+                    }
                 });
 
                 updateSummary();
@@ -2331,7 +2438,7 @@
                 const now = new Date();
                 const timeStr =
                     `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
-                setEl('refreshStatus', `Terakhir diupdate: ${timeStr} (Refresh ke-${refreshCount})`);
+                setEl('refreshStatus', `Terakhir diupdate: ${timeStr} (Refresh ke-${refreshCount}) - Tahun ${selectedYear}`);
 
             } catch (error) {
                 console.error('Error:', error);
@@ -2343,7 +2450,54 @@
         // INITIALIZATION
         // ============================================
 
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize year filter dropdown
+            const yearFilterDropdown = document.getElementById('yearFilter');
+            if (yearFilterDropdown) {
+                // Set initial value
+                yearFilterDropdown.value = selectedYear;
+
+                // Add change event listener
+                yearFilterDropdown.addEventListener('change', async function () {
+                    const newYear = parseInt(this.value);
+                    console.log('Year changed from', selectedYear, 'to', newYear);
+
+                    // Update selected year
+                    selectedYear = newYear;
+
+                    // Show loading state
+                    setEl('refreshStatus', `Memuat data tahun ${selectedYear}...`);
+
+                    // Add loading class to ALL cards and sections
+                    document.querySelectorAll('.main-card, .section-card, .mini-card').forEach(el => {
+                        el.classList.add('loading');
+                    });
+
+                    // Also add loading to section bodies
+                    document.querySelectorAll('.section-body').forEach(el => {
+                        el.style.opacity = '0.5';
+                    });
+
+                    // Clear ALL cached data (both by ID and by Number)
+                    Object.keys(accountsData).forEach(key => delete accountsData[key]);
+                    Object.keys(accountsDataByNumber).forEach(key => delete accountsDataByNumber[key]);
+
+                    // Reset refresh counter for new year
+                    refreshCount = 0;
+
+                    // Update date/time display based on year
+                    updateDateTime();
+
+                    // Refresh data with new year
+                    await refreshAllData();
+
+                    // Restore section body opacity
+                    document.querySelectorAll('.section-body').forEach(el => {
+                        el.style.opacity = '1';
+                    });
+                });
+            }
+
             updateDateTime();
             setInterval(updateDateTime, 1000);
 
