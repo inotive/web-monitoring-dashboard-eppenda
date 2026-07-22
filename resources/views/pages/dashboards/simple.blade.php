@@ -662,30 +662,42 @@
     <div class="dashboard-header">
         <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
             <div class="d-flex align-items-center gap-3">
-                <img src="{{ asset('Logo-Tabalong-Blue-Print-Latar-Hijau2-226x300.png') }}" alt="Logo Tabalong"
-                    style="height: 70px;" class="d-none d-md-block">
+                <img src="{{ asset('PandaSmart.png') }}" alt="Logo Tabalong" style="height: 70px;"
+                    class="d-none d-md-block">
                 <div>
-                    <h1 class="fw-bolder mb-1" id="currentDateTime">Memuat...</h1>
-                    <h2 class="fw-bold mb-1 opacity-90">Badan Pendapatan Daerah Kabupaten Tabalong</h2>
-                    <p class="mb-0 opacity-75 fs-7" id="refreshStatus">Memuat data...</p>
+                    <h1 class="fw-bolder mb-0 text-white"
+                        style="letter-spacing: 1px; font-size: 2.8rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.15);">PANDA
+                        SMART</h1>
+                    <p class="mb-0 text-white fw-semibold mt-1" style="font-size: 0.9rem; letter-spacing: 0.5px;">
+                        OPTIMALISASI PENGELOLAAN PENDAPATAN MELALUI INTEGRASI EKOSISTEM DIGITAL PEMBUKUAN DAN PELAPORAN
+                    </p>
+                    <span id="refreshStatus" class="d-none"></span>
                 </div>
             </div>
-            <div class="d-flex align-items-center gap-3">
-                <!-- Year Filter Dropdown -->
-                <div class="bg-white rounded-3 px-3 py-2 shadow-sm">
-                    <div class="d-flex align-items-center gap-2">
-                        <span class="fw-bold" style="color: #d97706; font-size: 13px;">Tahun:</span>
-                        <select id="yearFilter" class="form-select form-select-sm border-0 fw-bold"
-                            style="color: #d97706; background-color: #FEF3C7; min-width: 85px; cursor: pointer;">
-                            <option value="2026">2026</option>
-                            <option value="2025" selected>2025</option>
-                            <option value="2024">2024</option>
-                        </select>
+            <div class="d-flex flex-column align-items-end gap-2">
+                <!-- Date / Time on Top -->
+                <h5 class="fw-bolder mb-0 text-white" id="currentDateTime"
+                    style="text-shadow: 1px 1px 2px rgba(0,0,0,0.15);">Memuat...</h5>
+
+                <!-- Dropdown and Logo side-by-side below the Date -->
+                <div class="d-flex align-items-center gap-3">
+                    <!-- Year Filter Dropdown -->
+                    <div class="bg-white rounded-3 px-3 py-2 shadow-sm">
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="fw-bold" style="color: #d97706; font-size: 13px;">Tahun:</span>
+                            <select id="yearFilter" class="form-select form-select-sm border-0 fw-bold"
+                                style="color: #d97706; background-color: #FEF3C7; min-width: 85px; cursor: pointer;">
+                                @php $currentYear = date('Y'); @endphp
+                                <option value="{{ $currentYear }}" selected>{{ $currentYear }}</option>
+                                <option value="{{ $currentYear - 1 }}">{{ $currentYear - 1 }}</option>
+                                <option value="{{ $currentYear - 2 }}">{{ $currentYear - 2 }}</option>
+                            </select>
+                        </div>
                     </div>
+                    <img src="{{ asset('logo-tabalong-smart.png') }}" alt="Logo Tabalong Smart"
+                        style="height: 65px; background: white; padding: 8px; border-radius: 12px;"
+                        class="d-none d-md-block">
                 </div>
-                <img src="{{ asset('logo-tabalong-smart.png') }}" alt="Logo Tabalong Smart"
-                    style="height: 65px; background: white; padding: 8px; border-radius: 12px;"
-                    class="d-none d-md-block">
             </div>
         </div>
     </div>
@@ -1482,7 +1494,7 @@
         // CONFIGURATION
         // ============================================
         const API_BASE = 'https://e-penda.com/api/accounts';
-        let selectedYear = 2025; // Default tahun 2025
+        let selectedYear = new Date().getFullYear(); // Mengikuti tahun sekarang
         const CURRENT_YEAR = new Date().getFullYear();
         const REFRESH_INTERVAL = 30000;
 
