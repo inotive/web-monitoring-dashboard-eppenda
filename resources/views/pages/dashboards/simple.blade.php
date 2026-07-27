@@ -697,6 +697,9 @@
                     <img src="{{ asset('logo-tabalong-smart.png') }}" alt="Logo Tabalong Smart"
                         style="height: 65px; background: white; padding: 8px; border-radius: 12px;"
                         class="d-none d-md-block">
+                    <img src="{{ asset('Logo-Tabalong-Blue-Print-Latar-Hijau2-226x300.png') }}" alt="Logo Tabalong"
+                        style="height: 65px; background: white; padding: 8px; border-radius: 12px;"
+                        class="d-none d-md-block">
                 </div>
             </div>
         </div>
