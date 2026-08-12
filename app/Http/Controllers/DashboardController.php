@@ -21,7 +21,7 @@ class DashboardController extends Controller
                 "children" => [
                     [
                         "label" => "PENDAPATAN ASLI DAERAH (PAD)",
-                        'id' => 30240,
+                        'id' => 30614111111,
                         "children" => [
                             [
                                 "label" => "PAJAK DAERAH",
@@ -33,7 +33,7 @@ class DashboardController extends Controller
                                     ],
                                     [
                                         "label" => "AIR TANAH",
-                                        'id' => 30249,
+                                        'id' => 30654,
                                     ],
                                     [
                                         "label" => "SARANG BURUNG WALET",
@@ -53,7 +53,7 @@ class DashboardController extends Controller
                                     ],
                                     [
                                         "label" => "PBJT",
-                                        'id' => 30278,
+                                        'id' => 11111,
                                         "children" => [
                                             ["label" => "PBJT - MAKANAN DAN/ATAU MINUMAN", 'id' => 30279],
                                             ["label" => "PBJT - TENAGA LISTRIK", 'id' => 30281],

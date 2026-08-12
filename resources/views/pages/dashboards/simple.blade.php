@@ -1509,22 +1509,7 @@
 
 
 
-        // All account IDs to fetch
-        const ACCOUNT_IDS = [
-            30239, // Total Pendapatan Daerah (parent)
-            30240, 30481, 30524,
-            // PAD children
-            30241, 30300, 30398, 30402,
-            // Transfer children
-            30482, 30516,
-            // Lainnya children
-            30525,
-            // Pajak Daerah items
-            30242, 30249, 30252, 30255, 30270, 30273, 30278, 30294, 30297,
-            30279, 30281, 30284, 30286, 30288,
-            // Retribusi Daerah
-            30301, 30351, 30393
-        ];
+        // All account IDs to fetch - Removed as no longer used
 
         // NUMBER to card mapping (using number field, not ID - karena ID berubah setiap tahun)
         const CARD_MAPPING = {
@@ -1545,11 +1530,11 @@
             '4.3.01': 'hibah',            // Pendapatan Hibah
             // Pajak Daerah items
             '4.1.01.09': 'reklame',       // Pajak Reklame
-            '4.1.01.11': 'air-tanah',     // Pajak Air Tanah
+            '4.1.01.12': 'air-tanah',     // Pajak Air Tanah
             '4.1.01.13': 'sarang-walet',  // Pajak Sarang Burung Walet
-            '4.1.01.12': 'mblb',          // Pajak Mineral Bukan Logam dan Batuan
-            '4.1.01.14': 'pbb-p2',        // Pajak Bumi dan Bangunan
-            '4.1.01.15': 'bphtb',         // Bea Perolehan Hak Atas Tanah dan Bangunan
+            '4.1.01.14': 'mblb',          // Pajak Mineral Bukan Logam dan Batuan
+            '4.1.01.15': 'pbb-p2',        // Pajak Bumi dan Bangunan
+            '4.1.01.16': 'bphtb',         // Bea Perolehan Hak Atas Tanah dan Bangunan (Assumed from order)
             '4.1.01.19': 'pbjt',          // Pajak Barang dan Jasa Tertentu (PBJT)
             '4.1.01.20': 'opsen-pkb',     // Opsen Pajak Kendaraan Bermotor
             '4.1.01.21': 'opsen-bbnkb',   // Opsen Bea Balik Nama Kendaraan Bermotor
@@ -1969,11 +1954,11 @@
             // Use number instead of ID for mapping
             const pajakNumbers = {
                 'reklame': '4.1.01.09',
-                'air-tanah': '4.1.01.11',
+                'air-tanah': '4.1.01.12',
                 'sarang-walet': '4.1.01.13',
-                'mblb': '4.1.01.12',
-                'pbb-p2': '4.1.01.14',
-                'bphtb': '4.1.01.15',
+                'mblb': '4.1.01.14',
+                'pbb-p2': '4.1.01.15',
+                'bphtb': '4.1.01.16',
                 'pbjt': '4.1.01.19',
                 'opsen-pkb': '4.1.01.20',
                 'opsen-bbnkb': '4.1.01.21'
@@ -2383,22 +2368,10 @@
         // DATA FETCHING
         // ============================================
 
-        async function fetchAccount(accountId) {
-            try {
-                const response = await fetch(`${API_BASE}/${accountId}?year=${selectedYear}`);
-                if (!response.ok) throw new Error(`HTTP ${response.status}`);
-                const result = await response.json();
-                return result.data || result;
-            } catch (error) {
-                console.error(`Error fetching account ${accountId}:`, error);
-                return null;
-            }
-        }
-
         async function fetchAllAccounts() {
             try {
                 // Use dynamic year from selectedYear
-                const apiUrl = `${API_BASE}/list-accounts?year=${selectedYear}`;
+                const apiUrl = `https://e-penda.com/api/accounts/list-accounts?year=${selectedYear}`;
                 console.log('Fetching data for year:', selectedYear, 'URL:', apiUrl);
                 const response = await fetch(apiUrl);
                 if (!response.ok) throw new Error(`HTTP ${response.status}`);
