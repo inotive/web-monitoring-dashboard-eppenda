@@ -654,6 +654,251 @@
             font-weight: 700;
             color: #1f2937;
         }
+
+        /* ========================================
+           INTERACTIVE ENHANCEMENTS - NEW CSS
+           ======================================== */
+
+        /* --- Card Color Left Border & Glow --- */
+        .main-card {
+            border-left: 4px solid var(--card-color, #e5e7eb) !important;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--card-color, #e5e7eb), transparent);
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .main-card:hover {
+            box-shadow: 0 12px 40px rgba(0,0,0,0.10), 0 0 0 2px var(--card-color, #e5e7eb22) !important;
+        }
+
+        .mini-card {
+            border-left: 3px solid var(--card-color, #e5e7eb) !important;
+            position: relative;
+        }
+
+        /* --- Status Pill --- */
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(4px);
+        }
+
+        .status-pill.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .status-pill .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .status-pill.on-track {
+            background: rgba(16,185,129,0.12);
+            color: #059669;
+        }
+
+        .status-pill.on-track .status-dot {
+            background: #10b981;
+            box-shadow: 0 0 0 3px rgba(16,185,129,0.25);
+            animation: pulseGreen 2s infinite;
+        }
+
+        .status-pill.at-risk {
+            background: rgba(245,158,11,0.12);
+            color: #b45309;
+        }
+
+        .status-pill.at-risk .status-dot {
+            background: #f59e0b;
+            animation: pulseAmber 2s infinite;
+        }
+
+        .status-pill.behind {
+            background: rgba(239,68,68,0.10);
+            color: #dc2626;
+        }
+
+        .status-pill.behind .status-dot {
+            background: #ef4444;
+        }
+
+        @keyframes pulseGreen {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(16,185,129,0.5); }
+            50% { box-shadow: 0 0 0 5px rgba(16,185,129,0); }
+        }
+
+        @keyframes pulseAmber {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(245,158,11,0.5); }
+            50% { box-shadow: 0 0 0 5px rgba(245,158,11,0); }
+        }
+
+        /* --- Mini Progress Bar --- */
+        .mini-progress-bar-wrap {
+            height: 4px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 6px;
+        }
+
+        .mini-progress-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            width: 0%;
+            transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+            background: linear-gradient(90deg, var(--bar-color, #3b82f6), var(--bar-color-end, #6366f1));
+        }
+
+        /* --- Live Refresh Dot --- */
+        .live-dot-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.85);
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #4ade80;
+            flex-shrink: 0;
+            transition: background 0.3s;
+        }
+
+        .live-dot.fetching {
+            background: #facc15;
+            animation: pulseLive 1s infinite;
+        }
+
+        .live-dot.done {
+            background: #4ade80;
+            animation: none;
+        }
+
+        @keyframes pulseLive {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.7); }
+        }
+
+        /* --- Header shimmer overlay --- */
+        .dashboard-header {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dashboard-header::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -75%;
+            width: 50%; height: 200%;
+            background: linear-gradient(
+                105deg,
+                transparent 0%,
+                rgba(255,255,255,0.08) 50%,
+                transparent 100%
+            );
+            animation: headerShimmer 4s infinite linear;
+            pointer-events: none;
+        }
+
+        @keyframes headerShimmer {
+            0% { left: -75%; }
+            100% { left: 125%; }
+        }
+
+        /* --- Tab Slide Animation --- */
+        .detail-tab-content {
+            animation: fadeSlideIn 0.28s ease both;
+        }
+
+        @keyframes fadeSlideIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .detail-tab.active {
+            background: white;
+            color: #3b82f6;
+            border-bottom-color: #3b82f6;
+            box-shadow: 0 -2px 8px rgba(59,130,246,0.10);
+        }
+
+        .custom-tab.active {
+            background: linear-gradient(135deg, #3b82f6, #6366f1);
+            color: white;
+            box-shadow: 0 4px 12px rgba(59,130,246,0.30);
+            transform: translateY(-1px);
+        }
+
+        /* --- Number pop effect --- */
+        @keyframes popIn {
+            0%   { transform: scale(1); }
+            40%  { transform: scale(1.08); }
+            100% { transform: scale(1); }
+        }
+
+        .pop-animate {
+            animation: popIn 0.3s ease;
+        }
+
+        /* --- Card "click to scroll" ripple feedback --- */
+        .main-card {
+            cursor: pointer;
+        }
+
+        .main-card:active {
+            transform: scale(0.99);
+        }
+
+        /* --- Dynamic badge gradients --- */
+        .badge-success {
+            background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(52,211,153,0.10));
+            color: #059669;
+        }
+
+        .badge-danger {
+            background: linear-gradient(135deg, rgba(239,68,68,0.12), rgba(252,165,165,0.08));
+            color: #dc2626;
+        }
+
+        /* --- Section card accent --- */
+        .section-card {
+            border-top: 3px solid transparent;
+            background-clip: padding-box;
+        }
+
+        /* --- Pulse ring on chart container when loading --- */
+        .chartjs-ring-wrapper.chart-entering {
+            animation: chartPop 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
+        }
+
+        @keyframes chartPop {
+            from { transform: scale(0.7); opacity: 0; }
+            to   { transform: scale(1); opacity: 1; }
+        }
     </style>
 
     <!-- ========================================
@@ -672,6 +917,11 @@
                         OPTIMALISASI PENGELOLAAN PENDAPATAN MELALUI INTEGRASI EKOSISTEM DIGITAL PEMBUKUAN DAN PELAPORAN
                     </p>
                     <span id="refreshStatus" class="d-none"></span>
+                    <!-- Live Dot Indicator -->
+                    <div class="live-dot-wrapper mt-2">
+                        <div class="live-dot fetching" id="liveDot"></div>
+                        <span id="liveStatus">Memuat data...</span>
+                    </div>
                 </div>
             </div>
             <div class="d-flex flex-column align-items-end gap-2">
@@ -742,6 +992,9 @@
                             </i>
                         </div>
                         <h5 class="card-title">Total Pendapatan Daerah</h5>
+                        <div class="ms-auto">
+                            <span class="status-pill" id="pill-total-pendapatan"><span class="status-dot"></span><span class="pill-label">Memuat</span></span>
+                        </div>
                     </div>
 
                     <!-- Card Body -->
@@ -770,9 +1023,12 @@
 
                                 <!-- Realisasi -->
                                 <div class="data-box data-box-realisasi">
-                                    <div>
+                                    <div style="flex: 1;">
                                         <div class="data-label">Total Realisasi</div>
                                         <div class="data-value" id="summaryRealisasi">Rp0</div>
+                                        <div class="mini-progress-bar-wrap">
+                                            <div class="mini-progress-bar-fill" id="bar-total-pendapatan" style="--bar-color:#3b82f6;--bar-color-end:#6366f1;"></div>
+                                        </div>
                                     </div>
                                     <span class="badge-success" id="summaryRealisasiBadge">0%</span>
                                 </div>
@@ -799,7 +1055,9 @@
     <div class="row g-3 mb-3">
         @foreach ($mainCards as $card)
             <div class="col-lg-4 col-md-6">
-                <div class="main-card loading" id="card-{{ $card['id'] }}" data-account-id="{{ $card['account_id'] }}">
+                <div class="main-card loading" id="card-{{ $card['id'] }}" data-account-id="{{ $card['account_id'] }}"
+                    style="--card-color: {{ $card['color'] }};"
+                    onclick="scrollToDetail('{{ $card['id'] }}')">
                     <!-- Skeleton Loading -->
                     <div class="skeleton-wrapper">
                         <div class="d-flex align-items-center gap-2 mb-3">
@@ -829,6 +1087,9 @@
                                 </i>
                             </div>
                             <h5 class="card-title">{{ $card['title'] }}</h5>
+                            <div class="ms-auto">
+                                <span class="status-pill" id="pill-{{ $card['id'] }}"><span class="status-dot"></span><span class="pill-label">...</span></span>
+                            </div>
                         </div>
 
                         <!-- Card Body -->
@@ -856,9 +1117,12 @@
 
                                 <!-- Realisasi -->
                                 <div class="data-box data-box-realisasi">
-                                    <div>
+                                    <div style="flex: 1;">
                                         <div class="data-label">Realisasi</div>
                                         <div class="data-value" id="realisasi-{{ $card['id'] }}">Rp0</div>
+                                        <div class="mini-progress-bar-wrap">
+                                            <div class="mini-progress-bar-fill" id="bar-{{ $card['id'] }}" style="--bar-color:{{ $card['color'] }};--bar-color-end:{{ $card['color'] }};"></div>
+                                        </div>
                                     </div>
                                     <span class="badge-success" id="realisasi-badge-{{ $card['id'] }}">0%</span>
                                 </div>
@@ -941,7 +1205,7 @@
                 <div class="section-header d-flex justify-content-between align-items-center"
                     onclick="toggleSection('section-detail-pendapatan')">
                     <h5 class="fw-bold mb-0">Pendapatan Asli Daerah</h5>
-                    <i class="ki-duotone ki-down fs-3 section-toggle"></i>
+                <i class="ki-duotone ki-down fs-3 section-toggle"><span class="path1"></span></i>
                 </div>
                 <div class="section-body">
                     <!-- Summary Row -->
@@ -979,7 +1243,12 @@
                                 <div class="mini-card" id="card-detail-{{ $child['id'] }}">
                                     <div class="d-flex align-items-center gap-2 mb-3">
                                         <div class="card-icon-sm" style="background: {{ $child['color'] }};">
-                                            <i class="ki-duotone ki-chart-simple fs-6 text-white"></i>
+                                            <i class="ki-duotone ki-chart-simple fs-6 text-white">
+                                                <span class="path1"></span>
+                                                <span class="path2"></span>
+                                                <span class="path3"></span>
+                                                <span class="path4"></span>
+                                            </i>
                                         </div>
                                         <h6 class="fw-bold mb-0 fs-7">{{ $child['title'] }}</h6>
                                     </div>
@@ -1027,7 +1296,7 @@
             <div class="detail-tab-content d-none" id="detail-tab-detail-transfer">
                 <div class="section-header d-flex justify-content-between align-items-center">
                     <h5 class="fw-bold mb-0">Dana Transfer</h5>
-                    <i class="ki-duotone ki-down fs-3 section-toggle"></i>
+                <i class="ki-duotone ki-down fs-3 section-toggle"><span class="path1"></span></i>
                 </div>
                 <div class="section-body">
                     <!-- Summary Row -->
@@ -1065,7 +1334,10 @@
                                 <div class="mini-card" id="card-detail-{{ $child['id'] }}">
                                     <div class="d-flex align-items-center gap-2 mb-3">
                                         <div class="card-icon-sm" style="background: {{ $child['color'] }};">
-                                            <i class="ki-duotone ki-folder fs-6 text-white"></i>
+                                            <i class="ki-duotone ki-folder fs-6 text-white">
+                                                <span class="path1"></span>
+                                                <span class="path2"></span>
+                                            </i>
                                         </div>
                                         <h6 class="fw-bold mb-0 fs-7">{{ $child['title'] }}</h6>
                                     </div>
@@ -1113,7 +1385,7 @@
             <div class="detail-tab-content d-none" id="detail-tab-detail-lainnya">
                 <div class="section-header d-flex justify-content-between align-items-center">
                     <h5 class="fw-bold mb-0">Pendapatan Lainnya yang Sah</h5>
-                    <i class="ki-duotone ki-down fs-3 section-toggle"></i>
+                <i class="ki-duotone ki-down fs-3 section-toggle"><span class="path1"></span></i>
                 </div>
                 <div class="section-body">
                     <!-- Summary Row -->
@@ -1151,7 +1423,11 @@
                                 <div class="mini-card" id="card-detail-{{ $child['id'] }}">
                                     <div class="d-flex align-items-center gap-2 mb-3">
                                         <div class="card-icon-sm" style="background: {{ $child['color'] }};">
-                                            <i class="ki-duotone ki-gift fs-6 text-white"></i>
+                                            <i class="ki-duotone ki-gift fs-6 text-white">
+                                                <span class="path1"></span>
+                                                <span class="path2"></span>
+                                                <span class="path3"></span>
+                                            </i>
                                         </div>
                                         <h6 class="fw-bold mb-0 fs-7">{{ $child['title'] }}</h6>
                                     </div>
@@ -1232,7 +1508,7 @@
             <div class="section-header d-flex justify-content-between align-items-center"
                 onclick="toggleSection('section-pajak-retribusi')">
                 <h5 class="fw-bold mb-0">Pajak & Retribusi Daerah</h5>
-                <i class="ki-duotone ki-down fs-3 section-toggle"></i>
+                <i class="ki-duotone ki-down fs-3 section-toggle"><span class="path1"></span></i>
             </div>
             <div class="section-body">
                 <!-- Main Tabs (Pajak Daerah / Retribusi Daerah) -->
@@ -1395,7 +1671,7 @@
         <div class="section-header d-flex justify-content-between align-items-center"
             onclick="toggleSection('section-pbjt')">
             <h5 class="fw-bold mb-0">PBJT</h5>
-            <i class="ki-duotone ki-down fs-3 section-toggle"></i>
+            <i class="ki-duotone ki-down fs-3 section-toggle"><span class="path1"></span></i>
         </div>
         <div class="section-body">
             <!-- PBJT Summary -->
@@ -1647,11 +1923,18 @@
                 }
             });
 
-            // Show/hide detail tab content
+            // Show/hide detail tab content with slide animation
             document.querySelectorAll('.detail-tab-content').forEach(content => {
                 content.classList.add('d-none');
             });
-            document.getElementById(`detail-tab-${tabId}`).classList.remove('d-none');
+            const target = document.getElementById(`detail-tab-${tabId}`);
+            if (target) {
+                target.classList.remove('d-none');
+                // Re-trigger animation
+                target.style.animation = 'none';
+                void target.offsetWidth;
+                target.style.animation = '';
+            }
         }
 
         function switchTab(tabGroupId, tabId) {
@@ -1760,6 +2043,12 @@
 
                 if (progress < 1) {
                     requestAnimationFrame(update);
+                } else {
+                    // Pop effect when animation completes
+                    el.classList.remove('pop-animate');
+                    void el.offsetWidth; // Force reflow
+                    el.classList.add('pop-animate');
+                    setTimeout(() => el.classList.remove('pop-animate'), 350);
                 }
             }
 
@@ -1852,6 +2141,10 @@
             const isMain = ['pad', 'transfer', 'lainnya'].includes(cardId);
             if (isMain) {
                 updateMainChart(cardId, percentage, CARD_COLORS[cardId]);
+                // Update mini progress bar for main cards
+                updateMiniBar(cardId, percentage, CARD_COLORS[cardId]);
+                // Update status pill
+                updateStatusPill(cardId, percentage);
             } else {
                 updateProgressRing(cardId, percentage, RING_CONFIG.mini);
             }
@@ -1867,12 +2160,15 @@
             const displayPct = Math.min(percentage, 100);
             const remaining = Math.max(0, 100 - displayPct);
 
+            // Determine if this is first-time (for chart-entering animation)
+            const isNew = !mainCharts[chartId];
+
             if (mainCharts[chartId]) {
                 // Update existing chart
                 mainCharts[chartId].data.datasets[0].data = [displayPct, remaining];
-                mainCharts[chartId].update('none');
+                mainCharts[chartId].update();
             } else {
-                // Create new chart
+                // Create new chart with rich tooltips
                 const ctx = canvas.getContext('2d');
                 mainCharts[chartId] = new Chart(ctx, {
                     type: 'doughnut',
@@ -1889,19 +2185,43 @@
                         maintainAspectRatio: true,
                         cutout: '65%',
                         plugins: {
-                            legend: {
-                                display: false
-                            },
+                            legend: { display: false },
                             tooltip: {
-                                enabled: false
+                                enabled: true,
+                                backgroundColor: 'rgba(15,23,42,0.92)',
+                                titleColor: '#94a3b8',
+                                bodyColor: '#f1f5f9',
+                                bodyFont: { size: 13, weight: '700' },
+                                titleFont: { size: 11 },
+                                padding: 12,
+                                cornerRadius: 10,
+                                callbacks: {
+                                    label: function(context) {
+                                        const val = context.dataIndex === 0 ? displayPct : remaining;
+                                        return ` ${val.toFixed(1)}%`;
+                                    },
+                                    title: function(context) {
+                                        return context[0].dataIndex === 0 ? 'Realisasi' : 'Sisa Target';
+                                    }
+                                }
                             }
                         },
                         animation: {
                             animateRotate: true,
-                            duration: 800
+                            duration: 900,
+                            easing: 'easeOutQuart'
                         }
                     }
                 });
+            }
+
+            // Trigger chart-entering CSS animation on first render
+            if (isNew) {
+                const wrapper = canvas.closest('.chartjs-ring-wrapper');
+                if (wrapper) {
+                    wrapper.classList.add('chart-entering');
+                    setTimeout(() => wrapper.classList.remove('chart-entering'), 600);
+                }
             }
         }
 
@@ -1945,6 +2265,12 @@
 
             // Update Chart.js for Total Pendapatan
             updateMainChart('total-pendapatan', realisasiPct, '#3b82f6');
+
+            // Update mini progress bar for summary
+            updateMiniBar('total-pendapatan', realisasiPct, '#3b82f6');
+
+            // Update status pill for summary
+            updateStatusPill('total-pendapatan', realisasiPct);
 
             // Remove loading state
             removeLoading('total-pendapatan');
@@ -2386,6 +2712,7 @@
         async function refreshAllData() {
             refreshCount++;
             setEl('refreshStatus', `Memuat data... (Refresh ke-${refreshCount})`);
+            setLiveDot('fetching');
 
             try {
                 // Fetch all accounts at once
@@ -2428,9 +2755,13 @@
                     `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
                 setEl('refreshStatus', `Terakhir diupdate: ${timeStr} (Refresh ke-${refreshCount}) - Tahun ${selectedYear}`);
 
+                // Set live dot to done state
+                setLiveDot('done', `Data terkini pukul ${timeStr}`);
+
             } catch (error) {
                 console.error('Error:', error);
                 setEl('refreshStatus', `Error: ${error.message}`);
+                setLiveDot('done', 'Gagal memuat data');
             }
         }
 
@@ -2492,5 +2823,101 @@
             setTimeout(() => refreshAllData(), 600);
             setInterval(refreshAllData, REFRESH_INTERVAL);
         });
+    </script>
+
+    <script>
+        // ============================================
+        // INTERACTIVE HELPER FUNCTIONS
+        // ============================================
+
+        /**
+         * Update the status pill for a card based on its percentage.
+         * >= 80% = On Track (green), 50-80% = At Risk (amber), < 50% = Behind (red)
+         */
+        function updateStatusPill(cardId, percentage) {
+            const pill = document.getElementById(`pill-${cardId}`);
+            if (!pill) return;
+
+            let statusClass, label;
+            if (percentage >= 80) {
+                statusClass = 'on-track';
+                label = '✓ On Track';
+            } else if (percentage >= 50) {
+                statusClass = 'at-risk';
+                label = '⚡ At Risk';
+            } else {
+                statusClass = 'behind';
+                label = '⚠ Perlu Perhatian';
+            }
+
+            pill.className = `status-pill ${statusClass}`;
+            const labelEl = pill.querySelector('.pill-label');
+            if (labelEl) labelEl.textContent = label;
+
+            // Trigger visible transition with slight delay
+            setTimeout(() => pill.classList.add('visible'), 80);
+        }
+
+        /**
+         * Update the mini progress bar fill for a given element ID.
+         */
+        function updateMiniBar(barId, percentage, color) {
+            const bar = document.getElementById(`bar-${barId}`);
+            if (!bar) return;
+            const capped = Math.min(percentage, 100);
+            // Use requestAnimationFrame to ensure transition fires
+            requestAnimationFrame(() => {
+                bar.style.setProperty('--bar-color', color || '#3b82f6');
+                bar.style.setProperty('--bar-color-end', color || '#6366f1');
+                setTimeout(() => { bar.style.width = capped + '%'; }, 50);
+            });
+        }
+
+        /**
+         * Set live dot state.
+         * @param {'fetching'|'done'} state
+         * @param {string} [message] - Optional status message
+         */
+        function setLiveDot(state, message) {
+            const dot = document.getElementById('liveDot');
+            const status = document.getElementById('liveStatus');
+            if (!dot) return;
+
+            dot.className = 'live-dot ' + state;
+            if (status && message) {
+                status.textContent = message;
+            } else if (status && state === 'fetching') {
+                status.textContent = 'Memuat data...';
+            }
+        }
+
+        /**
+         * Click-to-scroll: clicking a main card scrolls to its detail tab.
+         */
+        function scrollToDetail(cardId) {
+            const tabMap = {
+                'pad': 'detail-pad',
+                'transfer': 'detail-transfer',
+                'lainnya': 'detail-lainnya'
+            };
+            const tabId = tabMap[cardId];
+            if (!tabId) return;
+
+            // Switch to the correct detail tab
+            switchDetailTab(tabId);
+
+            // Scroll to the detail section
+            const section = document.getElementById('section-detail-pendapatan');
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                // Add a brief highlight flash on the section
+                section.style.transition = 'box-shadow 0.3s ease';
+                section.style.boxShadow = '0 0 0 3px rgba(59,130,246,0.4)';
+                setTimeout(() => {
+                    section.style.boxShadow = '';
+                }, 1200);
+            }
+        }
     </script>
 </x-clean-layout>
