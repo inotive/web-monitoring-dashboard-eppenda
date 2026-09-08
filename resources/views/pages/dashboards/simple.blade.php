@@ -2705,7 +2705,7 @@
                 return result.data || [];
             } catch (error) {
                 console.error('Error fetching accounts list:', error);
-                return [];
+                throw error;
             }
         }
 
@@ -2724,6 +2724,18 @@
                     console.log('All field names:', Object.keys(allAccounts[0]));
                 }
 
+                // Reset each response so missing accounts cannot retain old values.
+                Object.keys(accountsData).forEach(key => delete accountsData[key]);
+                Object.keys(accountsDataByNumber).forEach(key => delete accountsDataByNumber[key]);
+                Object.keys(CARD_MAPPING).forEach(number => {
+                    accountsDataByNumber[number] = {
+                        number,
+                        target_sesudah: 0,
+                        total_sd_bulan_ini: 0,
+                        percentage: 0,
+                    };
+                });
+
                 // Process the data - use NUMBER as key instead of ID
                 allAccounts.forEach(account => {
                     const accountNumber = account.number || account.order_number;
@@ -2733,10 +2745,12 @@
                     accountsData[accountId] = account;
                     accountsDataByNumber[accountNumber] = account;
 
-                    // Get card ID from number-based mapping
-                    const cardId = CARD_MAPPING[accountNumber];
-                    if (cardId && cardId !== 'total-pendapatan') {
-                        updateCard(cardId, account);
+                });
+
+                // Render every card, including zero values for missing accounts.
+                Object.entries(CARD_MAPPING).forEach(([number, cardId]) => {
+                    if (cardId !== 'total-pendapatan') {
+                        updateCard(cardId, accountsDataByNumber[number]);
                     }
                 });
 
