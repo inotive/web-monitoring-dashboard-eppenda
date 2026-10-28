@@ -1772,7 +1772,8 @@
         // ============================================
         // CONFIGURATION
         // ============================================
-        const API_BASE = 'https://e-penda.com/api/accounts';
+        const BASE_URL = 'http://eppenda_new.test';
+        const API_BASE = `${BASE_URL}/api/accounts`;
         let selectedYear = new Date().getFullYear(); // Mengikuti tahun sekarang
         const CURRENT_YEAR = new Date().getFullYear();
         const REFRESH_INTERVAL = 30000;
@@ -2694,15 +2695,48 @@
         // DATA FETCHING
         // ============================================
 
+        // Card ID -> account number, untuk item yang kode_rekening-nya beda format (mis. PBJT 4.1.01.19.001)
+        const KEY_TO_NUMBER = Object.fromEntries(
+            Object.entries(CARD_MAPPING).map(([number, cardId]) => [cardId, number])
+        );
+
+        // Ratakan respons /dashboard (ringkasan + rincian bersarang) ke format account lama
+        function flattenDashboardData(data) {
+            const accounts = {};
+
+            function collect(item) {
+                if (!item || typeof item !== 'object') return;
+                if (Array.isArray(item)) {
+                    item.forEach(collect);
+                    return;
+                }
+                if (item.kode_rekening) {
+                    const number = KEY_TO_NUMBER[item.key] || item.kode_rekening;
+                    accounts[number] = {
+                        number,
+                        key: item.key,
+                        name: item.nama_akun,
+                        target_sesudah: item.target || 0,
+                        total_sd_bulan_ini: item.realisasi || 0,
+                        percentage: item.persentase_realisasi || 0,
+                    };
+                }
+                if (Array.isArray(item.rincian)) item.rincian.forEach(collect);
+            }
+
+            Object.values(data || {}).forEach(collect);
+            return Object.values(accounts);
+        }
+
         async function fetchAllAccounts() {
             try {
                 // Use dynamic year from selectedYear
-                const apiUrl = `https://e-penda.com/api/accounts/list-accounts?year=${selectedYear}`;
+                const apiUrl = `${API_BASE}/dashboard?year=${selectedYear}`;
                 console.log('Fetching data for year:', selectedYear, 'URL:', apiUrl);
                 const response = await fetch(apiUrl);
                 if (!response.ok) throw new Error(`HTTP ${response.status}`);
                 const result = await response.json();
-                return result.data || [];
+                return flattenDashboardData(result.data);
             } catch (error) {
                 console.error('Error fetching accounts list:', error);
                 throw error;
@@ -2739,7 +2773,7 @@
                 // Process the data - use NUMBER as key instead of ID
                 allAccounts.forEach(account => {
                     const accountNumber = account.number || account.order_number;
-                    const accountId = account.id;
+                    const accountId = account.id ?? accountNumber;
 
                     // Store by both ID and Number for compatibility
                     accountsData[accountId] = account;
