@@ -1227,7 +1227,7 @@
 
     <script>
         // API Configuration
-        const BASE_URL = 'http://eppenda_new.test';
+        const BASE_URL = 'https://e-penda.com';
         const API_BASE_URL = `${BASE_URL}/api/accounts`;
         let refreshCounter = 0;
         let refreshInterval = 1000;
