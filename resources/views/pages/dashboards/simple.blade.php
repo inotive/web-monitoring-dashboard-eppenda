@@ -1772,7 +1772,7 @@
         // ============================================
         // CONFIGURATION
         // ============================================
-        const BASE_URL = 'http://eppenda_new.test';
+        const BASE_URL = 'https://e-penda.com';
         const API_BASE = `${BASE_URL}/api/accounts`;
         let selectedYear = new Date().getFullYear(); // Mengikuti tahun sekarang
         const CURRENT_YEAR = new Date().getFullYear();
